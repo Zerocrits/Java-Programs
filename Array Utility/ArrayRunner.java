@@ -1,3 +1,8 @@
+//Bill Joseph
+//Array Runner
+//Spec: Practice with Arrays
+
+
 public class ArrayRunner
 {
 	public static void main(String[] args)
@@ -10,7 +15,7 @@ public class ArrayRunner
 		int[] intArrBackwards;
 		String word = "APCS";
 
-		intResult = ArrayUtility.getSum(intArr);
+		intResult = ArrayUtility.getmm(intArr);
 		System.out.println("\nSum of integers: " + intResult);
 
 		dblResult = ArrayUtility.getSum(dblArr);
@@ -44,3 +49,34 @@ public class ArrayRunner
 		System.out.println("\ndecrypted it's: " + word + "\n");
 	}
 }
+
+/*
+
+
+Sum of integers: 183
+
+Sum of doubles: 19.4
+
+Product of integers: 13685760
+
+Integer array forwards:
+5       8       3       22      64      81
+
+Integer array backwards:
+81      64      22      3       8       5
+
+Max integer: 81
+
+Min integer: 5
+
+foo contains 'e': false
+
+Integer array contains 6: false
+
+APCS encrypted is: m|o
+
+decrypted it's: APCS
+
+Press any key to continue . . .
+
+*/

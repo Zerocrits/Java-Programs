@@ -1,3 +1,8 @@
+//Bill Joseph
+//Array Utility
+//Spec: Build an Array Utility with methods
+
+
 // Utility File to practice working with arrays
 
 public class ArrayUtility
@@ -31,7 +36,13 @@ public class ArrayUtility
 	*	@return the product of each element in the nums array */
 	public static long getProduct(int[] nums)
 	{
-
+		long sum = 0;
+		for(int i = 0; i < nums.length; i++)
+			if(i == 0)
+				sum = nums[i];
+			else
+				sum = sum * nums[i];
+		return sum;
 	}
 
 	/** Builds and returns a reverse order version of the nums array
@@ -39,11 +50,10 @@ public class ArrayUtility
 	*	@return a reverse order version of the nums array */
 	public static int[] reverseArray(int[] nums)
 	{
-		int[] reverse = new int[nums.length];
-		for(int i = reverse.length; i>nums[0];i--)
-			for(int k = 0; i != 0; k++)
-				reverse[k] = nums[i];
-		return reverse;
+    	int[] reversed = new int[nums.length];
+    	for (int i=0; i<nums.length; i++)
+    		reversed[i] = nums[nums.length - 1 - i];
+    	return reversed;
 	}
 
 	/** Searches the nums array for the maximum value
@@ -52,9 +62,9 @@ public class ArrayUtility
 	public static int findMax(int[] nums)
 	{
 		int max = nums[0];
-		for(int i = 1; i<nums.length; i++)
-			if(nums[i]>max)
-				max=nums[i];
+		for(int i = 1; i < nums.length; i++)
+			if(nums[i] > max)
+				max = nums[i];
 		return max;
 
 	}
@@ -64,10 +74,10 @@ public class ArrayUtility
 	*	@return the minimum value in the array */
 	public static int findMin(int[] nums)
 	{
-		int min = nums[nums.length];
-		for(int i = nums.length; i>1; i--)
-			if(nums[i]<min)
-				min=nums[i];
+		int min = nums[0];
+		for(int i = 1; i > nums.length; i++)
+			if(nums[i] < min)
+				min = nums[i];
 		return min;
 	}
 
@@ -77,7 +87,11 @@ public class ArrayUtility
 	*	@return true if the target char is found, false otherwise */
 	public static boolean contains(String word, char target)
 	{
-
+		boolean answer = false;
+		for(int i = 0; i < word.length(); i++)
+			if(word.charAt(i) == target)
+				return true;
+		return false;
 	}
 
 	/** Searches the nums array for an occurence of the int target
@@ -86,7 +100,11 @@ public class ArrayUtility
 	*	@return true if the target int is found, false otherwise */
 	public static boolean contains(int[] nums, int target)
 	{
-
+		boolean answer = false;
+		for(int i = 0; i < nums.length; i++)
+			if(nums[i] == target)
+				return true;
+		return false;
 	}
 
 	/** "poor-mans Encryption"... add 44 to the ascii value of each char in a String
@@ -116,8 +134,8 @@ public class ArrayUtility
 	public static String arrayToString(int[] nums)
 	{
 		String word = "";
-		for(int i = 0; i <= nums.length; i++)
-			word = word + "\t" + nums[i];
+		for(int i = 0; i < nums.length; i++)
+			word += nums[i] + "\t";
 		return word;
 	}
 
@@ -126,8 +144,8 @@ public class ArrayUtility
 	public static String arrayToString(double[] nums)
 	{
 		String word = "";
-		for(int i = 0; i <= nums.length; i++)
-			word = word + "\t" + nums[i];
+		for(int i = 0; i < nums.length; i++)
+			word += nums[i] + "\t";
 		return word;
 	}
 }
