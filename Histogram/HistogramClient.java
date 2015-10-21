@@ -1,6 +1,6 @@
-//Name -
-//Prog -
-//Spec -
+//Bill Joseph
+//Histogram
+//Histogram client run
 
 public class HistogramClient
 {
