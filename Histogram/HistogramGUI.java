@@ -10,6 +10,7 @@ public class HistogramGUI extends JFrame
 {
 	private String words = "";
 	private JLabel lblWords, lblTitle;
+	private JTextField txtWord;
 	private JButton btnRun;
 	private Histogram gram;
 	private ButtonListener listener;
@@ -21,13 +22,16 @@ public class HistogramGUI extends JFrame
 		cp.setLayout(new FlowLayout());
 
 		lblTitle = new JLabel("HistoGram Client");
-		lblWords = new JLabel(words);
+		lblWords = new JLabel("sdsadasd");
 		btnRun = new JButton("Run!");
+		txtWord = new JTextField(10);
 
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+		lblWords.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 
 		cp.add(lblTitle);
 		cp.add(lblWords);
+		cp.add(txtWord);
 		cp.add(btnRun);
 
 		setSize(300, 300);
@@ -45,6 +49,11 @@ public class HistogramGUI extends JFrame
 		{
 			Object source = new Object();
 			source = event.getSource();
+			if(source == btnRun)
+			{
+				String word = txtWord.getText();
+				lblWords.setText(word);
+			}
 		}
 	}
 }

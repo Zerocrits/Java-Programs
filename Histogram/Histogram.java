@@ -10,6 +10,7 @@ public class Histogram
 
 	public Histogram(String line)
 	{
+		line = line.replaceAll("\\s+","");
 		numCount = new int[10];
 		setList(line);
 	}
