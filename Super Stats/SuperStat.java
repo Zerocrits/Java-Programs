@@ -15,7 +15,10 @@ public class SuperStat
 	/** Constructor that takes a String nums and builds both a String[] and an int[] from it */
 	public SuperStat(String nums)
 	{
-
+		strNums = nums.split(",");
+		intNums = new int[strNums.length];
+		for(int i = 0; i < strNums.length; i++)
+			intNums[i] = Integer.parseInt(strNums[i]);
 	}
 
 	/** Calculates the Min for this intNums array */
@@ -85,14 +88,20 @@ public class SuperStat
 	/*			Consider using nested for loops (and several vars) to track potential modes */
 	public int[] getMode()
 	{
-		int[] numCount = new int[intNums.length];
-		for(int i = 0; i < intNums.length; i++)
-		{
-			for(int k = 0; k < intNums.length; k++)
-				while(intNums.length > i && numCount[k] == i)
-					numCount[k]++;
-		}
-		return numCount;
+		int[] mode;
+		int[] count = new int[intNums];
+
+		//count the occurrences
+		for (int i=0; i < input.length; i++)
+			count[input[i]]++;
+
+		//go backwards and find the count with the most occurrences
+		int index = count.length-1;
+		for (int i=count.length-2; i >=0; i--)
+			if (count[i] >= count[index])
+				index = i;
+
+		return index;
 	}
 
 	/** Standard Deviation is calculated
@@ -102,9 +111,15 @@ public class SuperStat
 	{
 		double dev = 0;
 		double mean = getMean();
-		dev = mean / intNums.length;
+		double variance = 0;
 
+		for(int i = 0; i < intNums.length; i++)
+			variance += intNums[i] * intNums[i];
+		variance = variance / intNums.length;
+		dev = Math.sqrt(variance);
+		String.format("%.2f", dev);
 
+		return dev;
 	}
 
 	/** Returns a String with each of the Stats on a separate line
