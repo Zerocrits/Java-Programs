@@ -76,9 +76,21 @@ public class SuperStat
 	public double getMedian()
 	{
 		double median = 0;
-		int nums = 0;
-		nums = intNums.length / 2;
-		median += intNums[nums];
+		int i=0;
+		int j=0;
+
+		if(intNums.length % 2 == 1)
+		{
+			median = intNums[intNums.length / 2];
+		}
+		/*else
+		{
+			i = intNums[intNums.length / 2];
+			j = intNums[(intNums.length / 2)+1];
+
+			median = intNums[intNums.length / 2 + ((j-i)/2)];
+		}*/
+
 		return median;
 	}
 
@@ -86,22 +98,45 @@ public class SuperStat
 	/*  Returns null if no mode found
 	/*  Note: 	Be sure to first sort the array (built-in method in Java)
 	/*			Consider using nested for loops (and several vars) to track potential modes */
-	public int[] getMode()
+	public String getMode()
 	{
-		int[] mode;
-		int[] count = new int[intNums];
+		int testMode=0;
+		int testOccur=0;
+		int mode=0;
+		int occur=0;
+		String modeList="";
 
-		//count the occurrences
-		for (int i=0; i < input.length; i++)
-			count[input[i]]++;
+		for(int i = 0; i < intNums.length; i++)
+		{
+			testMode = intNums[i];
 
-		//go backwards and find the count with the most occurrences
-		int index = count.length-1;
-		for (int i=count.length-2; i >=0; i--)
-			if (count[i] >= count[index])
-				index = i;
 
-		return index;
+			for(int j = 0; j < intNums.length; j++)
+			{
+				if(testMode == intNums[j]&&testMode != mode)
+				{
+					testOccur++;
+				}
+			}
+
+			if(testOccur > occur)
+			{
+				mode = testMode;
+				occur = testOccur;
+				modeList =  "" + mode;
+			}
+
+			else if(testOccur == occur)
+			{
+				mode = testMode;
+				occur = testOccur;
+				modeList += "," + mode;
+			}
+
+			testOccur=0;
+		}
+
+		return modeList;
 	}
 
 	/** Standard Deviation is calculated
