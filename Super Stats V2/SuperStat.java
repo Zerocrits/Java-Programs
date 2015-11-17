@@ -1,3 +1,8 @@
+//Bill Joseph
+//SuperStat Source
+//Main Class of SuperStat
+
+
 import java.util.Arrays;
 
 public class SuperStat
@@ -15,7 +20,10 @@ public class SuperStat
 	/** Constructor that takes a String nums and builds both a String[] and an int[] from it */
 	public SuperStat(String nums)
 	{
-
+		strNums = nums.split(",");
+		intNums = new int[strNums.length];
+		for(int i = 0; i < strNums.length; i++)
+			intNums[i] = Integer.parseInt(strNums[i]);
 	}
 
 	/** Calculates the Min for this intNums array */
@@ -56,26 +64,39 @@ public class SuperStat
 		double mean = intNums[0];
 		for(int i = 1; i < intNums.length; i++)
 			mean += intNums[i];
+		mean = mean / intNums.length;
 		return mean;
 	}
 
 	/** Calculates the Geometric Mean for this intNums array */
 	public double getGeometricMean()
 	{
-		double mean = 0;
+		long product=1;
 		for(int i = 0; i < intNums.length; i++)
-			mean+= intNums[i];
-		Math.sqrt(mean);
-		return mean;
+			product = product * intNums[i];
+		return Math.pow(product, 1.0/intNums.length);
 	}
 
 	/** Calculates the median for this intNums array */
 	public double getMedian()
 	{
 		double median = 0;
-		int nums = 0;
-		nums = intNums.length / 2;
-		median += intNums[nums];
+		int i=0;
+		int j=0;
+		Arrays.sort(intNums);
+
+		if(intNums.length % 2 == 1)
+		{
+			median = intNums[intNums.length / 2];
+		}
+		else
+		{
+			i = intNums[intNums.length / 2];
+			j = intNums[(intNums.length / 2)-1];
+
+			median = (j+i)/2;
+		}
+
 		return median;
 	}
 
@@ -83,16 +104,47 @@ public class SuperStat
 	/*  Returns null if no mode found
 	/*  Note: 	Be sure to first sort the array (built-in method in Java)
 	/*			Consider using nested for loops (and several vars) to track potential modes */
-	public int[] getMode()
+	public String getMode()
 	{
-		int[] numCount = new int[intNums.length];
+		int testMode=0;
+		int testOccur=0;
+		int mode=0;
+		int occur=0;
+		String modeList="";
+
 		for(int i = 0; i < intNums.length; i++)
 		{
-			for(int k = 0; k < intNums.length; k++)
-				while(intNums.length > i && numCount[k] == i)
-					numCount[k]++;
+			testMode = intNums[i];
+
+
+			for(int j = 0; j < intNums.length; j++)
+			{
+				if(testMode == intNums[j]&&testMode != mode)
+				{
+					testOccur++;
+				}
+			}
+
+			if(testOccur > occur)
+			{
+				mode = testMode;
+				occur = testOccur;
+				modeList =  "" + mode;
+			}
+
+			else if(testOccur == occur)
+			{
+				mode = testMode;
+				occur = testOccur;
+				modeList += "," + mode;
+			}
+
+			testOccur=0;
 		}
-		return numCount;
+		if(occur == 1)
+			return "null";
+		else
+			return modeList;
 	}
 
 	/** Standard Deviation is calculated
@@ -102,9 +154,13 @@ public class SuperStat
 	{
 		double dev = 0;
 		double mean = getMean();
-		dev = mean / intNums.length;
+		double variance = 0;
 
-
+		for(int i = 0; i < intNums.length; i++)
+			variance += intNums[i] * intNums[i];
+		variance = variance / intNums.length;
+		dev = Math.sqrt(variance);
+		return dev;
 	}
 
 	/** Returns a String with each of the Stats on a separate line
@@ -113,16 +169,63 @@ public class SuperStat
 	{
 		String result = "";
 
-		result += "\nNumber of Values: " + intNums.length;
-		result += "\nArithmetic Mean: " + getMean();
-		result += "\nGeometric Mean: " + getGeometricMean();
+		result += "Number of Values: " + intNums.length;
+		result += "\nArithmetic Mean: " + String.format("%.2f", getMean());
+		result += "\nGeometric Mean: " + String.format("%.2f", getGeometricMean());
 		result += "\nMedian: " + getMedian();
 		result += "\nMode: " + getMode();
 		result += "\nMin: " + getMin();
 		result += "\nMax: " + getMax();
 		result += "\nRange: " + getRange();
-		result += "\nStandard Deviation: " + getStdDev();
+		result += "\nStandard Deviation: " + String.format("%.2f", getStdDev()) + "\n";
 
 		return result;
 	}
 }
+
+/*
+
+                        ***Super Stat***
+Number of Values: 10
+Arithmetic Mean: 55.00
+Geometric Mean: 45.29
+Median: 55.0
+Mode: null
+Min: 10
+Max: 100
+Range: 90
+Standard Deviation: 62.05
+
+Number of Values: 6
+Arithmetic Mean: 35.00
+Geometric Mean: 29.94
+Median: 35.0
+Mode: null
+Min: 10
+Max: 60
+Range: 50
+Standard Deviation: 38.94
+
+Number of Values: 10
+Arithmetic Mean: 45.30
+Geometric Mean: 30.73
+Median: 26.0
+Mode: 10
+Min: 10
+Max: 96
+Range: 86
+Standard Deviation: 57.50
+
+Number of Values: 12
+Arithmetic Mean: 47.92
+Geometric Mean: NaN
+Median: 44.0
+Mode: 38,44
+Min: 12
+Max: 99
+Range: 87
+Standard Deviation: 52.87
+
+Press any key to continue . . .
+
+*/
