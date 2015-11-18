@@ -1,3 +1,7 @@
+//Bill Joseph
+//Sound Runner
+//Build a Sound Runner program
+
 public class Sound
 {
 	/** the array of values in this sound; guaranteed not to be  null */
@@ -24,12 +28,20 @@ public class Sound
 		int cnt = 0;
 		if(limit >= 0)
 		{
-			if(cnt > limit)
-				cnt = limit;
-			else if(cnt < -limit)
-				cnt = -limit;
+			for(int i = 0; i < samples.length; i++)
+			{
+				if(samples[i] > limit)
+				{
+					samples[i] = limit;
+					cnt++;
+				}
+				else if(samples[i] < -limit)
+				{
+					samples[i] = -limit;
+					cnt++;
+				}
+			}
 		}
-
 		return cnt;
 	}
 
@@ -54,8 +66,8 @@ public class Sound
 		trim = new int[(samples.length)-removal];
 		for(int i = 0; i < trim.length; i++)
 		{
-			for(int j = removal; j < samples.length; j++)
-				trim[i] = samples[j];
+			trim[i] = samples[removal];
+			removal++;
 		}
 		samples = new int[trim.length];
 		for(int i = 0; i < trim.length; i++)
@@ -65,7 +77,33 @@ public class Sound
 	public String toString()
 	{
 		String s = "";
-		for(int i = 0; i <
+		for(int i = 0; i < samples.length; i++)
+		{
+			if(i < samples.length-1)
+				s += samples[i] + ", ";
+			else
+				s += samples[i];
+		}
 		return s;
 	}
 }
+
+/*
+
+                        ***Digital Sound Program***
+
+Original Sound File Values:
+40, 2532, 17, -2300, -17, -4000, 2000, 1048, -420, 33, 15, -32, 2030, 3223
+
+After amplitude is limited to 2000:
+40, 2000, 17, -2000, -17, -2000, 2000, 1048, -420, 33, 15, -32, 2000, 2000
+Number of values affected: 5
+
+Sound file with silence in the beginning:
+0, 0, 0, 0, 0, 0, 592, 128, -33, 60
+
+Sound file with lead silence removed:
+592, 128, -33, 60
+Press any key to continue . . .
+
+*/

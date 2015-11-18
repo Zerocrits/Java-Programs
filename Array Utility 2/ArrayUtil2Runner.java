@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 // Your Name
 // Array Utility 2
 // Spec: ........
+=======
+// Bill Joseph
+// Array Utility 2
+// Spec: Build Array Util 2
+>>>>>>> origin/master
 
 import java.util.Arrays;
 
@@ -43,3 +49,23 @@ public class ArrayUtil2Runner
 	}
 }
 
+<<<<<<< HEAD
+=======
+/*
+
+Arr1 swap: [5, -6, -17, -12, 8, 4]
+Double swap: [9.6, 4.1, 3.2]
+Appended: [5, -6, -17, -12, 8, 4, 3, 1, 4, 1, 5, 9, 9, 1, 6]
+Sans First 6: [3, 1, 4, 1, 5, 9, 9, 1, 6]
+Sans Last 8: [5, -6, -17, -12, 8, 4, 3]
+Arr1 Sans Evens: [5, -17]
+Arr2 Sans Evens: [3, 1, 1, 5, 9, 9, 1]
+Arr1 Sans Odds: [-6, -12, 8, 4]
+Arr2 Sans Odds: [4, 6]
+Arr2 Sorted: [1, 1, 1, 3, 4, 5, 6, 9, 9]
+Num Uniques in Arr2: 6
+Press any key to continue . . .
+
+*/
+
+>>>>>>> origin/master

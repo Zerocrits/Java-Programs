@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+// Bill Joseph
+// Array Utility 2
+// Spec: Build Array Util 2
+
+
+
+>>>>>>> origin/master
 import java.util.Arrays;
 
 public class ArrayUtil2
@@ -76,6 +85,7 @@ public class ArrayUtil2
 	public static int[] removeEvens(int[] arr)
 	{
 		int j = 0;
+<<<<<<< HEAD
 		int k = 0;
 		int temp = 0;
 		int odds = 0;
@@ -107,6 +117,20 @@ public class ArrayUtil2
 			}
 			else
 			{
+=======
+		int odd = 0;
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i] % 2 != 0)
+				odd++;
+		}
+		int[] remove = new int[odd];
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i] % 2 != 0)
+			{
+				remove[j] = arr[i];
+>>>>>>> origin/master
 				j++;
 			}
 		}
@@ -118,6 +142,7 @@ public class ArrayUtil2
 	public static int[] removeOdds(int[] arr)
 	{
 		int j = 0;
+<<<<<<< HEAD
 		int k = 0;
 		int temp = 0;
 		int even = 0;
@@ -149,6 +174,20 @@ public class ArrayUtil2
 			}
 			else
 			{
+=======
+		int even = 0;
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i] % 2 == 0)
+				even++;
+		}
+		int[] remove = new int[even];
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i] % 2 == 0)
+			{
+				remove[j] = arr[i];
+>>>>>>> origin/master
 				j++;
 			}
 		}
