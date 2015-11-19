@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-=======
 // Bill Joseph
 // Array Utility 2
 // Spec: Build Array Util 2
 
-
-
->>>>>>> origin/master
 import java.util.Arrays;
 
 public class ArrayUtil2
@@ -85,39 +80,6 @@ public class ArrayUtil2
 	public static int[] removeEvens(int[] arr)
 	{
 		int j = 0;
-<<<<<<< HEAD
-		int k = 0;
-		int temp = 0;
-		int odds = 0;
-		for(int i = 0; i < arr.length; i++)
-			if(arr[i] % 2 != 0)
-				odds++;
-		int[] remove = new int[odds];
-		while(j <= odds)
-		{
-			if(arr[j] % 2 != 0)
-			{
-				remove[k] += arr[j];
-				j++;
-				k++;
-			}
-			else if(arr[j] < 0)
-			{
-				temp = Math.abs(arr[j]);
-				if(temp % 2 != 0)
-				{
-					remove[k] += arr[j];
-					k++;
-					j++;
-				}
-				else
-				{
-					j++;
-				}
-			}
-			else
-			{
-=======
 		int odd = 0;
 		for(int i = 0; i < arr.length; i++)
 		{
@@ -130,7 +92,6 @@ public class ArrayUtil2
 			if(arr[i] % 2 != 0)
 			{
 				remove[j] = arr[i];
->>>>>>> origin/master
 				j++;
 			}
 		}
@@ -142,39 +103,6 @@ public class ArrayUtil2
 	public static int[] removeOdds(int[] arr)
 	{
 		int j = 0;
-<<<<<<< HEAD
-		int k = 0;
-		int temp = 0;
-		int even = 0;
-		for(int i = 0; i < arr.length; i++)
-			if(arr[i] % 2 == 0)
-				even++;
-		int[] remove = new int[even];
-		while(j <= even)
-		{
-			if(arr[j] % 2 == 0)
-			{
-				remove[k] = arr[j];
-				j++;
-				k++;
-			}
-			else if(arr[j] < 0)
-			{
-				temp = Math.abs(arr[j]);
-				if(temp % 2 == 0)
-				{
-					remove[k] = arr[j];
-					k++;
-					j++;
-				}
-				else
-				{
-					j++;
-				}
-			}
-			else
-			{
-=======
 		int even = 0;
 		for(int i = 0; i < arr.length; i++)
 		{
@@ -187,7 +115,6 @@ public class ArrayUtil2
 			if(arr[i] % 2 == 0)
 			{
 				remove[j] = arr[i];
->>>>>>> origin/master
 				j++;
 			}
 		}

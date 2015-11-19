@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-// Your Name
-// Array Utility 2
-// Spec: ........
-=======
 // Bill Joseph
 // Array Utility 2
 // Spec: Build Array Util 2
->>>>>>> origin/master
 
 import java.util.Arrays;
 
@@ -49,8 +43,6 @@ public class ArrayUtil2Runner
 	}
 }
 
-<<<<<<< HEAD
-=======
 /*
 
 Arr1 swap: [5, -6, -17, -12, 8, 4]
@@ -68,4 +60,3 @@ Press any key to continue . . .
 
 */
 
->>>>>>> origin/master
