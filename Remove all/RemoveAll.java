@@ -7,11 +7,10 @@ public class RemoveAll
 {
 	public static void main(String args[])
 	{
-		String again = "y";
-		int choice = 0;
+		int again = 0;
 		Scanner sc = new Scanner(System.in);
 		String[] words = new String[10];
-		while(again.equalsIgnoreCase("y"))
+		while(again != 5)
 		{
 			words[0]=("all");
 			words[1]=("all");
@@ -31,19 +30,17 @@ public class RemoveAll
 			System.out.println("4. While Loop Backwards");
 			System.out.println("5. Exit");
 			System.out.print("Which Program?: ");
-			choice = sc.nextInt();
-			if(choice == 1)
+			again = sc.nextInt();
+			if(again == 1)
 				forForward(words);
-			else if(choice == 2)
+			else if(again == 2)
 				forBackward(words);
-			else if(choice == 3)
+			else if(again == 3)
 				whileForward(words);
-			else if(choice == 4)
+			else if(again == 4)
 				whileBackward(words);
 			else
-				again = "no";
-			System.out.print("Would You like to Try a different version?(y/n): ");
-			again = sc.nextLine();
+				again = 5;
 		}
 		System.out.println("Thanks for Using Remove All!\n");
 	}
@@ -52,9 +49,9 @@ public class RemoveAll
 	{
 		ArrayList<String> ray;
 		ray = new ArrayList<String>();
-		for(int i = 10; i > 0; i--)
-			ray.add(words[i]);
 
+		for(int i = 0; i < words.length; i++)
+			ray.add(words[i]);
 		int i = 0;
 		while(i < ray.size())
 		{
@@ -67,16 +64,15 @@ public class RemoveAll
 		}
 		System.out.println("\nWhile Loop Forwards:");
 		System.out.println(ray);
-		System.out.println(ray.size());
+		System.out.println(ray.size() + "\n");
 	}
 	//While loop backwards
 	public static void whileBackward(String[] words)
 	{
 		ArrayList<String> ray;
 		ray = new ArrayList<String>();
-		for(int i = 10; i > 0; i--)
+		for(int i = 0; i < words.length; i++)
 			ray.add(words[i]);
-
 		int i = ray.size()-1;
 		while(i >= 0)
 		{
@@ -89,7 +85,7 @@ public class RemoveAll
 		}
 		System.out.println("\nWhile Loop Backwards:");
 		System.out.println(ray);
-		System.out.println(ray.size());
+		System.out.println(ray.size() + "\n");
 
 	}
 	//For loop forwards
@@ -97,9 +93,8 @@ public class RemoveAll
 	{
 		ArrayList<String> ray;
 		ray = new ArrayList<String>();
-		for(int i = 10; i > 0; i--)
+		for(int i = 0; i < words.length; i++)
 			ray.add(words[i]);
-
 		for(int i = 0; i < ray.size(); i++)
 		{
 			if(ray.get(i).equals("all"))
@@ -111,7 +106,7 @@ public class RemoveAll
 		}
 		System.out.println("\nFor Loop Forwardswards:");
 		System.out.println(ray);
-		System.out.println(ray.size());
+		System.out.println(ray.size() + "\n");
 
 	}
 	//For loop backwards
@@ -119,9 +114,8 @@ public class RemoveAll
 	{
 		ArrayList<String> ray;
 		ray = new ArrayList<String>();
-		for(int i = 10; i > 0; i--)
+		for(int i = 0; i < words.length; i++)
 			ray.add(words[i]);
-
 		for(int i = ray.size()-1; i >= 0; i--)
 		{
 			if(ray.get(i).equals("all"))
@@ -133,7 +127,7 @@ public class RemoveAll
 		}
 		System.out.println("\nFor Loop Forwardswards:");
 		System.out.println(ray);
-		System.out.println(ray.size());
+		System.out.println(ray.size() + "\n");
 
 	}
 }
