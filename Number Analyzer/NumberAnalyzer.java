@@ -11,7 +11,7 @@ public class NumberAnalyzer
 
 	public NumberAnalyzer()
 	{
-
+		list = new ArrayList();
 	}
 
 	public NumberAnalyzer(String numbers)
@@ -21,17 +21,19 @@ public class NumberAnalyzer
 
 	public void setList(String numbers)
 	{
-
-
-
+		String[] strNums = numbers.split(" ");
+		for(int i = 0; i < strNums.length; i++)
+			list.add(new Number(Integer.parseInt(strNums[i])));
 	}
 
 	public int countOdds()
 	{
       	int oddCount=0;
-
-
-
+      	for(int i = 0; i < list.size(); i++)
+      	{
+			if(list[i] % 2 != 0)
+				oddCount++;
+		}
       	return oddCount;
 	}
 

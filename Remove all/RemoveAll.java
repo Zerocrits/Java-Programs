@@ -131,3 +131,71 @@ public class RemoveAll
 
 	}
 }
+/*
+
+Which Program?
+1. For Loop Forwards
+2. For Loop Backwards
+3. While Loop Forwards
+4. While Loop Backwards
+5. Exit
+Which Program?: 1
+***************************
+For Loop Forwards:
+[fun, dog, bat, cat, dog]
+5
+***************************
+
+Which Program?
+1. For Loop Forwards
+2. For Loop Backwards
+3. While Loop Forwards
+4. While Loop Backwards
+5. Exit
+Which Program?: 2
+***************************
+For Loop Forwards:
+[fun, dog, bat, cat, dog]
+5
+***************************
+
+Which Program?
+1. For Loop Forwards
+2. For Loop Backwards
+3. While Loop Forwards
+4. While Loop Backwards
+5. Exit
+Which Program?: 3
+***************************
+While Loop Forwards:
+[fun, dog, bat, cat, dog]
+5
+***************************
+
+Which Program?
+1. For Loop Forwards
+2. For Loop Backwards
+3. While Loop Forwards
+4. While Loop Backwards
+5. Exit
+Which Program?: 4
+***************************
+While Loop Backwards:
+[fun, dog, bat, cat, dog]
+5
+***************************
+
+Which Program?
+1. For Loop Forwards
+2. For Loop Backwards
+3. While Loop Forwards
+4. While Loop Backwards
+5. Exit
+Which Program?: 5
+***************************
+
+
+***Thanks for Using Remove All!***
+Press any key to continue . . .
+
+*/
