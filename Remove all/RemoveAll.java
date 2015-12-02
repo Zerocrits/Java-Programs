@@ -1,3 +1,5 @@
+//Bill Joseph
+//Arraylist program chooser
 //ArrayList remove() exercise
 
 import java.util.ArrayList;
@@ -41,8 +43,10 @@ public class RemoveAll
 				whileBackward(words);
 			else
 				again = 5;
+			System.out.println("***************************\n");
+
 		}
-		System.out.println("Thanks for Using Remove All!\n");
+		System.out.println("\n***Thanks for Using Remove All!***");
 	}
 	//While Loop Forwards
 	public static void whileForward(String[] words)
@@ -62,9 +66,10 @@ public class RemoveAll
 			}
 			i++;
 		}
-		System.out.println("\nWhile Loop Forwards:");
+		System.out.println("***************************");
+		System.out.println("While Loop Forwards:");
 		System.out.println(ray);
-		System.out.println(ray.size() + "\n");
+		System.out.println(ray.size());
 	}
 	//While loop backwards
 	public static void whileBackward(String[] words)
@@ -77,15 +82,13 @@ public class RemoveAll
 		while(i >= 0)
 		{
 			if(ray.get(i).equals("all"))
-			{
 				ray.remove(i);
-				i++;
-			}
 			i--;
 		}
-		System.out.println("\nWhile Loop Backwards:");
+		System.out.println("***************************");
+		System.out.println("While Loop Backwards:");
 		System.out.println(ray);
-		System.out.println(ray.size() + "\n");
+		System.out.println(ray.size());
 
 	}
 	//For loop forwards
@@ -102,11 +105,11 @@ public class RemoveAll
 				ray.remove(i);
 				i--;
 			}
-			i++;
 		}
-		System.out.println("\nFor Loop Forwardswards:");
+		System.out.println("***************************");
+		System.out.println("For Loop Forwards:");
 		System.out.println(ray);
-		System.out.println(ray.size() + "\n");
+		System.out.println(ray.size());
 
 	}
 	//For loop backwards
@@ -119,15 +122,12 @@ public class RemoveAll
 		for(int i = ray.size()-1; i >= 0; i--)
 		{
 			if(ray.get(i).equals("all"))
-			{
 				ray.remove(i);
-				i++;
-			}
-			i--;
 		}
-		System.out.println("\nFor Loop Forwardswards:");
+		System.out.println("***************************");
+		System.out.println("For Loop Forwards:");
 		System.out.println(ray);
-		System.out.println(ray.size() + "\n");
+		System.out.println(ray.size());
 
 	}
 }
