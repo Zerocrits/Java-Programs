@@ -38,14 +38,10 @@ public class Number
 		int total = 0;
 		for(int i = 0; i < total; i++)
 		{
-			total = number / 2;
-			if(total *
-
-
+			if(number % i == 0)
+				total += i;
 		}
-
-
-		return (number==total);
+		return (number == total);
 	}
 
 	public String toString()
