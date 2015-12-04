@@ -59,7 +59,7 @@ public class NumberAnalyzer
 		int perfectCount = 0;
 		for(int i = 0; i < list.size(); i++)
 		{
-			if(list.get(i).isPerfect())
+			if(list.get(i).isPerfect() == true)
 				perfectCount++;
 		}
       	return perfectCount;
@@ -67,6 +67,18 @@ public class NumberAnalyzer
 
 	public String toString()
 	{
-		return "";
+		String listString = "[";
+
+		for (int i = 0; i < list.size(); i++)
+		{
+			if(i == list.size()-1)
+		    	listString += (list.get(i) + "");
+		    else
+		    	listString += (list.get(i) + " ");
+
+		}
+		listString += "]";
+
+		return listString;
 	}
 }

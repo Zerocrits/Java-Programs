@@ -36,7 +36,7 @@ public class Number
 	public boolean isPerfect()
 	{
 		int total = 0;
-		for(int i = 0; i < total; i++)
+		for(int i = 1; i < number; i++)
 		{
 			if(number % i == 0)
 				total += i;
@@ -46,6 +46,6 @@ public class Number
 
 	public String toString()
 	{
-		return "";
+		return number.toString();
 	}
 }
