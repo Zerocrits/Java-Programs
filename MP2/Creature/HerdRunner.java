@@ -15,6 +15,16 @@ public class HerdRunner
 		bunch.add(45);
 		bunch.add(96);
 		System.out.println(bunch);
-		System.out.println("Big One count = " + bunch.countBigOnes() );
-  }
+		bunch.sortHerd();
+		System.out.println("Sorted Big One count = " + bunch);
+		System.out.println("Big One count = " + bunch.countBigOnes());
+ 	}
 }
+/*
+
+[33, 115, 16, 83, 45, 96]
+Sorted Big One count = [16, 33, 45, 83, 96, 115]
+Big One count = 3
+Press any key to continue . . .
+
+*/
