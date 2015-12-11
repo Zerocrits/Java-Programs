@@ -10,8 +10,8 @@ public class WordListRunner
 {
 	public static void main( String[] args )
 	{
-		Words test = new Words("one two three four five six seven alligator");
-		test.sortWords();
+		WordList test = new WordList("one two three four five six seven alligator");
+		//test.sortWords();
 		int vowelsRemoved = 0;
 
 		System.out.println(test);
@@ -29,7 +29,7 @@ public class WordListRunner
 
 
 		test.setWords("fun fly four six times ten plus eight");
-		test.sortWords();
+		//test.sortWords();
 		System.out.println(test);
 		System.out.println("Words with 2 vowels = " + test.countWordsWithXVowels(2));
 		System.out.println("Words with 3 vowels = " + test.countWordsWithXVowels(3));
@@ -45,7 +45,7 @@ public class WordListRunner
 
 
 		test.setWords("alligator chicken dog cat pig buffalo");
-		test.sortWords();
+		//test.sortWords();
 		System.out.println(test);
 		System.out.println("Words with 2 vowels = " + test.countWordsWithXVowels(2));
 		System.out.println("Words with 3 vowels = " + test.countWordsWithXVowels(3));

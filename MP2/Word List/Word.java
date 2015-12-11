@@ -38,7 +38,8 @@ public class Word
 
 	public int getLength()
 	{
-		return 0;
+		int length = word.length();
+		return length;
 	}
 
 	public String toString()

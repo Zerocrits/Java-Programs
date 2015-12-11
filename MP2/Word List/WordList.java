@@ -20,25 +20,23 @@ public class WordList
 	{
 		words.add(new Word(listOfWords));
 
-
 	}
 
 	public void setWords(String listOfWords)
 	{
-		String[] split = listOfWords.split(" ");
-
-		for(int i = 0; i < split.length; i++)
-			words.add(split[i]);
+		//String[] split = listOfWords.split(" ");
+		ArrayList<Word> words = ArrayList.asList(listOfWords.split(" "));
+		//words.add(listOfWords.split(" "));
 	}
 
 	public int countWordsWithXChars(int size)
 	{
 		int count=0;
-		for(int i = 0; i < words.size(); i++)
+		/*for(int i = 0; i < words.size(); i++)
 		{
-			if(words.get(i).length() == size)
+			if(words.get(i).length == size)
 				count++;
-		}
+		}*/
 		return count;
 	}
 
