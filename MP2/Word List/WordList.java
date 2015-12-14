@@ -12,33 +12,52 @@ public class WordList
 
 	public WordList()
 	{
-		words = new ArrayList<Word>();
 		setWords("");
 	}
 
 	public WordList(String listOfWords)
 	{
-		words.add(new Word(listOfWords));
-
+		setWords(listOfWords);
 	}
 
 	public void setWords(String listOfWords)
 	{
-		//String[] split = listOfWords.split(" ");
-		ArrayList<Word> words = ArrayList.asList(listOfWords.split(" "));
-		//words.add(listOfWords.split(" "));
+		words = new ArrayList();
+
+		String[] word = listOfWords.split(" ");
+
+		for(int i = 0; i < word.length; i++)
+			words.add(new Word(word[i]));
 	}
 
 	public int countWordsWithXChars(int size)
 	{
 		int count=0;
-		/*for(int i = 0; i < words.size(); i++)
+		for(int i = 0; i < words.size(); i++)
 		{
-			if(words.get(i).length == size)
+			String item = words.get(i);
+			int itemLength = item.length();
+			if(itemLength == size)
 				count++;
-		}*/
+		}
 		return count;
 	}
+	/*
+
+	public int removeWordsWithXChars(int size)
+	{
+
+	    words<Word> iterator = words.iterator();
+	    while(iterator.hasNext())
+	    {
+	        String word = iterator.next();
+	        if(word.length() == size)
+	        {
+	            iterator.remove(word);
+	        }
+	    }
+	    return 0;
+}*/
 
 	//this method will remove all words with a specified size / length
 	//this method will also return the sum of the vowels in all words removed
