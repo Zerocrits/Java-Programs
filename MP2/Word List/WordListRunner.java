@@ -1,4 +1,4 @@
-// Your Name
+// Bill Joseph
 // WordsRunner
 // Spec: Test out the methods of Word and WordList
 
@@ -11,7 +11,6 @@ public class WordListRunner
 	public static void main( String[] args )
 	{
 		WordList test = new WordList("one two three four five six seven alligator");
-		//test.sortWords();
 		int vowelsRemoved = 0;
 
 		System.out.println(test);
@@ -29,7 +28,6 @@ public class WordListRunner
 
 
 		test.setWords("fun fly four six times ten plus eight");
-		//test.sortWords();
 		System.out.println(test);
 		System.out.println("Words with 2 vowels = " + test.countWordsWithXVowels(2));
 		System.out.println("Words with 3 vowels = " + test.countWordsWithXVowels(3));
@@ -45,7 +43,6 @@ public class WordListRunner
 
 
 		test.setWords("alligator chicken dog cat pig buffalo");
-		//test.sortWords();
 		System.out.println(test);
 		System.out.println("Words with 2 vowels = " + test.countWordsWithXVowels(2));
 		System.out.println("Words with 3 vowels = " + test.countWordsWithXVowels(3));
@@ -61,3 +58,55 @@ public class WordListRunner
 
 	}
 }
+/*
+
+Words with 2 vowels = 21
+Words with 3 vowels = 0
+Words with 4 vowels = 9
+Words with 2 chars = 0
+Words with 3 chars = 3
+Words with 4 chars = 2
+Words with 5 chars = 2
+
+After removing words with 3 chars
+
+
+Number of vowels in the words removed == 2
+
+
+
+
+Words with 2 vowels = 14
+Words with 3 vowels = 0
+Words with 4 vowels = 0
+Words with 2 chars = 0
+Words with 3 chars = 4
+Words with 4 chars = 2
+Words with 5 chars = 2
+
+After removing words with 3 chars
+
+
+Number of vowels in the words removed == 2
+
+
+
+
+Words with 2 vowels = 7
+Words with 3 vowels = 7
+Words with 4 vowels = 9
+Words with 2 chars = 0
+Words with 3 chars = 3
+Words with 4 chars = 0
+Words with 9 chars = 1
+
+After removing words with 3 chars
+
+
+Number of vowels in the words removed == 2
+
+
+
+Press any key to continue . . .
+
+*/

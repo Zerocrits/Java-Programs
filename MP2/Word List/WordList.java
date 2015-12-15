@@ -1,6 +1,6 @@
-// Name:
-// Prog:
-// Spec:
+// Bill Joseph
+// WordsList
+// Spec: Main code of program
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -32,54 +32,41 @@ public class WordList
 
 	public int countWordsWithXChars(int size)
 	{
-		int count=0;
+		int count = 0;
 		for(int i = 0; i < words.size(); i++)
 		{
-			String item = words.get(i);
-			int itemLength = item.length();
-			if(itemLength == size)
+			if(words.get(i).getLength() == size)
 				count++;
 		}
 		return count;
 	}
-	/*
-
-	public int removeWordsWithXChars(int size)
-	{
-
-	    words<Word> iterator = words.iterator();
-	    while(iterator.hasNext())
-	    {
-	        String word = iterator.next();
-	        if(word.length() == size)
-	        {
-	            iterator.remove(word);
-	        }
-	    }
-	    return 0;
-}*/
 
 	//this method will remove all words with a specified size / length
 	//this method will also return the sum of the vowels in all words removed
 	public int removeWordsWithXChars(int size)
 	{
+		int totalVowels = 0;
 
-
-
-
-
-		return 0;
+		for(int i = words.size()-1; i >= 0; i--)
+		{
+			if(words.get(i).getLength() == size)
+			{
+				totalVowels += words.get(i).getNumVowels();
+				words.remove(i);
+				i--;
+			}
+		}
+		return totalVowels;
 	}
 
 	public int countWordsWithXVowels(int numVowels)
 	{
-		int count=0;
-
-
-
-
-
-
+		int count = 0;
+		for(int i = 0; i < words.size(); i++)
+		{
+			if(words.get(i).getNumVowels() == numVowels)
+				count++;
+		}
 		return count;
 	}
 

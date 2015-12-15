@@ -1,6 +1,6 @@
-// Name:
-// Prog:
-// Spec:
+// Bill Joseph
+// Word
+// Spec: ArrayList Parameter
 
 public class Word
 {
