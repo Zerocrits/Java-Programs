@@ -7,12 +7,12 @@ public class Inventory
 	String result;
 
 	int numOrder;
-	String Order;
+	String Order, input;
 
 	public Inventory()
 	{
 		burgerInv = hotDogsInv = friesInv = sodaInv = saladInv = numOrder = 0;
-		Order = "burger";
+		Order = "";
 		result = "";
 	}
 
@@ -56,5 +56,13 @@ public class Inventory
 		result += Order + " " + numOrder + "\n";
 		return "" + result;
 	}
+
+	public String getOrder(String input)
+	{
+		String order = input;
+
+		return order;
+	}
+
 }
 

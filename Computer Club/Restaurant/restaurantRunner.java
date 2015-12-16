@@ -6,8 +6,6 @@ public class restaurantRunner
 		System.out.println("restaurant");
 		System.out.println("What do you want to buy?: ");
 
-
-		System.out.println(inv.getOrdernum());
 		System.out.println(inv);
 	}
 }
