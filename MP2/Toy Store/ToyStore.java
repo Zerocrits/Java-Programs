@@ -13,7 +13,7 @@ public class ToyStore
 
 	public ToyStore()
 	{
-		getThatToy("");
+		//getThatToy(loadToys());
 	}
 
 	/** Load toys takes a String such as "Clue Clue Clue Sorry Sorry" as a parameter
@@ -23,7 +23,12 @@ public class ToyStore
 	*/
 	public void loadToys( String toys )
 	{
-		getThatToy(toys);
+		toyList = new ArrayList();
+
+		String[] toy = toys.split(" ");
+
+		for(int i = 0; i < toy.length; i++)
+		toyList.add(new Toy(toy[i]));
 	}
 
 	/** Searches toyList for a toy with the same name as the parameter nm
@@ -42,15 +47,29 @@ public class ToyStore
 	/** @return the name of the toy that occurs the most frequently in toyList */
 	public String getMostFrequentToy()
 	{
-		int count = 0;
+		/*int count = 0;
+		String frequent = "";
 		for(int i = 0; i < toyList.size(); i++)
 		{
-			for(int j = 0; j < toyList.size(); j++);
-			{
+			if(i == 0)
 				count = toyList.get(i).getCount();
-			}
+			else if(count < toyList.get(i).getCount())
+				count = toyList.get(i).getCount();
+			else if(count > toyList.get(i).getCount() && i == toyList.size()-1)
+				frequent = toyList.get(i).getName();
 		}
-		return "";
+		return frequent;*/
+		int count = 0;
+		int temp = 0;
+		int temp1 = 0;
+		for(int i = 0; i < toyList.size(); i++)
+		{
+			for(int j = 0; j < toyList.size(); j++)
+				if(toyList.get(i) == toyList.get(j))
+					temp++;
+					temp1 = i;
+		}
+		return count;
 	}
 
 	public void sortToysByCount()

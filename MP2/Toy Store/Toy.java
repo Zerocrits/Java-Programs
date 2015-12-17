@@ -12,20 +12,18 @@ public class Toy
 	public Toy()
 	{
 		name = "toy";
+		count = 1;
 	}
 
 	/** assigns the name given with a count of 1*/
 	public Toy( String nm )
 	{
-		name = nm + count;
+		name = nm;
+		count = 1;
 	}
 
 	public int getCount()
 	{
-		if(name == "toy")
-		{
-			count++;
-		}
 		return count;
 	}
 
