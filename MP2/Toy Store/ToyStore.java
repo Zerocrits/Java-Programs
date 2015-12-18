@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Arrays;
 
 public class ToyStore
 {
@@ -13,7 +14,7 @@ public class ToyStore
 
 	public ToyStore()
 	{
-		//getThatToy(loadToys());
+		getThatToy("");
 	}
 
 	/** Load toys takes a String such as "Clue Clue Clue Sorry Sorry" as a parameter
@@ -23,12 +24,24 @@ public class ToyStore
 	*/
 	public void loadToys( String toys )
 	{
-		toyList = new ArrayList();
+		int temp = 0;
 
 		String[] toy = toys.split(" ");
+		ArrayList<Toy> toyList = new ArrayList(Arrays.asList(toy));
 
 		for(int i = 0; i < toy.length; i++)
-		toyList.add(new Toy(toy[i]));
+		{
+			for(int j = 0; j < toy.length; j++)
+			{
+				if(toy[i] == toy[j] && j != 0)
+					toyList.remove(j);
+			}
+		}
+		for(int i = 0; i < toyList.size(); i++)
+		{
+			toyList.get(i).getName();
+			toyList.get(i).getCount();
+		}
 	}
 
 	/** Searches toyList for a toy with the same name as the parameter nm
@@ -36,6 +49,8 @@ public class ToyStore
 	*/
 	public Toy getThatToy( String nm )
 	{
+		toyList = new ArrayList();
+
 		for(int i = 0; i < toyList.size(); i++)
 		{
 			if(toyList.get(i).equals(nm))
@@ -47,19 +62,7 @@ public class ToyStore
 	/** @return the name of the toy that occurs the most frequently in toyList */
 	public String getMostFrequentToy()
 	{
-		/*int count = 0;
-		String frequent = "";
-		for(int i = 0; i < toyList.size(); i++)
-		{
-			if(i == 0)
-				count = toyList.get(i).getCount();
-			else if(count < toyList.get(i).getCount())
-				count = toyList.get(i).getCount();
-			else if(count > toyList.get(i).getCount() && i == toyList.size()-1)
-				frequent = toyList.get(i).getName();
-		}
-		return frequent;*/
-		int count = 0;
+		String name = "";
 		int temp = 0;
 		int temp1 = 0;
 		for(int i = 0; i < toyList.size(); i++)
@@ -69,7 +72,8 @@ public class ToyStore
 					temp++;
 					temp1 = i;
 		}
-		return count;
+		name = toyList.get(temp1).getName();
+		return name;
 	}
 
 	public void sortToysByCount()
@@ -78,6 +82,6 @@ public class ToyStore
 
 	public String toString()
 	{
-	   return "";
+	   return toyList.toString();
 	}
 }

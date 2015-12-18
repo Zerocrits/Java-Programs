@@ -44,6 +44,6 @@ public class Toy
 
 	public String toString()
 	{
-	   return "";
+	   return "" + name + " " + count;
 	}
 }
