@@ -24,23 +24,32 @@ public class ToyStore
 	*/
 	public void loadToys( String toys )
 	{
+		int total = 0;
 		int temp = 0;
 
 		String[] toy = toys.split(" ");
-		ArrayList<Toy> toyList = new ArrayList(Arrays.asList(toy));
-
-		for(int i = 0; i < toy.length; i++)
-		{
-			for(int j = 0; j < toy.length; j++)
-			{
-				if(toy[i] == toy[j] && j != 0)
-					toyList.remove(j);
-			}
-		}
+		toyList = new ArrayList(Arrays.asList(toy));
 		for(int i = 0; i < toyList.size(); i++)
 		{
+			temp = 0;
+			total = 0;
+			for(int j = i+1; j < toyList.size(); j++)
+			{
+				if(toyList.get(i).getWord().!equals(toyList.get(j).getWord())
+					total++;
+				else if(toyList.get(i).getName().equals(toyList.get(j).getName()))
+					temp++;
+			}
+
 			toyList.get(i).getName();
-			toyList.get(i).getCount();
+			for(int j = i+1; j < toyList.size(); j++)
+			{
+				if(toyList.get(i).getName().equals(toyList.get(j).getName()))
+				{
+					temp++;
+					toyList.remove(j);
+				}
+			}
 		}
 	}
 
@@ -85,3 +94,16 @@ public class ToyStore
 	   return toyList.toString();
 	}
 }
+
+/*
+		for(int i = 0; i < toyList.size(); i++)
+		{
+			for(int j = 0; j < toyList.size(); j++)
+			{
+				if(toyList.get(i).getName() == toyList.get(j).getName())
+					temp++;
+			}
+			toyList.get(i).setCount(temp);
+			toyList.get(i).getCount();
+			toyList.get(i).getName();
+*/
