@@ -24,30 +24,30 @@ public class ToyStore
 	*/
 	public void loadToys( String toys )
 	{
-		int temp = 0;
-
 		String[] toy = toys.split(" ");
-		toyList = new ArrayList();
-		new ArrayList(Arrays.asList(toy));
-		for(int i = 0; i < toyList.size(); i++)
+		for(int i = 0; i < toy.length(); i++)
+		{
+			if(getThatToy(toy.get(i).getName() != null)
+				toyList.setCount
+		}
+		/*for(int i = 0; i < toyList.size(); i++)
 		{
 			temp = 0;
 
 			for(int j = i+1; j < toyList.size(); j++)
 			{
-				if(toyList.get(i).getName().equals(toyList.get(j).getName()))
+				if(getThatToy(toyList.get(i).getName()) == null)
 				{
 					temp++;
 					toyList.remove(j);
 				}
 			}
-			toyList.get(i)
-			toyList.get(i).getName();
+			toyList.get(i).setName(toyList.get(i).getName());
+			toyList.remove(i);
 			toyList.get(i).setCount(temp);
+			toyList.get(i).getName();
 			toyList.get(i).getCount();
-
-
-		}
+		}*/
 	}
 
 	/** Searches toyList for a toy with the same name as the parameter nm
@@ -57,11 +57,9 @@ public class ToyStore
 	{
 		toyList = new ArrayList();
 
-		for(int i = 0; i < toyList.size(); i++)
-		{
-			if(toyList.get(i).equals(nm))
-				return toyList.get(i);
-		}
+		for(Toy t:toyList)
+			if(t.getName().equals(nm))
+				return t;
 		return null;
 	}
 
