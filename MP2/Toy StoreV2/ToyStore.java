@@ -1,6 +1,6 @@
-//Name:
-//Prog:
-//Spec:
+//Name: Bill Joseph
+//Prog: Toy Store
+//Spec: Create a Toy Store
 
 import java.util.Scanner;
 import java.util.List;
@@ -55,11 +55,6 @@ public class ToyStore
 			if(toyList.get(i).getCount() > constant.getCount())
 				constant = toyList.get(i);
 		return "Max is: " + constant.toString();
-	}
-
-	public void sortToysByCount()
-	{
-
 	}
 
 	public String toString()

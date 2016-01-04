@@ -1,9 +1,8 @@
-//Name:
-//Prog:
-//Spec:
+//Name: Bill Joseph
+//Prog: Joes Used Cars
+//Spec: Create a Car dealership
 
-
-public class Toy
+public class Usedcar
 {
 	private String name;
 	private int count;
