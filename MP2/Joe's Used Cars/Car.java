@@ -2,20 +2,20 @@
 //Prog: Joes Used Cars
 //Spec: Create a Car dealership
 
-public class Usedcar
+public class Car
 {
 	private String name;
 	private int count;
 
 	/** creates a generic toy named 'toy' with a count of 1 */
-	public Toy()
+	public Car()
 	{
 		name = "toy";
 		count = 1;
 	}
 
 	/** assigns the name given with a count of 1*/
-	public Toy( String nm )
+	public Car( String nm )
 	{
 		name = nm;
 		count = 1;
