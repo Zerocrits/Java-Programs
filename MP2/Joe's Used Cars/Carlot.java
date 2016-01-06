@@ -9,19 +9,19 @@ import java.util.Collections;
 import java.util.Arrays;
 import java.io.File;
 import java.io.IOException;
+import java.io.*;
 
 public class Carlot
 {
 	private ArrayList<Car> carList;
-	String make, model, trans;
+	String make, model, trans, car;
 	int mileage, year, cylinders, price;
 	Scanner sc = new Scanner(System.in);
-	Scanner data = new Scanner(new File("CarData.txt"));
 
 	public Carlot()
 	{
 		carList = new ArrayList<Car>();
-		make = model = trans = "";
+		make = model = trans = car = "";
 		mileage = year = cylinders = price = 0;
 	}
 
@@ -36,7 +36,21 @@ public class Carlot
 		price = pr;
 	}
 
-	public void getAdd(String make, String model, String trans, int mileage, int year, int cylinders, int price)
+
+	public void addText(String make, String model, String trans, int mileage, int year, int cylinders, int price) throws Exception
+	{
+		PrintWriter data = new PrintWriter(new FileWriter("CarData.txt"));
+		data.println(make + '\n');
+		data.println(model + '\n');
+		data.println(trans + '\n');
+		data.println(mileage + '\n');
+		data.println(year + '\n');
+		data.println(cylinders + '\n');
+		data.println(price + '\n');
+		data.close();
+	}
+
+	public void getAdd()
 	{
 		System.out.print("\nMake: ");
 		make = sc.nextLine();
@@ -53,7 +67,16 @@ public class Carlot
 		System.out.print("\nPrice: ");
 		price = sc.nextInt();
 
-		//carList.add(Carlot(mileage, year, cylinders, price, make, model, trans));
+		Carlot(mileage, year, cylinders, price, make, model, trans);
+
+		try{
+		addText(make, model, trans, mileage, year, cylinders, price);
+		}
+		catch(Exception e)
+		{
+			System.out.println("There was a problem");
+    	}
+
 	}
 
 	public void getInsert()
@@ -86,9 +109,23 @@ public class Carlot
 		return null;
 	}
 
-	public String getViewLot()
+	public String getViewLot() throws Exception
 	{
-	   return null;
+		String cars;
+		int total = 0;
+		int lines = 0;
+		Scanner file = new Scanner(new File("CarData.txt"));
+		while(file.hasNextLine())
+		{
+			cars = "";
+			cars = file.readLine();
+			carList.add(cars);
+			lines++;
+		}
+		for(int i = 0; i < lines; i++)
+		{
+			total = lines/7;
+		}
 	}
 	public String toString()
 	{
