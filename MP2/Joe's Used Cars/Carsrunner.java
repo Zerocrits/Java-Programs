@@ -44,8 +44,8 @@ public class Carsrunner
 				car.getViewCar();
 			else if(choice == 7)
 				car.getSort();
-			else if(choice == 8)
-				car.getViewLot();
+			//else if(choice == 8)
+				//car.getViewLot();
 			else if(choice == 9)
 				System.out.println("Thanks for using CarLot!");
 				//edit to exit

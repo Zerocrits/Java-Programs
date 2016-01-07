@@ -5,30 +5,20 @@
 public class Car
 {
 	private String name;
+	private String[] split;
 	private int count;
 
 	/** creates a generic toy named 'toy' with a count of 1 */
 	public Car()
 	{
-		name = "toy";
-		count = 1;
+		name = "car";
 	}
 
 	/** assigns the name given with a count of 1*/
 	public Car( String nm )
 	{
 		name = nm;
-		count = 1;
-	}
-
-	public int getCount()
-	{
-		return count;
-	}
-
-	public void setCount( int cnt )
-	{
-		count = cnt;
+		split = name.split(" ");
 	}
 
 	public String getName()
@@ -43,6 +33,6 @@ public class Car
 
 	public String toString()
 	{
-	   return "" + name + " " + count;
+	   return "";
 	}
 }

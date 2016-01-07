@@ -14,14 +14,14 @@ import java.io.*;
 public class Carlot
 {
 	private ArrayList<Car> carList;
-	String make, model, trans, car;
+	String make, model, trans, car, word;
 	int mileage, year, cylinders, price;
 	Scanner sc = new Scanner(System.in);
 
 	public Carlot()
 	{
 		carList = new ArrayList<Car>();
-		make = model = trans = car = "";
+		make = model = trans = car = word = "";
 		mileage = year = cylinders = price = 0;
 	}
 
@@ -34,19 +34,29 @@ public class Carlot
 		year = yr;
 		cylinders = cy;
 		price = pr;
+		word = ma + " " + mo + " " + tr + " " + mi + " " + yr + " " + cy + " " + pr;
 	}
 
+	public void setArray(String word)
+	{
+		carList.add(car
+	}
+
+	public int getSize()
+	{
+		return 0;
+	}
 
 	public void addText(String make, String model, String trans, int mileage, int year, int cylinders, int price) throws Exception
 	{
-		PrintWriter data = new PrintWriter(new FileWriter("CarData.txt"));
+		PrintWriter data = new PrintWriter(new FileWriter("CarData.txt", true));
 		data.println(make + '\n');
 		data.println(model + '\n');
 		data.println(trans + '\n');
-		data.println(mileage + '\n');
-		data.println(year + '\n');
-		data.println(cylinders + '\n');
-		data.println(price + '\n');
+		data.println(mileage);
+		data.println(year);
+		data.println(cylinders);
+		data.println(price);
 		data.close();
 	}
 
@@ -111,21 +121,22 @@ public class Carlot
 
 	public String getViewLot() throws Exception
 	{
-		String cars;
+		String cars = "";
 		int total = 0;
 		int lines = 0;
 		Scanner file = new Scanner(new File("CarData.txt"));
 		while(file.hasNextLine())
 		{
 			cars = "";
-			cars = file.readLine();
-			carList.add(cars);
+			//cars = file.readLine();
+			//carList.add(cars);
 			lines++;
 		}
 		for(int i = 0; i < lines; i++)
 		{
 			total = lines/7;
 		}
+		return cars;
 	}
 	public String toString()
 	{
