@@ -18,15 +18,17 @@ public class Carsrunner
 
 		while(choice != 9)
 		{
-			System.out.println("1. Add a Car");
-			System.out.println("2. Insert");
-			System.out.println("3. Remove");
-			System.out.println("4. Number of Cars on Lot");
-			System.out.println("5. Value of Cars on Lot");
-			System.out.println("6. View a Car");
-			System.out.println("7. Sort by Price");
-			System.out.println("8. View the Lot");
-			System.out.println("9. Exit");
+			System.out.println("***************************");
+			System.out.println("*1. Add a Car             *");
+			System.out.println("*2. Insert                *");
+			System.out.println("*3. Remove                *");
+			System.out.println("*4. Number of Cars on Lot *");
+			System.out.println("*5. Value of Cars on Lot  *");
+			System.out.println("*6. View a Car            *");
+			System.out.println("*7. Sort by Price         *");
+			System.out.println("*8. View the Lot          *");
+			System.out.println("*9. Exit                  *");
+			System.out.println("***************************");
 			System.out.print("Choice: ");
 			choice = sc.nextInt();
 

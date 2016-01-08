@@ -8,13 +8,11 @@ public class Car
 	private String[] split;
 	private int count;
 
-	/** creates a generic toy named 'toy' with a count of 1 */
 	public Car()
 	{
-		name = "car";
+		name = "";
 	}
 
-	/** assigns the name given with a count of 1*/
 	public Car( String nm )
 	{
 		name = nm;
@@ -31,8 +29,9 @@ public class Car
 		name = nm;
 	}
 
+
 	public String toString()
 	{
-	   return "";
+	   return name;
 	}
 }

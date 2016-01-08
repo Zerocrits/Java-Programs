@@ -14,14 +14,14 @@ import java.io.*;
 public class Carlot
 {
 	private ArrayList<Car> carList;
-	String make, model, trans, car, word;
+	String make, model, trans, car, word, test;
 	int mileage, year, cylinders, price;
 	Scanner sc = new Scanner(System.in);
 
 	public Carlot()
 	{
 		carList = new ArrayList<Car>();
-		make = model = trans = car = word = "";
+		make = model = trans = car = word = test = "";
 		mileage = year = cylinders = price = 0;
 	}
 
@@ -35,11 +35,15 @@ public class Carlot
 		cylinders = cy;
 		price = pr;
 		word = ma + " " + mo + " " + tr + " " + mi + " " + yr + " " + cy + " " + pr;
+		System.out.println(test);
 	}
 
-	public void setArray(String word)
+	public String setArray()
 	{
-		carList.add(car
+		carList = new ArrayList<Car>();
+		carList.add(new Car(word));
+		test = carList.get(0).getName();
+		return test;
 	}
 
 	public int getSize()
@@ -50,18 +54,21 @@ public class Carlot
 	public void addText(String make, String model, String trans, int mileage, int year, int cylinders, int price) throws Exception
 	{
 		PrintWriter data = new PrintWriter(new FileWriter("CarData.txt", true));
-		data.println(make + '\n');
-		data.println(model + '\n');
-		data.println(trans + '\n');
-		data.println(mileage);
-		data.println(year);
-		data.println(cylinders);
-		data.println(price);
+		data.print(make + " ");
+		data.print(model + " ");
+		data.print(trans + " ");
+		data.print(mileage + " ");
+		data.print(year + " ");
+		data.print(cylinders + " ");
+		data.print(price);
+		data.println();
 		data.close();
 	}
 
 	public void getAdd()
 	{
+		Scanner sc = new Scanner(System.in);
+
 		System.out.print("\nMake: ");
 		make = sc.nextLine();
 		System.out.print("\nModel: ");
@@ -76,6 +83,7 @@ public class Carlot
 		cylinders = sc.nextInt();
 		System.out.print("\nPrice: ");
 		price = sc.nextInt();
+		System.out.println();
 
 		Carlot(mileage, year, cylinders, price, make, model, trans);
 
