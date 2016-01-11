@@ -46,12 +46,7 @@ public class Carlot
 		return test;
 	}
 
-	public int getSize()
-	{
-		return 0;
-	}
-
-	public void addText(String make, String model, String trans, int mileage, int year, int cylinders, int price) throws Exception
+	public void addText(/*String make, String model, String trans, int mileage, int year, int cylinders, int price*/) throws Exception
 	{
 		PrintWriter data = new PrintWriter(new FileWriter("CarData.txt", true));
 		data.print(make + " ");
@@ -63,12 +58,12 @@ public class Carlot
 		data.print(price);
 		data.println();
 		data.close();
+		reWrite();
 	}
 
-	public void getAdd()
+	public void getData()
 	{
 		Scanner sc = new Scanner(System.in);
-
 		System.out.print("\nMake: ");
 		make = sc.nextLine();
 		System.out.print("\nModel: ");
@@ -86,9 +81,13 @@ public class Carlot
 		System.out.println();
 
 		Carlot(mileage, year, cylinders, price, make, model, trans);
+	}
 
+	public void getAdd()
+	{
+		getData();
 		try{
-		addText(make, model, trans, mileage, year, cylinders, price);
+		addText(/*make, model, trans, mileage, year, cylinders, price*/);
 		}
 		catch(Exception e)
 		{
@@ -97,8 +96,23 @@ public class Carlot
 
 	}
 
+	public void reWrite()throws Exception
+	{
+		carList = new ArrayList<Car>();
+		Scanner file = new Scanner(new File("CarData.txt"));
+		while(file.hasNext())
+		{
+			carList.add(new Car(file.nextLine()));
+		}
+	}
+
 	public void getInsert()
 	{
+		carList = new ArrayList<Car>();
+		getData();
+		carList.add(0,null);
+		//carList.set(0,"test");
+
 
 	}
 
