@@ -111,7 +111,7 @@ public class Carlot
 		carList = new ArrayList<Car>();
 		getData();
 		carList.add(0,null);
-		//carList.set(0,"test");
+		carList.set(0,"test");
 
 
 	}
