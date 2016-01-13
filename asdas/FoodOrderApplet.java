@@ -23,7 +23,7 @@ public class FoodOrderApplet extends JApplet
 		cp.setLayout(new FlowLayout());
 
 		// Instantiate ALL of the objects
-		lblTitle = new JLabel("     White Castle     ");
+		lblTitle = new JLabel("     Restaurant     ");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		lblTotal = new JLabel();
 		lblTotalfood = new JLabel();
@@ -66,7 +66,7 @@ public class FoodOrderApplet extends JApplet
 		cp.add(btnCompleteorder);
 
 		// Set size of window and make it visible
-		setSize(550,550);
+		setSize(600,600);
 		setVisible(true);
 	}
 
