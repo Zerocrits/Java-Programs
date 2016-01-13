@@ -17,13 +17,20 @@ public class Student implements Comparable<Student>
 	{
 		first = first;
 		last = last;
-		for(int i = 0; i < grades.size(); i++)
+		for(int i = 0; i < arrGrades.length; i++)
+		{
 			grades.add(arrGrades[i]);
+		}
 	}
 
 	/**	@return the average for this student */
 	public double getAverage()
 	{
+		for(int i = 0; i < grades.size(); i++)
+		{
+			average = average + grades.get(i);
+		}
+		average = average/grades.size();
 		return average;
 	}
 
@@ -36,7 +43,14 @@ public class Student implements Comparable<Student>
 	*/
 	public int compareTo(Student rhs)
 	{
-		return 0;
+		int num = 0;
+		if(rhs.equals(last))
+		{
+			num++;
+			if(rhs.equals(first))
+				num++;
+		}
+		return num;
 	}
 
 	/** @return LastName, FirstName followed by the student's grades and their average

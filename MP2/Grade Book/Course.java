@@ -32,7 +32,7 @@ public class Course
 	/** Hint: Use the built in sort here */
 	public void sortStudents()
 	{
-
+		Collections.sort(students);
 	}
 
 	/** @return the output as shown */
