@@ -40,7 +40,7 @@ public class restaurantApplet extends JFrame
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		lblTotal = new JLabel();
 		lblTotalfood = new JLabel();
-		icoFood = new ImageIcon("Food.png");
+		icoFood = new ImageIcon("fastfood.png");
 		txtOrder = new JTextField(40);
 		btnClearorder = new JButton("                    Restart                    ");
 		btnCompleteorder = new JButton("                    Enter                    ");
@@ -56,6 +56,8 @@ public class restaurantApplet extends JFrame
 		// Add the ActionListener to each of the buttons
 		btnClearorder.addActionListener(listener);
 		btnCompleteorder.addActionListener(listener);
+
+		lblFood.setIcon(icoFood);
 
 		// Add all the objects to the window in the order you want them to appear
 		cp.add(lblTitle);
@@ -93,11 +95,10 @@ public class restaurantApplet extends JFrame
 
 			else if (source == btnCompleteorder)
 			{
-				//restaurant.getTotal();
-				//JOptionPane.showMessageDialog(null,"Total Comes to: $" + numberFormat.format(restaurant.getTotal()) + "!");
-				//restaurant.clearOrder();
+				restaurant.getOrder(strOrder);
+				restaurant.Chosen();
 			}
-			//lblTotal.setText(restaurant.toString());
+			lblMeals.setText(restaurant.toString());
 			//lblTotalfood.setText(restaurant.getFood());
 			// Add code to randomly play sounds based on a button click
 		}

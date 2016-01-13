@@ -18,11 +18,11 @@ public class Inventory
 
 	public void setInventories()
 	{
-		burgerInv = 200;
-		hotDogsInv = 250;
-		friesInv = 500;
-		sodaInv = 500;
-		saladInv = 150;
+		burgerInv = 0;
+		hotDogsInv = 0;
+		friesInv = 0;
+		sodaInv = 0;
+		saladInv = 0;
 	}
 
 	private int getOrdernum(String Order)
@@ -39,16 +39,17 @@ public class Inventory
 
 	public void Chosen()
 	{
+		Order = getOrder(input);
 		if(Order == "burger")
-			burgerInv = burgerInv - numOrder;
+			burgerInv++;
 		else if(Order == "hotdog")
-			hotDogsInv = hotDogsInv - numOrder;
+			hotDogsInv++;
 		else if(Order == "fries")
-			hotDogsInv = hotDogsInv - numOrder;
+			hotDogsInv++;
 		else if(Order == "soda")
-			sodaInv = sodaInv - numOrder;
+			sodaInv++;
 		else if(Order == "salad")
-			saladInv = saladInv - numOrder;
+			saladInv++;
 	}
 
 	public String toString()
