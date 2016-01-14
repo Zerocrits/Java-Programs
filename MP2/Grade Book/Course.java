@@ -24,9 +24,15 @@ public class Course
 	}
 
 	/** @return The class average... ie. the average of each student average */
-	public double getClassAverage()
+	public double getClassAverage(int[] grades)
 	{
-		return 0;
+		double average = 0;
+		for(int i = 2; i < students.size(); i++)
+		{
+			average = average + grades[i];
+		}
+		average = average/grades.length-2;
+		return average;
 	}
 
 	/** Hint: Use the built in sort here */

@@ -18,11 +18,9 @@ public class FoodOrderApplet extends JApplet
 
 	public void init()
 	{
-		// Get window and set layout
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
 
-		// Instantiate ALL of the objects
 		lblTitle = new JLabel("     Restaurant     ");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		lblTotal = new JLabel();
@@ -70,15 +68,12 @@ public class FoodOrderApplet extends JApplet
 		setVisible(true);
 	}
 
-	// private inner class for handling button events
-    // action listener requires actionPerformed method
 	private class ButtonListener implements ActionListener
     {
 		FoodOrder restaurant = new FoodOrder();
 		String strNum = "";
         public void actionPerformed(ActionEvent event)
         {
-			// find out what object was pressed:
 			int x = (int) (Math.random()*9) + 1;
 			Object source = new Object();
 			source = event.getSource();
@@ -144,7 +139,6 @@ public class FoodOrderApplet extends JApplet
 			}
 			lblTotal.setText(restaurant.toString());
 			lblTotalfood.setText(restaurant.getFood());
-			// Add code to randomly play sounds based on a button click
 		}
 	}
 }
