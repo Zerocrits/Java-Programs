@@ -15,11 +15,10 @@ public class Student implements Comparable<Student>
 
 	public Student(String first, String last, int[] arrGrades)
 	{
-		grades = new ArrayList<Integer>();
 		first = first;
 		last = last;
-		arrGrades = arrGrades;
-		grades.add(first, last, arrGrades);
+		for(int i = 0; i < arrGrades.length; i++)
+			grades.add(new Integer(arrGrades[i]));
 	}
 
 	/**	@return the average for this student */
@@ -54,7 +53,7 @@ public class Student implements Comparable<Student>
 	*/
 	public String toString()
 	{
-		return first + ", " + last + "\t Grades: " + grades + "\t" + average;
+		return last + ", " + first + "\t Grades: " + grades.get(0) + "\t" + average;
 	}
 }
 

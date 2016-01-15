@@ -20,6 +20,7 @@ public class Course
 	public void addStudent(String first, String last, int[] grades)
 	{
 		students.add(new Student(first,last,grades));
+		students.get(0).toString();
 
 	}
 
@@ -28,11 +29,15 @@ public class Course
 	{
 		double average = 0;
 		for(int i = 2; i < students.size(); i++)
+			average = students.get(i).getAverage();
+		return average;
+		/*double average = 0;
+		for(int i = 2; i < students.size(); i++)
 		{
 			average = average + grades[i];
 		}
 		average = average/grades.length-2;
-		return average;
+		return average;*/
 	}
 
 	/** Hint: Use the built in sort here */
