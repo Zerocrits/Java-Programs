@@ -53,7 +53,7 @@ public class Student implements Comparable<Student>
 	*/
 	public String toString()
 	{
-		return last + ", " + first + "\t Grades: " + grades.get(0) + "\t" + average;
+		return last + ", " + first + "\t Grades: " + grades + "\t" + average;
 	}
 }
 
