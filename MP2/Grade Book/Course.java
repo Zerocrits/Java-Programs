@@ -20,8 +20,6 @@ public class Course
 	public void addStudent(String first, String last, int[] grades)
 	{
 		students.add(new Student(first,last,grades));
-		students.get(0).toString();
-
 	}
 
 	/** @return The class average... ie. the average of each student average */
@@ -29,7 +27,7 @@ public class Course
 	{
 		double average = 0;
 		for(int i = 2; i < students.size(); i++)
-			average = students.get(i).getAverage();
+			average = students.getAverage();
 		return average;
 		/*double average = 0;
 		for(int i = 2; i < students.size(); i++)
