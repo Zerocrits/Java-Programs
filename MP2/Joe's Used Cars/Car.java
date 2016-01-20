@@ -1,37 +1,73 @@
-//Name: Bill Joseph
-//Prog: Joes Used Cars
-//Spec: Create a Car dealership
+//Bill Joseph
+//Car Object
+//Holds Car Information
 
-public class Car
+public class Car implements Comparable<Car>
 {
-	private String name;
-	private String[] split;
-	private int count;
+	private String make, model;
+	private int year, cylinders, mileage, price;
+	private boolean manual;
 
 	public Car()
 	{
-		name = "";
+		make = "";
+		model = "";
+		year = 0;
+		cylinders = 0;
+		mileage = 0;
+		price = 0;
+		manual = true;
 	}
 
-	public Car( String nm )
+	public Car(String newMake, String newModel, int newYear, int newCylinders, int newMileage, int newPrice, boolean newManual)
 	{
-		name = nm;
-		split = name.split(" ");
+		make = newMake;
+		model = newModel;
+		year = newYear;
+		cylinders = newCylinders;
+		mileage = newMileage;
+		price =  newPrice;
+		manual = newManual;
 	}
 
-	public String getName()
+	public int compareTo(Car r)
 	{
-		return name;
+		int result = 0;
+		if(price > r.getPrice())
+			result = 1;
+		else if(price < r.getPrice())
+			result = -1;
+		return result;
 	}
 
-	public void setName( String nm )
+	public int getPrice()
 	{
-		name = nm;
+		return price;
 	}
 
+	public String getMake()
+	{
+		return make;
+	}
+
+	public String getModel()
+	{
+		return model;
+	}
 
 	public String toString()
 	{
-	   return name;
+		String result = "";
+		result += make + ", " + model + " " + year;
+		result += "\nMileage: " + mileage;
+		result += "\nCylinders: " + cylinders;
+		result += "\nPrice: " + price;
+		if(manual)
+			result += "\nManual";
+		else
+			result += "\nAutomatic";
+
+		return result;
 	}
+
 }
