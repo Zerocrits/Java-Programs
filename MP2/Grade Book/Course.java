@@ -1,3 +1,5 @@
+// Bill Joseph
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,34 +10,31 @@ public class Course
 
 	public Course()
 	{
-		courseName = "";
 		students = new ArrayList<Student>();
 	}
 
-	public Course(String courseName)
+	public Course(String x)
 	{
-		String course = courseName;
+		students = new ArrayList<Student>();
+		courseName = x;
 	}
 
-	public void addStudent(String first, String last, int[] grades)
+	public void addStudent(String x, String y, int[] grades)
 	{
-		students.add(new Student(first,last,grades));
+		students.add(new Student(x, y, grades));
 	}
 
 	/** @return The class average... ie. the average of each student average */
-	public double getClassAverage(int[] grades)
+	public double getClassAverage()
 	{
-		double average = 0;
-		for(int i = 2; i < students.size(); i++)
-			average = students.getAverage();
-		return average;
-		/*double average = 0;
-		for(int i = 2; i < students.size(); i++)
+		int count = 0;
+		int sum = 0;
+		for(Student s : students)
 		{
-			average = average + grades[i];
+			count++;
+			sum += s.getAverage();
 		}
-		average = average/grades.length-2;
-		return average;*/
+		return sum/count;
 	}
 
 	/** Hint: Use the built in sort here */
@@ -47,6 +46,11 @@ public class Course
 	/** @return the output as shown */
 	public String toString()
 	{
-		return "" + students;
+		sortStudents();
+		String output = courseName;
+		for(Student s : students)
+			output += "\n\t" + s;
+		output += "\nClass Average: " + getClassAverage();
+		return output;
 	}
 }

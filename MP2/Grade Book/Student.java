@@ -1,35 +1,38 @@
+// Bill Joseph
+
 import java.util.ArrayList;
 
 public class Student implements Comparable<Student>
 {
 	private String first, last;
 	private ArrayList <Integer> grades;
-	private double average;
 
 	public Student()
 	{
-		first = last = "";
-		average = 0;
-		grades = new ArrayList<Integer>();
+		first = "";
+		last = "";
 	}
 
-	public Student(String first, String last, int[] arrGrades)
+	public Student(String x, String y, int[] arrGrades)
 	{
-		first = first;
-		last = last;
-		for(int i = 0; i < arrGrades.length; i++)
-			grades.add(new Integer(arrGrades[i]));
+		grades = new ArrayList<Integer>();
+		first = x;
+		last = y;
+		for(int i : arrGrades)
+		grades.add(new Integer(i));
 	}
 
 	/**	@return the average for this student */
 	public double getAverage()
 	{
-		for(int i = 0; i < grades.size(); i++)
+		int count = 0;
+		int sum = 0;
+		for(int i : grades)
 		{
-			average = average + grades.get(i);
+			count++;
+			sum += i;
 		}
-		average = average/grades.size();
-		return average;
+		return sum/count;
 	}
 
 	/** @return the correct comparison of last name and first name
@@ -41,10 +44,12 @@ public class Student implements Comparable<Student>
 	*/
 	public int compareTo(Student rhs)
 	{
-		if(last.equals(rhs.last))
-			return first.compareTo(rhs.first);
+		int i = last.compareTo(rhs.last);
+
+		if(i != 0)
+			return i;
 		else
-			return last.compareTo(rhs.last);
+			return first.compareTo(rhs.first);
 	}
 
 	/** @return LastName, FirstName followed by the student's grades and their average
@@ -53,7 +58,7 @@ public class Student implements Comparable<Student>
 	*/
 	public String toString()
 	{
-		return last + ", " + first + "\t Grades: " + grades + "\t Average: " + average;
+		return last + ", " + first + "\t Grades: " + grades.toString() + "\t Average: " + getAverage();
 	}
 }
 
