@@ -60,31 +60,39 @@ public class Monster implements Monsterable, Comparable
 		return myHeight;
 	}
 
-
 	public int getWeight()
 	{
-		return 0;
+		return myWeight;
 	}
 
 	public int getAge()
 	{
-		return 0;
+		return myAge;
 	}
 
 	//creates a new copy of this Object
-	public Object clone()
+	public Object clone(Monster clone)
 	{
-      return new Monster();
+		this.monster(); //http://stackoverflow.com/questions/869033/how-do-i-copy-an-object-in-java
+		clone = Monster.setMonster();
+		return new Monster();
 	}
 
 	// returns true if height, weight and age are equal, otherwise false
 	public boolean equals(Object o)
 	{
-		return true;
+		if(compareTo(o) == 0)
+			return true;
+		else
+			return false;
 	}
 
 	public int compareTo(Object monster)
 	{
+		//compare height
+		if(myHeight == monster.getHeight())
+			return 0;
+
 		return 0;
 	}
 
