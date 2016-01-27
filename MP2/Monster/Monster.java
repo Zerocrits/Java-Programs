@@ -1,9 +1,8 @@
-// Name:
-// Prog:
-// Spec:
+// Name: Bill Joseph
+// Prog: Monster
+// Spec: Build a Monster Program
 
-
-public class Monster implements Monsterable, Comparable
+public class Monster implements Monsterable, Comparable<Monster>
 {
 	private int myHeight;
 	private int myWeight;
@@ -71,29 +70,49 @@ public class Monster implements Monsterable, Comparable
 	}
 
 	//creates a new copy of this Object
-	public Object clone(Monster clone)
+	public Object clone()
 	{
-		this.monster(); //http://stackoverflow.com/questions/869033/how-do-i-copy-an-object-in-java
-		clone = Monster.setMonster();
-		return new Monster();
+		return new Monster(getHeight(), getWeight(), getAge());
 	}
 
 	// returns true if height, weight and age are equal, otherwise false
 	public boolean equals(Object o)
 	{
-		if(compareTo(o) == 0)
+		Monster x = (Monster)o;
+		int i = getHeight() - x.getHeight();
+		int j = getWeight() - x.getWeight();
+		int k = getAge() - x.getAge();
+
+		if(1 == 0 && j == 0 && k == 0)
 			return true;
-		else
-			return false;
+		return false;
 	}
 
-	public int compareTo(Object monster)
+	public int compareTo(Monster monster)
 	{
-		//compare height
-		if(myHeight == monster.getHeight())
-			return 0;
+		Monster x = monster;
+		int i = getHeight() - x.getHeight();
+		int j = getWeight() - x.getWeight();
+		int k = getAge() - x.getAge();
 
-		return 0;
+		if(i<0)
+			return -1;
+		else if(i == 0)
+			if(j < 0)
+				return -1;
+			else if(j == 0)
+				if(k < 0)
+					return -1;
+				else if(k == 0)
+					return 0;
+				else if(k > 0)
+					return 1;
+			else if(j > 0)
+				return 1;
+		else if(i > 0)
+			return 1;
+
+		return 1;
 	}
 
 	// Label and display the height, weight and age of this monster

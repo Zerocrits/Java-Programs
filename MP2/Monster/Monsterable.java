@@ -1,3 +1,7 @@
+// Name: Bill Joseph
+// Prog: Monsterable
+// Spec: Build a Monster Program
+
 public interface Monsterable
 {
 	/** sets the height, weight and age for this Monster*/

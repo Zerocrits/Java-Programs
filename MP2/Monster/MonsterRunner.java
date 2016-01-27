@@ -1,6 +1,6 @@
-// Name:
-// Prog:
-// Spec:
+// Name: Bill Joseph
+// Prog: Monster Runner
+// Spec: Build a Monster Program
 
 public class MonsterRunner
 {
@@ -40,3 +40,42 @@ public class MonsterRunner
 		System.out.println(mTwo.compareTo(mOne));
 	}
 }
+/*
+
+
+Monster zero:
+Height = 0 Weight = 0 Age = 0
+
+Monster one:
+Height = 8 Weight = 0 Age = 0
+
+Monster sam:
+Height = 9 Weight = 4 Age = 0
+
+Monster harry:
+Height = 1 Weight = 2 Age = 3
+
+Changing harry's properties...
+
+Monster harry:
+Height = 7 Weight = 6 Age = 5
+
+Cloning sam into harry...
+
+Monster sam:
+Height = 7 Weight = 6 Age = 5
+
+Monster 1:
+Height = 33 Weight = 33 Age = 11
+
+Monster 2:
+Height = 55 Weight = 33 Age = 11
+
+mOne.equals(mTwo) = false
+
+mOne.compareTo(mTwo) = -1
+
+mTwo.compareTo(mOne) = 1
+Press any key to continue . . .
+
+*/
