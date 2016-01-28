@@ -15,7 +15,6 @@ public class Horsey implements Horse
 	{
 		name = horseName;
 		weight = horseWeight;
-
 	}
 
 	// This class implements the Horse interface

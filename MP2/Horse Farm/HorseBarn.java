@@ -11,7 +11,7 @@ public class HorseBarn
 	*/
 	public HorseBarn(int size)
 	{
-
+		spaces = new Horse[size];
 	}
 
 	public HorseBarn(Horse[] horses)
@@ -30,7 +30,10 @@ public class HorseBarn
 
 	public int findHorseSpace(String name)
 	{
-
+		for(int i = Horse.length; i > 0; i--)
+			if(Horse[i].equals(name))
+				return i;
+		return -1;
 	}
 
 	/** Consolidates the barn by moving horses so that the horses are in adjacent spaces,
