@@ -17,6 +17,15 @@ public class Horsey implements Horse
 		weight = horseWeight;
 	}
 
+	public String getName()
+	{
+		return name;
+	}
+
+	public int getWeight()
+	{
+		return weight;
+	}
 	// This class implements the Horse interface
 	// Look at that interface and add any methods
 	// that need to be implemented here...

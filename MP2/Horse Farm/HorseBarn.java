@@ -16,7 +16,11 @@ public class HorseBarn
 
 	public HorseBarn(Horse[] horses)
 	{
-		// make spaces point to the same Horse array as the parameter
+		for(int i = 0; i < horses.length; i++)
+		{
+			Horse animal = horses[i];
+			spaces[i] = animal;
+		}
 	}
 
 	/** Returns the index of the space that contains the horse with the specified name.
@@ -30,9 +34,12 @@ public class HorseBarn
 
 	public int findHorseSpace(String name)
 	{
-		for(int i = Horse.length; i > 0; i--)
-			if(Horse[i].equals(name))
+		for(int i = spaces.length; i > 0; i--)
+		{
+			Horse animal = spaces[i];
+			if(animal != null && name.equals(animal.getName()))
 				return i;
+		}
 		return -1;
 	}
 
@@ -53,6 +60,8 @@ public class HorseBarn
 	{
 		String result = "Horses on the farm: \n\n";
 
+		for(int i = 0; i < spaces.length; i++)
+			result += spaces[i] + ", Weight = ";
 		// Create the result string to be returned here
 
 		return result;
