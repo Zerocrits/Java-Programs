@@ -18,8 +18,7 @@ public class HorseBarn
 	{
 		for(int i = 0; i < horses.length; i++)
 		{
-			Horse animal = horses[i];
-			spaces[i] = animal;
+			spaces[i] = horses[i];
 		}
 	}
 
