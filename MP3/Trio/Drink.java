@@ -1,3 +1,7 @@
+//Bill Joseph
+//Trio Lunch Combo
+//Build a combo taking 2 largest prices for 3 items
+
 public class Drink implements MenuItem
 {
 	private String name;

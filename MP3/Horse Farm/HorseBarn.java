@@ -16,7 +16,7 @@ public class HorseBarn
 
 	public HorseBarn(Horse[] horses)
 	{
-		for(int i = 0; i < horses.length; i++)
+		for(int i = 0; i < spaces.length; i++)
 		{
 			spaces[i] = horses[i];
 		}
@@ -49,7 +49,14 @@ public class HorseBarn
 	*/
 	public void consolidate()
 	{
+		int nextSpace = 0;
 
+		for(int i = 0; i < spaces.length; i++)
+			if(spaces[i] != null)
+				spaces[nextSpace++] = spaces[i];
+
+		for(int i = nextSpace; i < spaces.length; i++)
+			spaces[i] = null;
 	}
 
 	/** @return a String that shows "Empty Stall" or the horses Name and Weight

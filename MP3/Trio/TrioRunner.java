@@ -1,3 +1,7 @@
+//Bill Joseph
+//Trio Lunch Combo
+//Build a combo taking 2 largest prices for 3 items
+
 public class TrioRunner
 {
 	public static void main(String[] args)
@@ -16,3 +20,11 @@ public class TrioRunner
 		System.out.println(trio2);
 	}
 }
+
+/*
+
+Cheese Burger / Coleslaw / Orange Soda Trio for: $4.75
+Club Sandwich / Spinach Salad / Cappuccino Trio for: $6.25
+Press any key to continue . . .
+
+*/
