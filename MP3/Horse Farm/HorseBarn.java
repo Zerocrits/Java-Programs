@@ -3,7 +3,7 @@ public class HorseBarn
 	/** The spaces in the barn. Each array element holds a reference to the horse
 	* that is currently occupying the space. A null value indicates an empty space.
 	*/
-	private Horse[] spaces;
+	private Horse[] spaces = new Horse[0];
 
 	/** Implemented but not currently used
 	*   To utilize this we would need to add an assignHorse() method
@@ -11,7 +11,7 @@ public class HorseBarn
 	*/
 	public HorseBarn(int size)
 	{
-		spaces = new Horse[size];
+		Horse[] spaces = new Horse[size];
 	}
 
 	public HorseBarn(Horse[] horses)
