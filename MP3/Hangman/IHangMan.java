@@ -1,17 +1,19 @@
-import java.awt.Image;
+//Madison Miatke - Group Leader/Interface Integrater/GUI Guru
+
+import javax.swing.ImageIcon;
 
 public interface IHangMan
 {
 	void guessLetter(char guess);
-	void guessWord(String guess);
-	String getIncorrectLetters(); //All incorrect guesses put onto a string
-	void newWord(); //Use dictionary to get a new word
-	String getWordSoFar(); //The displayed word ex. co-m-p--er
+	String getIncorrectLetters();
+	void newWord();
+	String getWordSoFar();
 	String getWord();
 	int getAmtIncorrectGuesses();
+	boolean lose();
 	boolean win();
 	String consoleDrawing();
-	Image guiDrawing();
+	ImageIcon guiDrawing();
 }
 
 

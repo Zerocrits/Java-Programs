@@ -1,3 +1,4 @@
+//Bill joseph
 //Hangman Runner(Console)
 
 import java.util.Scanner;
@@ -6,49 +7,48 @@ public class HangmanRunner
 {
 	public static void main(String[] args)
 	{
+		Scanner sc = new Scanner(System.in);
 		HangMan man = new HangMan();
 		String result;
-		String title;
+		String guess = "";
+		String title = "\t\t\t\t~~HangMan~~";
 		String dashes;
 		String incorrect;
-		String word;
+		String word = man.getWord();
 		String drawing;
-		int incorrectGuesses;
-		boolean hasWon;
-		while(hasWon = false)
+		int incorrectGuesses = 0;
+		boolean hasWon = false;
+		while(hasWon == false)
 		{
-			Refresh(title,dashes,incorrect,word,drawing,incorrectGuesses,hasWon);
-			result = Picture(title,dashes,incorrect,word,drawing,incorrectGuesses,hasWon);
-			System.out.println(result);
-		}
-	}
-	public static void Refresh(String title, String dashes, String incorrect,String word,String drawing,int incorrectGuesses,boolean hasWon)
-	{
-		title = "~~HangMan~~";
-		dashes = man.getWordSoFar();
-		incorrect = man.getIncorrectLetters();
-		word = man.getWord();
-		drawing = man.consoleDrawing();
-		incorrectGuesses = man.getAmtIncorrectGuesses();
-		hasWon = man.win();
-	}
-	public static String Picture(String title, String dashes, String incorrect,String word,String drawing,int incorrectGuesses,boolean hasWon)
-	{
-		HangMan man = new HangMan();
-		String guess = "";
-		Scanner sc = new Scanner(System.in);
-		String result = "";
-		result += title + "\nWord: " + dashes + "\n" + drawing + "\nIncorrect Guesses: " + incorrect;
-		result += "\tNumber Incorrect: " + incorrectGuesses + "\nYour Guess: ";
-		guess = sc.nextLine();
-		if(guess.length() > 1)
-			man.guessWord(guess);
-		else
+			result = "";
+			dashes = man.getWordSoFar();
+			incorrect = man.getIncorrectLetters();
+			drawing = man.consoleDrawing();
+			incorrectGuesses = man.getAmtIncorrectGuesses();
+			hasWon = man.win();
+			result += title + "\nWord: " + dashes + "\nIncorrect Letters: " + incorrect;
+			result += "\t\t\t\t\tNumber Incorrect: " + incorrectGuesses + "\n" + drawing + "\nYour Guess: " ;
+			System.out.print(result);
+			guess = sc.nextLine();
+
+			if(guess.length() == 0)
+				guess = "z";
+
 			man.guessLetter(guess.charAt(0));
+			for(int i = 0; i < 100; i++)
+				System.out.println();
 
-		result += guess;
-
-		return result;
+			if(incorrectGuesses == 6)
+				hasWon = true;
+			if(word.equals(dashes))
+				hasWon = true;
+		}
+		if(hasWon == true && incorrectGuesses < 6)
+			System.out.println("***You Win***\nWord Was: " + word);
+		else
+			System.out.println("***You Lose***\nWord Was: " + word);
+		System.out.println();
 
 	}
+
 }

@@ -1,4 +1,6 @@
+//Madison Miatke - Group Leader/Interface Integrater/GUI Guru
+
 public interface IDictionary
 {
-	String getRandomWord(); //Output a single random word from the dictionary
+	String getRandomWord();
 }
