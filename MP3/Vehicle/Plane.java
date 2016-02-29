@@ -1,11 +1,11 @@
 //Bill Joseph
-//Motorcycle
+//Plane
 
-public class Motorcycle extends Vehicle
+public class Plane extends Vehicle
 {
 	private double topSpeed, cost;
 	private String fuelType;
-	public Motorcycle()
+	public Plane()
 	{
 		topSpeed = cost = 0;
 		fuelType = "";
@@ -36,7 +36,6 @@ public class Motorcycle extends Vehicle
 	}
 	public String toString()
 	{
-		Vehicle one = new Vehicle(topSpeed, cost, fuelType);
 		return topSpeed + ", " + cost + ", " + fuelType;
 	}
 }

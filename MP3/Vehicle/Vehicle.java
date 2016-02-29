@@ -18,6 +18,6 @@ public class Vehicle
 	}
 	public String toString()
 	{
-		return "";
+		return topSpeed + ", " + cost + ", " + fuelType;
 	}
 }
