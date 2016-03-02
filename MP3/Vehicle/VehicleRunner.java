@@ -26,6 +26,7 @@ public class VehicleRunner
 
 			if(choice == 1)
 				vehicle = new Motorcycle();
+			System.out.println(vehicle);
 
 		}
 

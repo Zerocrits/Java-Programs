@@ -3,40 +3,20 @@
 
 public class Motorcycle extends Vehicle
 {
-	private double topSpeed, cost;
-	private String fuelType;
+	// vars that unique to a motorcycle
+	private double speed, cost;
+	private String fuel;
+
 	public Motorcycle()
 	{
-		topSpeed = cost = 0;
-		fuelType = "";
-	}
-	public double getSpeed()
-	{
-		return topSpeed;
-	}
-	public void setSpeed()
-	{
-		topSpeed = 10;
-	}
-	public double getCost()
-	{
-		return cost;
-	}
-	public void setCost()
-	{
+		speed = 10;
+		fuel = "Diesel";
 		cost = 100;
 	}
-	public String getFuel()
+
+	public Motorcycle(double speed, double cost, String fuel)
 	{
-		return fuelType;
-	}
-	public void setFuel()
-	{
-		fuelType = "diesel";
-	}
-	public String toString()
-	{
-		Vehicle one = new Vehicle(topSpeed, cost, fuelType);
-		return topSpeed + ", " + cost + ", " + fuelType;
+		super(speed, cost, fuel);
+		super.setSpeed(speed);
 	}
 }
