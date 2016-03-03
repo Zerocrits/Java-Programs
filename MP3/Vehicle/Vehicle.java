@@ -3,22 +3,16 @@
 
 public class Vehicle
 {
-	private double topSpeed, cost;
-	private String fuelType;
+	private double speed, cost;
+	private String fuel;
 	public Vehicle()
 	{
-		topSpeed = cost = 0;
-		fuelType = " ";
-	}
-	public Vehicle(double speed, double cost, String fuel)
-	{
-		topSpeed = speed;
-		this.cost = cost;
-		fuelType = fuel;
+		speed = cost = 0;
+		fuel = " ";
 	}
 	public double getSpeed()
 	{
-		return topSpeed;
+		return speed;
 	}
 	public double getCost()
 	{
@@ -26,16 +20,16 @@ public class Vehicle
 	}
 	public String getFuel()
 	{
-		return fuelType;
+		return fuel;
 	}
 	public void getSetter(double speed, double cost, String fuel)
 	{
-		topSpeed = speed;
+		this.speed = speed;
 		this.cost = cost;
-		fuelType = fuel;
+		this.fuel = fuel;
 	}
 	public String toString()
 	{
-		return topSpeed + ", " + cost + ", " + fuelType;
+		return "Top Speed: " + topSpeed + "\nCost: " + cost + "\nFuel Type: " + fuelType;
 	}
 }
