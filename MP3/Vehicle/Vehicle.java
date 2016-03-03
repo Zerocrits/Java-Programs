@@ -20,24 +20,18 @@ public class Vehicle
 	{
 		return topSpeed;
 	}
-	public void setSpeed(double speed)
-	{
-		topSpeed = speed;
-	}
 	public double getCost()
 	{
 		return cost;
-	}
-	public void setCost(double cost)
-	{
-		this.cost = cost;
 	}
 	public String getFuel()
 	{
 		return fuelType;
 	}
-	public void setFuel(String fuel)
+	public void getSetter(double speed, double cost, String fuel)
 	{
+		topSpeed = speed;
+		this.cost = cost;
 		fuelType = fuel;
 	}
 	public String toString()

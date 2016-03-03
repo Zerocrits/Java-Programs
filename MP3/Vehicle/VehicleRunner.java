@@ -8,6 +8,7 @@ public class VehicleRunner
 	public static void main(String[] args)
 	{
 		Vehicle vehicle = new Vehicle();
+		Motorcycle motor = new Motorcycle();
 		Scanner sc = new Scanner(System.in);
 		int choice = 0;
 		while(choice != 6 && choice <= 5)
@@ -25,7 +26,7 @@ public class VehicleRunner
 			choice = sc.nextInt();
 
 			if(choice == 1)
-				vehicle = new Motorcycle();
+				motor = new Motorcycle();
 			System.out.println(vehicle);
 
 		}

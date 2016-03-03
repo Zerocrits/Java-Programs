@@ -7,16 +7,13 @@ public class Motorcycle extends Vehicle
 	private double speed, cost;
 	private String fuel;
 
-	public Motorcycle()
+	public void getSet()
 	{
-		speed = 10;
-		fuel = "Diesel";
-		cost = 100;
+		super.getSetter(100, 100000, "fuel");
 	}
 
-	public Motorcycle(double speed, double cost, String fuel)
+	public String toString()
 	{
-		super(speed, cost, fuel);
-		super.setSpeed(speed);
+		return super.toString();
 	}
 }
