@@ -10,28 +10,29 @@ public class CheckingAccount extends BankAccount
 	/** Constructor - Initializes the transaction count to zero */
 	public CheckingAccount()
 	{
-
+		transactionCount = 0;
 	}
 
 	/** Set the account holder name for this bank account
 	*	and initialize the transaction count to zero */
 	public CheckingAccount(String accountHolder)
 	{
-
+		super(accountHolder);
+		transactionCount = 0;
 	}
 
-	/** Deposits an amount into this acount
+	/** Deposits an amount into this account
 	*	and increments the transaction count */
 	public void deposit(double amount)
 	{
-
+		super.deposit(amount);
 	}
 
 	/** Withdraws an amount from this account
 	*	and increments the transaction count */
 	public void withdraw(double amount)
 	{
-
+		super.withdraw(amount);
 	}
 
 	/** Deducts fees based on the number of transactions over the 'allowed'amount (NUM_FREE)
@@ -40,6 +41,10 @@ public class CheckingAccount extends BankAccount
 	*/
 	public void deductFees()
 	{
-
+		if(transactionCount >= 3)
+		{
+			transactionCount = transactionCount - 3;
+			super.withdraw(TRANS_FEE*transactionCount);
+		}
 	}
 }
