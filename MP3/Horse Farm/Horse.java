@@ -1,3 +1,7 @@
+//Bill Joseph
+//Horse
+//Horse interface that holds name and weight
+
 public interface Horse
 {
 	/** @return the horse's name */

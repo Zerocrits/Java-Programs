@@ -1,6 +1,7 @@
-/**
- * Class that extends BankAccount to model a checking account.
- */
+//Bill Joseph
+//CheckingAccount
+//Class that extends BankAccount to model a checking account
+
 public class CheckingAccount extends BankAccount
 {
 	private int transactionCount;

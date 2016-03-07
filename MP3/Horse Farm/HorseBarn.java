@@ -1,9 +1,13 @@
+//Bill Joseph
+//HorseBarn
+//Creates an array of horses
+
 public class HorseBarn
 {
 	/** The spaces in the barn. Each array element holds a reference to the horse
 	* that is currently occupying the space. A null value indicates an empty space.
 	*/
-	private Horse[] spaces = new Horse[0];
+	private Horse[] spaces;
 
 	/** Implemented but not currently used
 	*   To utilize this we would need to add an assignHorse() method
@@ -11,15 +15,12 @@ public class HorseBarn
 	*/
 	public HorseBarn(int size)
 	{
-		Horse[] spaces = new Horse[size];
+		spaces = new Horsey[size];
 	}
 
 	public HorseBarn(Horse[] horses)
 	{
-		for(int i = 0; i < spaces.length; i++)
-		{
-			spaces[i] = horses[i];
-		}
+		spaces = horses;
 	}
 
 	/** Returns the index of the space that contains the horse with the specified name.
@@ -33,12 +34,17 @@ public class HorseBarn
 
 	public int findHorseSpace(String name)
 	{
-		for(int i = spaces.length; i > 0; i--)
+		for(int i = 0; i < spaces.length; i++)
 		{
-			Horse animal = spaces[i];
-			if(animal != null && name.equals(animal.getName()))
-				return i;
+			if(spaces[i] != null)
+			{
+				if(spaces[i].getName().equals(name))
+				{
+					return i;
+				}
+			}
 		}
+
 		return -1;
 	}
 
@@ -49,14 +55,26 @@ public class HorseBarn
 	*/
 	public void consolidate()
 	{
-		int nextSpace = 0;
+		Horse[] newOrder = new Horse[spaces.length];
+		int j = 0;
 
 		for(int i = 0; i < spaces.length; i++)
-			if(spaces[i] != null)
-				spaces[nextSpace++] = spaces[i];
+		{
+			if(spaces[i]!=null)
+			{
+				newOrder[j] = spaces[i];
+				j++;
+			}
+		}
+		for(int i = newOrder.length; i < spaces.length; i++)
+		{
+			newOrder[i] = null;
+		}
 
-		for(int i = nextSpace; i < spaces.length; i++)
-			spaces[i] = null;
+		for(int i = 0; i < spaces.length; i++)
+		{
+			spaces[i] = newOrder[i];
+		}
 	}
 
 	/** @return a String that shows "Empty Stall" or the horses Name and Weight
@@ -66,9 +84,15 @@ public class HorseBarn
 	{
 		String result = "Horses on the farm: \n\n";
 
-		for(int i = 0; i < spaces.length; i++)
-			result += spaces[i] + ", Weight = ";
 		// Create the result string to be returned here
+		for(int i = 0; i < spaces.length; i++)
+		{
+			if(spaces[i]==null)
+				result+="\nEmpty Stall";
+
+			else
+				result+="\n" + spaces[i].toString();
+		}
 
 		return result;
 	}

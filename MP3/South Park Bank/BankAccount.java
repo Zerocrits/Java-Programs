@@ -1,6 +1,6 @@
-/**
- * Class that models a simple bank account.
- */
+//Bill Joseph
+//BankAccount
+//Class that models a simple bank account
 
 public class BankAccount
 {

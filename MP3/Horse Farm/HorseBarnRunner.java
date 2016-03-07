@@ -1,3 +1,7 @@
+//Bill Joseph
+//HorseBarnRunner
+//Runs the HorseBarn Object
+
 public class HorseBarnRunner
 {
 	public static void main(String[] args)
@@ -24,3 +28,34 @@ public class HorseBarnRunner
 		System.out.println(mrAsFarm);
 	}
 }
+/*
+
+Trigger is in slot number 0
+Patches is in slot number 5
+
+Mr A's Horse Farm BEFORE Consolidation:
+Horses on the farm:
+
+
+Trigger 1340
+Empty Stall
+Silver  1210
+Lady    1575
+Empty Stall
+Patches 1350
+Duke    1410
+
+Mr A's Horse Farm AFTER Consolidation:
+Horses on the farm:
+
+
+Trigger 1340
+Silver  1210
+Lady    1575
+Patches 1350
+Duke    1410
+Empty Stall
+Empty Stall
+Press any key to continue . . .
+
+*/

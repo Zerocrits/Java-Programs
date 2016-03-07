@@ -1,3 +1,7 @@
+//Bill Joseph
+//Horsey
+//Horsey object holds info impements horse
+
 public class Horsey implements Horse
 {
 	private String name;

@@ -1,6 +1,7 @@
-/**
- * Class that extends BankAccount to model a savings account.
- */
+//Bill Joseph
+//SavingsAccount
+//Class that extends BankAccount to model a savings account.
+
 public class SavingsAccount extends BankAccount
 {
 	private double interestRate;
