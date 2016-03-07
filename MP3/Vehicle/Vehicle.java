@@ -3,33 +3,40 @@
 
 public class Vehicle
 {
-	private double speed, cost;
-	private String fuel;
+	private double speed, cost, wheel;
+	private String fuel, name;
+
 	public Vehicle()
 	{
-		speed = cost = 0;
-		fuel = " ";
+		speed=0.0;
+		cost=0.0;
+		fuel="";
+		name="";
 	}
-	public double getSpeed()
-	{
-		return speed;
-	}
-	public double getCost()
-	{
-		return cost;
-	}
-	public String getFuel()
-	{
-		return fuel;
-	}
-	public void getSetter(double speed, double cost, String fuel)
-	{
-		this.speed = speed;
-		this.cost = cost;
-		this.fuel = fuel;
-	}
-	public String toString()
-	{
-		return "Top Speed: " + topSpeed + "\nCost: " + cost + "\nFuel Type: " + fuelType;
-	}
+
+		public double getCost()
+		{
+			return cost;
+		}
+		public double getSpeed()
+		{
+			return speed;
+		}
+		public String getFuel()
+		{
+			return fuel;
+		}
+		public String getName()
+		{
+			return name;
+		}
+
+		public void setP (double speed, double cost, String fuel, String name)
+		{
+			this.speed=speed;
+			this.cost=cost;
+			this.fuel=fuel;
+			this.name=name;
+		}
+
 }
