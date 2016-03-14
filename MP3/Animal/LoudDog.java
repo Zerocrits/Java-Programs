@@ -21,3 +21,14 @@
 //             |  LoudDog   |
 //             |____________|
 
+public class LoudDog extends Pet
+{
+	public LoudDog(String name)
+	{
+		super(name);
+	}
+	public String speak()
+	{
+		return "woofwoof";
+	}
+}

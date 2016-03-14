@@ -17,14 +17,12 @@ public class Kennel
     public String allSpeak()
     {
 		String speak = "";
-		for(int i = 0; i < petList.size(); i++)
+		for(Pet p : petList)
 		{
-			speak += petList.get(i) + " ";
+			speak += p.getName() + " " + p.speak();
 		}
 		return speak;
     }
-
-
 
     // added this method to add Pets to petList
     public void addPet(Pet fred)

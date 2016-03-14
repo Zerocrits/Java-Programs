@@ -17,14 +17,12 @@
 
 public class Dog extends Pet
 {
-	//String name = "";
-
 	public Dog(String name)
 	{
-		//this.name = name;
+		super(name);
 	}
 	public String speak()
 	{
-
+		return "woof";
 	}
 }
