@@ -6,7 +6,7 @@ public class Kennel
 
     public Kennel()
     {
-		ArrayList petList = new ArrayList();
+		petList = new ArrayList();
     }
 
     // Part C (Modified from original AP by Mr A)
@@ -19,7 +19,7 @@ public class Kennel
 		String speak = "";
 		for(Pet p : petList)
 		{
-			speak += p.getName() + " " + p.speak();
+			speak += p.getName() + " " + p.speak() + "\n";
 		}
 		return speak;
     }
