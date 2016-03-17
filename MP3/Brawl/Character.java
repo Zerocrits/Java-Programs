@@ -8,7 +8,8 @@ public abstract class Character
 	*/
 	public Character()
 	{
-
+		level = 5;
+		health = 50;
 	}
 
 	/** Initialization Constructor
@@ -16,28 +17,32 @@ public abstract class Character
 	*/
 	public Character(int l, int h)
 	{
-
+		level = l;
+		health = h;
 	}
 
 	public int getHealth()
 	{
-
+		return health;
 	}
 
 	public void setHealth(int value)
 	{
-
+		health = value;
 	}
 
 	public int getLevel()
 	{
-
+		return level;
 	}
 
 	/** @return true if health is still greater than 0, otherwise false */
 	public boolean isNotDefeated()
 	{
-
+		if(health > 0)
+			return true;
+		else
+			return false;
 	}
 
 	/**	@return a String that shows "Damage: " and the amount of damage this creature caused to Character c
@@ -45,7 +50,8 @@ public abstract class Character
 	*/
 	public String attacks(Character c)
 	{
-
+		health = health - getHealth();
+		return "Damage to " + c + ": " + health;
 	}
 
 	/**	reduces health for this Character by amount */

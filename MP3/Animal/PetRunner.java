@@ -20,3 +20,13 @@ public class PetRunner
 		System.out.println(kennel.allSpeak());
 	}
 }
+
+/*
+
+Dog: woof
+LoudDog: woofwoof
+Cat: meow
+
+Press any key to continue . . .
+
+*/

@@ -12,7 +12,8 @@ public class PetGUI extends JFrame
 	private JLabel lblTitle, lblDog, lblLoudDog, lblCat, lblName;
 	private ImageIcon icoDog, icoLoudDog, icoCat;
 	private JButton btnDog, btnLoudDog, btnCat, btnAllSpeak;
-	private JTextField txtAllSpeak, txtInput;
+	private JTextField txtInput;
+	private JTextArea txtAllSpeak;
 	//private SlotMachine slot;
 	private ButtonListener listener;
 
@@ -25,13 +26,14 @@ public class PetGUI extends JFrame
 		btnDog.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		btnLoudDog = new JButton ("  Loud Dog ");
 		btnLoudDog.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		btnAllSpeak = new JButton ("        All Speak        ");
+		btnAllSpeak = new JButton ("                       Speak                       ");
 		btnAllSpeak.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		btnCat = new JButton ("   Cat   ");
 		btnCat.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		btnDog.addActionListener( new ButtonListener());
 		btnLoudDog.addActionListener( new ButtonListener());
 		btnCat.addActionListener( new ButtonListener());
+		btnAllSpeak.addActionListener( new ButtonListener());
 
 		icoDog = new ImageIcon("lblDog.PNG");
 		icoLoudDog = new ImageIcon("lblLoudDog.PNG");
@@ -43,7 +45,7 @@ public class PetGUI extends JFrame
 		lblName = new JLabel();
 
 		txtInput = new JTextField(20);
-		txtAllSpeak = new JTextField(30);
+		txtAllSpeak = new JTextArea();
 		txtAllSpeak.setEditable(false);
 		lblTitle = new JLabel("       Pet GUI       ");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
@@ -84,21 +86,47 @@ public class PetGUI extends JFrame
 			// find out what object was pressed:
 			Object source = new Object();
 			source = event.getSource();
+			String name = "";
+			Kennel kennel = new Kennel();
 
 			if(source == btnDog)
 			{
-				txtAllSpeak.setText("test");
+				name = txtInput.getText();
+				Dog dog = new Dog(name);
+				kennel.addPet(dog);
+				txtAllSpeak.append(kennel.allSpeak());
 			}
 
 			else if(source == btnLoudDog)
 			{
-
+				name = txtInput.getText();
+				LoudDog loud = new LoudDog(name);
+				kennel.addPet(loud);
+				txtAllSpeak.append(kennel.allSpeak());
 			}
 
-			else
+			else if(source == btnCat)
 			{
+				name = txtInput.getText();
+				Cat cat = new Cat(name);
+				kennel.addPet(cat);
+				txtAllSpeak.append(kennel.allSpeak());
+			}
+
+			else if(source == btnAllSpeak)
+			{
+				Dog dog = new Dog("Ruby");
+				LoudDog loud = new LoudDog("Buddy");
+				Cat cat = new Cat("John");
+
+				kennel.addPet(dog);
+				kennel.addPet(loud);
+				kennel.addPet(cat);
+
+				txtAllSpeak.append(kennel.allSpeak());
 
 			}
+			txtInput.setText("");
 		}//actionPerformed()
 	}//inner class
 }

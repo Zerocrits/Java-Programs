@@ -19,7 +19,7 @@ public class Kennel
 		String speak = "";
 		for(Pet p : petList)
 		{
-			speak += p.getName() + " " + p.speak() + "\n";
+			speak += p.getName() + ": " + p.speak() + "\n";
 		}
 		return speak;
     }
