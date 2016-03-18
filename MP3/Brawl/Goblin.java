@@ -9,7 +9,7 @@ public class Goblin
 
 	public String getAttack()
 	{
-		String attack = "move here";
+		String attack = "Explosives";
 
 		return attack;
 	}
@@ -27,7 +27,17 @@ public class Goblin
 	public String displayCharacter()
 	{
 		String character = "";
-
+		character +="             ,      , ";
+		character +="\n            /(.-''-.)\\ ";
+		character +="\n        |\\  \\/      \\/  /| ";
+		character +="\n        | \\ \\/ =.  .= \\ / | ";
+		character +="\n        \\( \\   o\\/o   / )/ ";
+		character +="\n         \\_, '-/  \\-' ,_/ ";
+		character +="\n           /   \\__/   \\ ";
+		character +="\n           \\ \\__/\\__/ / ";
+		character +="\n         ___\\ \\|--|/ /___ ";
+		character +="\n       /`    \\      /    `\\ ";
+        character +="\n      /       '----'       \\ ";
 
 		return character;
 	}
@@ -37,8 +47,8 @@ public class Goblin
 		String result = "";
 		result += displayCharacter();
 		result += "\nAttack Used: " + getAttack();
-		result += "\n(insert name here)'s Level: " + getLevel();
-		result += "\n(insert name here)'s Health: " + getHealth();
+		result += "\nGoblin's Level: " + getLevel();
+		result += "\nGoblin's Health: " + getHealth();
 		return result;
 	}
 }

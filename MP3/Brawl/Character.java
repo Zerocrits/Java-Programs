@@ -9,7 +9,7 @@ public abstract class Character
 	public Character()
 	{
 		level = 5;
-		health = 50;
+		health = 25;
 	}
 
 	/** Initialization Constructor
@@ -50,14 +50,14 @@ public abstract class Character
 	*/
 	public String attacks(Character c)
 	{
-		health = health - getHealth();
-		return "Damage to " + c + ": " + health;
+		int num = (int)(Math.random() * level+1);
+		return "Damage to " + c + ": " + num;
 	}
 
 	/**	reduces health for this Character by amount */
 	public void decreaseHealth(int amount)
 	{
-
+		health = health - amount;
 	}
 
 	/** @return a random attack from a list appropriate to the particular Character */

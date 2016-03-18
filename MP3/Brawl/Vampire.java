@@ -9,7 +9,7 @@ public class Vampire
 
 	public String getAttack()
 	{
-		String attack = "move here";
+		String attack = "Blood Suck";
 
 		return attack;
 	}
@@ -37,8 +37,8 @@ public class Vampire
 		String result = "";
 		result += displayCharacter();
 		result += "\nAttack Used: " + getAttack();
-		result += "\n(insert name here)'s Level: " + getLevel();
-		result += "\n(insert name here)'s Health: " + getHealth();
+		result += "\nVampire's Level: " + getLevel();
+		result += "\nVampire's Health: " + getHealth();
 		return result;
 	}
 }

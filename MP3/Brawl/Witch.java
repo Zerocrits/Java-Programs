@@ -9,7 +9,7 @@ public class Witch
 
 	public String getAttack()
 	{
-		String attack = "move here";
+		String attack = "Curse";
 
 		return attack;
 	}
@@ -37,8 +37,8 @@ public class Witch
 		String result = "";
 		result += displayCharacter();
 		result += "\nAttack Used: " + getAttack();
-		result += "\n(insert name here)'s Level: " + getLevel();
-		result += "\n(insert name here)'s Health: " + getHealth();
+		result += "\nWitch's Level: " + getLevel();
+		result += "\nWitch's Health: " + getHealth();
 		return result;
 	}
 }

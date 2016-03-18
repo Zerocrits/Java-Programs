@@ -9,7 +9,7 @@ public class Ghost
 
 	public String getAttack()
 	{
-		String attack = "move here";
+		String attack = "Haunt";
 
 		return attack;
 	}
@@ -27,7 +27,11 @@ public class Ghost
 	public String displayCharacter()
 	{
 		String character = "";
-
+		character += " .-.";
+		character += "\n(o o)";
+		character += "\n| O \\ ";
+		character += "\n \\   \\ ";
+  		character += "\n  `~~~`";
 
 		return character;
 	}
@@ -37,8 +41,8 @@ public class Ghost
 		String result = "";
 		result += displayCharacter();
 		result += "\nAttack Used: " + getAttack();
-		result += "\n(insert name here)'s Level: " + getLevel();
-		result += "\n(insert name here)'s Health: " + getHealth();
+		result += "\nGhost's Level: " + getLevel();
+		result += "\nGhost's Health: " + getHealth();
 		return result;
 	}
 }
