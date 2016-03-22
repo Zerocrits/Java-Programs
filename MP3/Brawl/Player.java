@@ -9,7 +9,7 @@ public class Player
 
 	public String getAttack()
 	{
-		String attack = "move here";
+		String attack = "Slash";
 
 		return attack;
 	}
