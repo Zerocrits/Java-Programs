@@ -1,4 +1,4 @@
-public class Ghost
+public class Ghost extends Character
 {
 	private int health, level;
 	public Ghost(int h, int l)
@@ -7,7 +7,7 @@ public class Ghost
 		level = l;
 	}
 
-	public String getAttack()
+	public String getNameOfAttack()
 	{
 		String attack = "Haunt";
 
@@ -40,7 +40,7 @@ public class Ghost
 	{
 		String result = "";
 		result += displayCharacter();
-		result += "\nAttack Used: " + getAttack();
+		result += "\nAttack Used: " + getNameOfAttack();
 		result += "\nGhost's Level: " + getLevel();
 		result += "\nGhost's Health: " + getHealth();
 		return result;

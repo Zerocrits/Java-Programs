@@ -1,4 +1,4 @@
-public class Witch
+public class Witch extends Character
 {
 	private int health, level;
 	public Witch(int h, int l)
@@ -7,7 +7,7 @@ public class Witch
 		level = l;
 	}
 
-	public String getAttack()
+	public String getNameOfAttack()
 	{
 		String attack = "Curse";
 
@@ -35,8 +35,7 @@ public class Witch
 	public String toString()
 	{
 		String result = "";
-		result += displayCharacter();
-		result += "\nAttack Used: " + getAttack();
+		result += "\nAttack Used: " + getNameOfAttack();
 		result += "\nWitch's Level: " + getLevel();
 		result += "\nWitch's Health: " + getHealth();
 		return result;

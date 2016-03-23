@@ -1,4 +1,4 @@
-public class Goblin
+public class Goblin extends Character
 {
 	private int health, level;
 	public Goblin(int h, int l)
@@ -7,7 +7,7 @@ public class Goblin
 		level = l;
 	}
 
-	public String getAttack()
+	public String getNameOfAttack()
 	{
 		String attack = "Explosives";
 
@@ -46,7 +46,7 @@ public class Goblin
 	{
 		String result = "";
 		result += displayCharacter();
-		result += "\nAttack Used: " + getAttack();
+		result += "\nAttack Used: " + getNameOfAttack();
 		result += "\nGoblin's Level: " + getLevel();
 		result += "\nGoblin's Health: " + getHealth();
 		return result;

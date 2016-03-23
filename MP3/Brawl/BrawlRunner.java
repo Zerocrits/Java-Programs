@@ -16,6 +16,7 @@ public class BrawlRunner
 
 		Scanner sc = new Scanner(System.in);
 		Witch witch = new Witch(level, health);
+		Player player = new Player(level, health);
 		while(choice != 5)
 		{
 			System.out.println("***Choose An Opponent***");
@@ -34,6 +35,7 @@ public class BrawlRunner
 			{
 				witch = new Witch(health, level);
 				System.out.println(witch);
+
 			}
 
 		}

@@ -1,4 +1,4 @@
-public class Vampire
+public class Vampire extends Character
 {
 	private int health, level;
 	public Vampire(int h, int l)
@@ -7,7 +7,7 @@ public class Vampire
 		level = l;
 	}
 
-	public String getAttack()
+	public String getNameOfAttack()
 	{
 		String attack = "Blood Suck";
 
@@ -36,7 +36,7 @@ public class Vampire
 	{
 		String result = "";
 		result += displayCharacter();
-		result += "\nAttack Used: " + getAttack();
+		result += "\nAttack Used: " + getNameOfAttack();
 		result += "\nVampire's Level: " + getLevel();
 		result += "\nVampire's Health: " + getHealth();
 		return result;

@@ -1,4 +1,4 @@
-public class Player
+public class Player extends Character
 {
 	private int health, level;
 	public Player(int h, int l)
@@ -7,7 +7,7 @@ public class Player
 		level = l;
 	}
 
-	public String getAttack()
+	public String getNameOfAttack()
 	{
 		String attack = "Slash";
 
@@ -36,7 +36,7 @@ public class Player
 	{
 		String result = "";
 		result += displayCharacter();
-		result += "\nAttack Used: " + getAttack();
+		result += "\nAttack Used: " + getNameOfAttack();
 		result += "\n(insert name here)'s Level: " + getLevel();
 		result += "\n(insert name here)'s Health: " + getHealth();
 		return result;
