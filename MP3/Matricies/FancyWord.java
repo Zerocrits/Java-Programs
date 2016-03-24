@@ -1,6 +1,7 @@
-// Name:
-// Prog:
-// Spec:
+// Name:Bill Joseph
+// Prog:FancyWord
+// Spec:Fancy Word Code
+
 import java.util.Arrays;
 
 public class FancyWord
@@ -15,18 +16,22 @@ public class FancyWord
    	public FancyWord(String s)
 	{
 		int size = s.length();
+		int temp = s.length()-1;
 		mat = new String[size][size];
 
 		for(String[] row : mat)
 			Arrays.fill(row," ");
 
-		for(int i = 1; i < size-1; i++)
+		for(int i = 0; i < size; i++)
 		{
-			mat[i][i] += "" + s.charAt(i);
-			for(int j = size-1; j > 1; j++)
+			for(int j = size-1; j >= 0; j--)
 			{
-				mat[j][j] += "" + s.charAt(j);
+				if(i == 0 || i == size-1)
+					mat[i][j] = "" + s.charAt(j);
+				mat[j][j] = "" + s.charAt(j);
 			}
+			mat[temp][i] = "" + s.charAt(i);
+			temp--;
 		}
 
 
@@ -39,6 +44,14 @@ public class FancyWord
 	{
 		String output = "";
 
+		for(int i = 0; i < mat.length; i++)
+		{
+			for(int j = 0; j < mat.length; j++)
+			{
+				output += mat[i][j];
+			}
+			output += "\n";
+		}
 		// use nested for loops to build a String from the matrix
 
 		return output + "\n";

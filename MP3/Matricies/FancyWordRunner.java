@@ -24,3 +24,48 @@ public class FancyWordRunner
 	   }
 	}
 }
+
+/*
+
+HILLS
+ I L
+  L
+ I L
+HILLS
+
+
+AP
+AP
+
+
+COMPUTERS
+ O     R
+  M   E
+   P T
+    U
+   P T
+  M   E
+ O     R
+COMPUTERS
+
+
+GOSLING
+ O   N
+  S I
+   L
+  S I
+ O   N
+GOSLING
+
+
+INT
+ N
+INT
+
+
+A
+
+
+Press any key to continue . . .
+
+*/
