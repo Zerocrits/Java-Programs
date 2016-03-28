@@ -9,7 +9,16 @@ public class Goblin extends Character
 
 	public String getNameOfAttack()
 	{
-		String attack = "Explosives";
+		int r = (int)(Math.random() * 3+1);
+		String attack = "";
+
+		switch(r)
+		{
+			case(1): attack = "";
+			case(2): attack = "";
+			case(3): attack = "";
+			case(4): attack = "";
+		}
 
 		return attack;
 	}

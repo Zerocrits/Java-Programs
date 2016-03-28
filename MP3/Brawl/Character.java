@@ -42,8 +42,7 @@ public abstract class Character
 	{
 		if(health > 0)
 			return true;
-		else
-			return false;
+		return false;
 	}
 
 	/**	@return a String that shows "Damage: " and the amount of damage this creature caused to Character c

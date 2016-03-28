@@ -28,11 +28,10 @@ public class BrawlRunner
 			System.out.print("Opponent ID: ");
 			choice = sc.nextInt();
 
-			random = (int)(Math.random() * 20);
-			level = level*random;
-			health = health*random;
 			if(choice == 1)
 			{
+				Player
+				Character.attacks(witch);
 				witch = new Witch(health, level);
 				System.out.println(witch);
 

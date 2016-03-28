@@ -9,7 +9,16 @@ public class Player extends Character
 
 	public String getNameOfAttack()
 	{
-		String attack = "Slash";
+		int r = (int)(Math.random() * 3+1);
+		String attack = "";
+
+		switch(r)
+		{
+			case(1): attack = "1";
+			case(2): attack = "2";
+			case(3): attack = "3";
+			case(4): attack = "4";
+		}
 
 		return attack;
 	}
