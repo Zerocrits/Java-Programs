@@ -10,13 +10,13 @@ public class BrawlRunner
 	public static void main(String[] args)
 	{
 		int choice = 0;
-		int level = 1;
+		int level = 5;
 		int health = 10;
 		int random = 0;
 
 		Scanner sc = new Scanner(System.in);
-		Witch witch = new Witch(level, health);
-		Player player = new Player(level, health);
+		Witch witch = new Witch(health, level);
+		Player player = new Player(health, level);
 		while(choice != 5)
 		{
 			System.out.println("***Choose An Opponent***");
@@ -30,10 +30,11 @@ public class BrawlRunner
 
 			if(choice == 1)
 			{
-				Player
-				Character.attacks(witch);
-				witch = new Witch(health, level);
-				System.out.println(witch);
+				System.out.println(witch.getHealth());
+				level = player.getLevel();
+				health = player.getHealth();
+				player.attacks(witch);
+				System.out.println(witch.getHealth());
 
 			}
 
