@@ -42,7 +42,7 @@ public class MatrixMirror
 		{
 			for(int j = 0; j < mat[j].length; j++)
 			{
-				mat[i][j] += temp;
+				mat[i][j] = temp;
 				temp++;
 			}
 		}
@@ -72,17 +72,13 @@ public class MatrixMirror
 			for(int j = 0; j < mat[j].length; j++)
 			{
 				temp2 = mat[i].length/2;
-				if(mat[i].length/2 % mat[i].length/2 != 0)
-				{
-					temp2++;
-				}
 
 				if(j>=temp2)
 				{
-					mat[i][j] = temp;
 					temp--;
+					mat[i][j] = temp;
 				}
-				else
+				else if(j<temp2)
 				{
 					mat[i][j] = temp;
 					temp++;
@@ -108,7 +104,18 @@ public class MatrixMirror
 	*/
 	public void mirrorHorizontalTopToBottom()
 	{
-
+		int temp = 1;
+		int temp2 = mat.length-1;
+		for(int i = 0; i <= mat.length/2; i++)
+		{
+			for(int j = 0; j < mat[j].length; j++)
+			{
+				mat[i][j] = temp;
+				mat[temp2][j] = temp;
+				temp++;
+				temp2--;
+			}
+		}
 	}
 
 	/** Extra: Use a mirror across the major diagonal (top-left to bottom-right)
@@ -145,6 +152,14 @@ public class MatrixMirror
 	public String toString()
 	{
 		String result = "";
+		for(int i = 0; i < mat.length; i++)
+		{
+			for(int j = 0; j < mat[j].length; j++)
+			{
+				result += mat[i][j] + "\t";
+			}
+			result += "\n";
+		}
 
 		return result;
 	}
