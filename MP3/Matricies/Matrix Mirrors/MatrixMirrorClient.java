@@ -15,7 +15,7 @@ public class MatrixMirrorClient
 		mm.mirrorHorizontalTopToBottom();
 		System.out.println(mm);
 
-		/***** Uncomment if you have implemented the extra diagonal mirrors
+		//**** Uncomment if you have implemented the extra diagonal mirrors
 		mm = new MatrixMirror(4,4);
 		mm.mirrorMajorDiagonalLeftToRight();
 		System.out.println(mm);
@@ -23,6 +23,6 @@ public class MatrixMirrorClient
 		mm = new MatrixMirror(4,4);
 		mm.mirrorMinorDiagonalLeftToRight();
 		System.out.println(mm);
-		******/
+		//fix last one
 	}
 }

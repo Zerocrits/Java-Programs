@@ -40,7 +40,7 @@ public class MatrixMirror
 		int temp = 1;
 		for(int i = 0; i < mat.length; i++)
 		{
-			for(int j = 0; j < mat[j].length; j++)
+			for(int j = 0; j < mat[i].length; j++)
 			{
 				mat[i][j] = temp;
 				temp++;
@@ -69,7 +69,7 @@ public class MatrixMirror
 		for(int i = 0; i < mat.length; i++)
 		{
 			temp = temp3;
-			for(int j = 0; j < mat[j].length; j++)
+			for(int j = 0; j < mat[i].length; j++)
 			{
 				temp2 = mat[i].length/2;
 
@@ -108,13 +108,13 @@ public class MatrixMirror
 		int temp2 = mat.length-1;
 		for(int i = 0; i <= mat.length/2; i++)
 		{
-			for(int j = 0; j < mat[j].length; j++)
+			for(int j = 0; j < mat[i].length; j++)
 			{
 				mat[i][j] = temp;
 				mat[temp2][j] = temp;
 				temp++;
-				temp2--;
 			}
+			temp2--;
 		}
 	}
 
@@ -129,7 +129,14 @@ public class MatrixMirror
 	*/
 	public void mirrorMajorDiagonalLeftToRight()
 	{
-
+		int temp;
+		for(int i = 0; i < mat.length; i++)
+		{
+			for(int j = 0; j < mat[i].length; j++)
+			{
+				mat[i][j] = mat[j][i];
+			}
+		}
 	}
 
 	/** Extra: Use a mirror across the minor diagonal (top-right to bottom-left)
@@ -143,7 +150,14 @@ public class MatrixMirror
 	*/
 	public void mirrorMinorDiagonalLeftToRight()
 	{
-
+		int temp;
+		for(int i = 0; i < mat.length; i++)
+		{
+			for(int j = mat[i].length-1; j >= 0; j--)
+			{
+				mat[j][i] = mat[i][j];
+			}
+		}
 	}
 
 	/** @return the matrix with tabs between elements
@@ -154,7 +168,7 @@ public class MatrixMirror
 		String result = "";
 		for(int i = 0; i < mat.length; i++)
 		{
-			for(int j = 0; j < mat[j].length; j++)
+			for(int j = 0; j < mat[i].length; j++)
 			{
 				result += mat[i][j] + "\t";
 			}
