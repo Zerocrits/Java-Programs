@@ -1,4 +1,4 @@
-// Mr. A
+// Bill Joseph
 // Pascal's Triangle Runner
 // Spec: Simple client to test out the functionality of PascalsTriangle
 
@@ -32,6 +32,33 @@ public class PascalsTriangleRunner
 		System.out.println(pt);
 	}
 }
+/*
+
+Size 2:
+1
+1       1
+
+Size 3:
+1
+1       1
+1       2       1
+
+Size 4:
+1
+1       1
+1       2       1
+1       3       3       1
+
+Size 5:
+1
+1       1
+1       2       1
+1       3       3       1
+1       4       6       4       1
+
+Press any key to continue . . .
+
+*/
 
 
 

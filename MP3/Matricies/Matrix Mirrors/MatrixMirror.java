@@ -1,4 +1,4 @@
-// Mr. A
+// Bill Joseph
 // Matrix Mirror Class
 // Spec: Allows client to construct a matrix of any size
 //		 and perform various matrix mirroring operations
@@ -132,7 +132,7 @@ public class MatrixMirror
 		int temp;
 		for(int i = 0; i < mat.length; i++)
 		{
-			for(int j = 0; j < mat[i].length; j++)
+			for(int j = mat[i].length-1; j >= 0; j--)
 			{
 				mat[i][j] = mat[j][i];
 			}
