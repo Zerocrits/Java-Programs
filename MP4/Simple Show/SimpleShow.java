@@ -28,7 +28,9 @@ public class SimpleShow
 	*/
 	public boolean reserveSeat(int row, int col)
 	{
-		return true;
+		if(seat[row][col] == true)
+			return true;
+		return false;
 	}
 
 	/** Makes the seat at row, col empty
@@ -42,14 +44,31 @@ public class SimpleShow
 	*/
 	public void clearAllSeats()
 	{
-
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				seat[i][j] = false;
+			}
+		}
 	}
 
 	/** @return the number of seats still available in the hall
 	*/
 	public int numSeatsAvailable()
 	{
-		return 0;
+		int total = 0;
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				if(seat[i][j] == false)
+				{
+					total++;
+				}
+			}
+		}
+		return total;
 	}
 
 	/** @return the total revenue for the show based upon tickets sold
@@ -59,7 +78,20 @@ public class SimpleShow
 	public int getTotalRevenue()
 	{
 		int total = 0;
-
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				if(i < 5)
+				{
+					total += 40;
+				}
+				else
+				{
+					total += 20;
+				}
+			}
+		}
 
 		return total;
 	}
@@ -71,6 +103,19 @@ public class SimpleShow
 	*/
 	public boolean getTwoTogether()
 	{
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				if(j < seat[i].length)
+				{
+					if(seat[i][j] == false && seat[i][j+1] == false)
+					{
+						return true;
+					}
+				}
+			}
+		}
 		return false;
 	}
 
@@ -85,7 +130,30 @@ public class SimpleShow
 	{
 		int index = 0, count = 0, lowIndex = 0;
 
-
+		for(int i = 0; i < seat[i].length; i++)
+		{
+			if(i == 0 && seat[row][i] == false)
+			{
+				index = i;
+				count++;
+			}
+			else if(i < seat[row].length && i > 0)
+			{
+				if(seat[row][i] == false && seat[row][i-1] == true)
+				{
+					index = i;
+					count++;
+				}
+				else if(seat[row][i] == false)
+					count++;
+				else if(seat[row][i] == true)
+					index = count = 0;
+			}
+			if(count == seatsNeeded)
+				return index;
+			else if(i = seat[row].length-1 && count != seatsNeeded)
+				return -1;
+		}
 		return -1;
 	}
 
