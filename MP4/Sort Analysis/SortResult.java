@@ -22,7 +22,7 @@ public class SortResult
 
 	public void setName(String name)
 	{
-
+		sortName = name;
 	}
 
 	public void startTimer()

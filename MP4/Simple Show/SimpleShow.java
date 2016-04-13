@@ -13,14 +13,14 @@ public class SimpleShow
 	*/
 	public SimpleShow()
 	{
-
+		seat = new boolean[10][5];
 	}
 
 	/** Creates a concert hall with the size specified by rows and cols
 	*/
 	public SimpleShow(int rows, int cols)
 	{
-
+		seat = new boolean[rows][cols];
 	}
 
 	/** If the seat is not already occupied then it makes it occupied and returns true
@@ -35,7 +35,7 @@ public class SimpleShow
 	*/
 	public void clearSeat(int row, int col)
 	{
-
+		seat[row][col] = false;
 	}
 
 	/**	Resets all seats to available.
