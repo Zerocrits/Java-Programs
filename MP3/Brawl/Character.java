@@ -2,15 +2,14 @@ public abstract class Character
 {
 	private int level;
 	private int health;
-	private int damage;
 
 	/** Default Constructor
 	*	Sets the level and health to reasonable defaults
 	*/
 	public Character()
 	{
-		level = 5;
-		health = 25;
+		level = 0;
+		health = 0;
 	}
 
 	/** Initialization Constructor
@@ -50,9 +49,10 @@ public abstract class Character
 	*/
 	public String attacks(Character c)
 	{
-		damage = (int)(Math.random() * level+1);
-		decreaseHealth(damage);
-		return "Damage to " + c + ": " + damage;
+		int r =(int) (Math.random() * level)+1;
+		c.decreaseHealth(r);
+		return "Damage: " + r;
+
 	}
 
 	/**	reduces health for this Character by amount */

@@ -1,6 +1,3 @@
-//Madison Miatke
-//AverageAdam
-//Extend Character medium level chracter to fight
 
 public class AverageAdam extends Character
 {
