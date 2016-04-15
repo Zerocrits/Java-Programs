@@ -151,7 +151,7 @@ public class SimpleShow
 			}
 			if(count == seatsNeeded)
 				return index;
-			else if(i = seat[row].length-1 && count != seatsNeeded)
+			else if(i == seat[row].length-1 && count != seatsNeeded)
 				return -1;
 		}
 		return -1;
@@ -163,6 +163,17 @@ public class SimpleShow
 	public String toString()
 	{
 		String result = "AP Concert Hall - Simplified\n";
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				if(seat[i][j] == true)
+					result += "0 \t";
+				else if(seat[i][j] == false)
+					result += "X \t";
+			}
+			result += "\n";
+		}
 
 		return result;
 	}
