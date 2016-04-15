@@ -1,52 +1,46 @@
+//Bill Joseph
+//Witch
+
 public class Witch extends Character
 {
-	private int health, level;
-	public Witch(int h, int l)
+	public Witch()
 	{
-		health = h;
-		level = l;
+		super(6,15);
 	}
 
 	public String getNameOfAttack()
 	{
-		int r = (int)(Math.random() * 3+1);
-		String attack = "";
+		int r = (int) (Math.random() * 4)+1;
 
 		switch(r)
 		{
-			case(1): attack = "11";
-			case(2): attack = "22";
-			case(3): attack = "33";
-			case(4): attack = "44";
+			case 1 : return "Witch puts a curse on you";
+			case 2 : return "Witch boils you in a pot of potion";
+			case 3 : return "Witch stares at you with an ugly face";
+			case 4 : return "Witch's mole attacks you";
 		}
-
-		return attack;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public int getLevel()
-	{
-		return level;
+		return "Attack Error";
 	}
 
 	public String displayCharacter()
 	{
 		String character = "";
 
+		character+="            _____";
+		character+="\n          .-'  ,  '-.";
+		character+="\n        .'   _/(_    '.";
+		character+="\n       /     {\\\\   ^^  \\";
+		character+="\n      |      /;_)       |";
+		character+="\n      |   =='/ <===<<<  |";
+		character+="\n       \\     \\__\\      /";
+		character+="\n        '.     ``    .'";
+		character+="\n          '-._____.-'";
 
 		return character;
 	}
 
 	public String toString()
 	{
-		String result = "";
-		result += "\nAttack Used: " + getNameOfAttack();
-		result += "\nWitch's Level: " + getLevel();
-		result += "\nWitch's Health: " + getHealth();
-		return result;
+		return "\n*Witch's Level: " + getLevel() + "\n*Witch's Health: " + getHealth();
 	}
 }

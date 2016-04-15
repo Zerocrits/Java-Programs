@@ -1,53 +1,50 @@
+//Bill Joseph
+//Vampire
+
 public class Vampire extends Character
 {
-	private int health, level;
-	public Vampire(int h, int l)
+	public Vampire()
 	{
-		health = h;
-		level = l;
+		super(4,32);
 	}
 
 	public String getNameOfAttack()
 	{
-		int r = (int)(Math.random() * 3+1);
-		String attack = "";
+		int r = (int) (Math.random() * 4)+1;
 
 		switch(r)
 		{
-			case(1): attack = "";
-			case(2): attack = "";
-			case(3): attack = "";
-			case(4): attack = "";
+			case 1 : return "Vampire Sucks your blood";
+			case 2 : return "Vampire eats your dog:( ";
+			case 3 : return "Vampire mutilates your body";
+			case 4 : return "Vampire punches you in the gut";
 		}
-
-		return attack;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public int getLevel()
-	{
-		return level;
+		return "Attack Error";
 	}
 
 	public String displayCharacter()
 	{
 		String character = "";
 
+		character+="          _..._";
+		character+="\n        .'     '.";
+		character+="\n       ; __   __ ;";
+		character+="\n       |/  \\ /  \\|";
+		character+="\n     |\\| -- ' -- |/|";
+		character+="\n     |(| \\o| |o/ |)|";
+		character+="\n     _\\|     >   |/_";
+		character+="\n  .-'  | ,.___., |  '-.";
+		character+="\n  \\    ;  V'-'V  ;    /";
+		character+="\n   `\\   \\       /   /`";
+		character+="\n     `\\  '-...-'  /`";
+		character+="\n       `\\  / \\  /`";
+		character+="\n         `\\\\_//`";
 
 		return character;
 	}
 
 	public String toString()
 	{
-		String result = "";
-		result += displayCharacter();
-		result += "\nAttack Used: " + getNameOfAttack();
-		result += "\nVampire's Level: " + getLevel();
-		result += "\nVampire's Health: " + getHealth();
-		return result;
+		return "\n*Vampire's Level: " + getLevel() + "\n*Vampires's Health: " + getHealth();
 	}
 }

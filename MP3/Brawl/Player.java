@@ -1,53 +1,48 @@
+//Bill Joseph
+//Player
+
 public class Player extends Character
 {
-	private int health, level;
-	public Player(int h, int l)
+	public Player()
 	{
-		health = h;
-		level = l;
+		super(5,15);
 	}
 
 	public String getNameOfAttack()
 	{
-		int r = (int)(Math.random() * 3+1);
-		String attack = "";
+		int r = (int) (Math.random() * 4)+1;
 
 		switch(r)
 		{
-			case(1): attack = "1";
-			case(2): attack = "2";
-			case(3): attack = "3";
-			case(4): attack = "4";
+			case 1 : return "You sneak up and stab him!";
+			case 2 : return "You do a round-house kick!";
+			case 3 : return "You swipe out his legs!";
+			case 4 : return "You command your to dog attack!";
 		}
-
-		return attack;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public int getLevel()
-	{
-		return level;
+		return "Attack Error";
 	}
 
 	public String displayCharacter()
 	{
 		String character = "";
 
+		character+="            _,,,,,,,_";
+		character+="\n          ,88888888888,";
+		character+="\n        ,888'       `888,";
+		character+="\n        888' 0     0 `888";
+		character+="\n       888      0      888";
+		character+="\n       888             888";
+		character+="\n       888    ,000,    888";
+		character+="\n        888, 0     0 ,888";
+		character+="\n        '888,       ,888'";
+		character+="\n          '8JGS8888888'";
+		character+="\n            ````````";
 
 		return character;
 	}
 
 	public String toString()
 	{
-		String result = "";
-		result += displayCharacter();
-		result += "\nAttack Used: " + getNameOfAttack();
-		result += "\n(insert name here)'s Level: " + getLevel();
-		result += "\n(insert name here)'s Health: " + getHealth();
-		return result;
+		return "\nYour Level: " + getLevel() + "\nYour Health: " + getHealth();
 	}
 }

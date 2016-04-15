@@ -1,36 +1,25 @@
+//Bill Joseph
+//Goblin
+
 public class Goblin extends Character
 {
-	private int health, level;
-	public Goblin(int h, int l)
+	public Goblin()
 	{
-		health = h;
-		level = l;
+		super(4,20);
 	}
 
 	public String getNameOfAttack()
 	{
-		int r = (int)(Math.random() * 3+1);
-		String attack = "";
+		int r = (int) (Math.random() * 4)+1;
 
 		switch(r)
 		{
-			case(1): attack = "";
-			case(2): attack = "";
-			case(3): attack = "";
-			case(4): attack = "";
+			case 1 : return "Goblin Throws Dynamite at you!";
+			case 2 : return "Goblin Screams loudly";
+			case 3 : return "Goblin pushed you into a pit of snakes";
+			case 4 : return "Goblin bit down on your leg";
 		}
-
-		return attack;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public int getLevel()
-	{
-		return level;
+		return "Attack Error";
 	}
 
 	public String displayCharacter()
@@ -53,11 +42,6 @@ public class Goblin extends Character
 
 	public String toString()
 	{
-		String result = "";
-		result += displayCharacter();
-		result += "\nAttack Used: " + getNameOfAttack();
-		result += "\nGoblin's Level: " + getLevel();
-		result += "\nGoblin's Health: " + getHealth();
-		return result;
+		return "\n*Goblin's Level: " + getLevel() + "\n*Goblin's Health: " + getHealth();
 	}
 }

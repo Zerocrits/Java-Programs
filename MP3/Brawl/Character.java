@@ -1,3 +1,6 @@
+//Bill Joseph
+//Character
+
 public abstract class Character
 {
 	private int level;

@@ -1,57 +1,49 @@
+//Bill Joseph
+//Ghost
+
 public class Ghost extends Character
 {
-	private int health, level;
-	public Ghost(int h, int l)
+	public Ghost()
 	{
-		health = h;
-		level = l;
+		super(2,25);
 	}
 
 	public String getNameOfAttack()
 	{
-		int r = (int)(Math.random() * 3+1);
-		String attack = "";
+		int r = (int) (Math.random() * 4)+1;
 
 		switch(r)
 		{
-			case(1): attack = "";
-			case(2): attack = "";
-			case(3): attack = "";
-			case(4): attack = "";
+			case 1 : return "Ghost Haunts you";
+			case 2 : return "Ghost summons your nightmare";
+			case 3 : return "Ghost scares you half to death";
+			case 4 : return "Ghost chases you into a ditch";
 		}
-
-		return attack;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public int getLevel()
-	{
-		return level;
+		return "Attack Error";
 	}
 
 	public String displayCharacter()
 	{
 		String character = "";
-		character += " .-.";
-		character += "\n(o o)";
-		character += "\n| O \\ ";
-		character += "\n \\   \\ ";
-  		character += "\n  `~~~`";
+        character+="                 .-.";
+        character+="\n               .'   `.";
+        character+="\n               :g g   :";
+        character+="\n               : o    `.";
+        character+="\n              :         ``.";
+        character+="\n             :             `.";
+        character+="\n            :  :         .   `.";
+        character+="\n            :   :          ` . `.";
+        character+="\n             `.. :            `. ``;";
+        character+="\n                `:;             `:'";
+        character+="\n                   :              `.";
+        character+="\n                    `.              `.     .";
+        character+="\n                      `'`'`'`---..,___`;.-'";
 
 		return character;
 	}
 
 	public String toString()
 	{
-		String result = "";
-		result += displayCharacter();
-		result += "\nAttack Used: " + getNameOfAttack();
-		result += "\nGhost's Level: " + getLevel();
-		result += "\nGhost's Health: " + getHealth();
-		return result;
+		return "\n*Ghost's Level: " + getLevel() + "\n*Ghost's Health: " + getHealth();
 	}
 }
