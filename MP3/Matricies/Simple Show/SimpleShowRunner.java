@@ -1,4 +1,4 @@
-// Mr. A
+// Bill Joseph
 // Simple Show Runner
 // Spec: A simple client to test out the SimpleShow object
 
@@ -15,6 +15,8 @@ public class SimpleShowRunner
 		show.reserveSeat(0,1);
 		show.reserveSeat(0,2);
 		show.reserveSeat(0,4);
+		show.reserveSeat(1,0);
+		show.reserveSeat(1,1);
 		show.reserveSeat(2,2);
 		show.reserveSeat(3,2);
 		show.reserveSeat(4,2);
@@ -63,6 +65,37 @@ public class SimpleShowRunner
 }
 /*
 
+AP Concert Hall - Simplified
+X       X       X       O       X
+X       X       O       O       O
+O       O       X       O       O
+O       O       X       O       O
+O       O       X       O       O
+O       X       O       O       O
+O       O       O       O       O
+O       O       O       O       O
+O       O       O       O       O
+O       O       O       O       O
 
+Seats Still Available: 40
+Total Revenue: $380
+
+Looking for 3 adjacent seats in row 2 (third row)...
+                Not available
+Looking for 3 adjacent seats in row 6...
+                Available in row 6 beginning with seat number 0
+Looking for 8 adjacent seats in row 7 (third row)...
+                Not available
+Looking for 3 adjacent seats in row 5 (third row)...
+                Available in row 5 beginning with seat number 2
+
+New Show
+Seats Still Available: 50
+Total Revenue: $0
+AP Concert Hall - Simplified
+O       O       O       O
+O       O       O       O
+
+Press any key to continue . . .
 
 */

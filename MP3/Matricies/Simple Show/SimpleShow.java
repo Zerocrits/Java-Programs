@@ -1,4 +1,4 @@
-// Mr. A
+// Bill Joseph
 // Simple Show
 // Spec: A seat could / should have more information (be it's own object), but here it is either taken or not taken only.
 //		 Default hall is a small 50 seat venue.
@@ -28,8 +28,17 @@ public class SimpleShow
 	*/
 	public boolean reserveSeat(int row, int col)
 	{
-		if(seat[row][col] == true)
-			return true;
+		for(int i = 0; i < seat.length; i++)
+		{
+			for(int j = 0; j < seat[i].length; j++)
+			{
+				if(seat[row][col] == false)
+				{
+					seat[row][col] = true;
+					return false;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -82,11 +91,11 @@ public class SimpleShow
 		{
 			for(int j = 0; j < seat[i].length; j++)
 			{
-				if(i < 5)
+				if(i < 5 && seat[i][j] == true)
 				{
 					total += 40;
 				}
-				else
+				else if(i >= 5 && seat[i][j] == true)
 				{
 					total += 20;
 				}
@@ -168,9 +177,9 @@ public class SimpleShow
 			for(int j = 0; j < seat[i].length; j++)
 			{
 				if(seat[i][j] == true)
-					result += "0 \t";
-				else if(seat[i][j] == false)
 					result += "X \t";
+				else if(seat[i][j] == false)
+					result += "O \t";
 			}
 			result += "\n";
 		}
