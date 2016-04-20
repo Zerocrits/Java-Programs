@@ -44,14 +44,11 @@ public class SortClient
 
 			System.out.println("\n\t\t\t\t" + filenames[i]+ "\n");
 
-			rslt = APSorts.selectionSort(a1);
-			System.out.println(rslt);
+			APSorts.selectionSort(a1);
 
-			rslt = APSorts.insertionSort(a2);
-			System.out.println(rslt);
+			APSorts.insertionSort(a2);
 
-			rslt = APSorts.mergeSort(a3);
-			System.out.println(rslt);
+			APSorts.mergeSort(a3);
 		}
-   }
+	}
 }
