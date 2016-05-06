@@ -12,18 +12,40 @@ public class GameBoard
 
 	public void numberBoard()
 	{
-		int label = 0;
+		int label = 1;
 
-		for(int i = 0; i < board[0].length; i++)
+		for(int i = 0; i < board[0].length-1; i++)
+		{
+			for(int j = 0; j < board.length; j++)
+			{
+				if(i == 0)
+				{
+					board[i][j] = label;
+					label++;
+				}
+				else if(j == board.length-1)
+				{
+					board[i][j] = label;
+					label++;
+				}
+			}
+		}
+
+		for(int i = board[0].length-1; i >= 0; i--)
 		{
 			for(int j = board.length-1; j >= 0; j--)
 			{
-				if(i == 0 || i == board.length-1)
+				if(i == board[i].length-1)
+				{
 					board[i][j] = label;
-				else if((i > 0 && i < board.length-1) && (j == 0 || j == board.length-1))
+					label++;
+				}
+				else if((i > 0 && i < board.length-1) && (j == 0))
+				{
 					board[i][j] = label;
+					label++;
+				}
 
-				label++;
 			}
 		}
 	}
@@ -34,7 +56,7 @@ public class GameBoard
 
 		for(int i = 0; i < board[0].length; i++)
 		{
-			for(int j = 0; j < board.length-1; j++)
+			for(int j = 0; j < board.length; j++)
 			{
 				if(j == board.length-1)
 					result += board[i][j];
