@@ -2,7 +2,7 @@ public class MonopolyClient
 {
 	public static void main(String[] args)
 	{
-		GameBoard board = new GameBoard();
+		Dice board = new Dice();
 		System.out.println(board);
 	}
 }
