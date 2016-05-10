@@ -6,7 +6,7 @@ public class Dice
 
 	public Dice()
 	{
-		Dice = new int[6];
+		Dice = new int[7];
 		getSide();
 	}
 
@@ -21,8 +21,8 @@ public class Dice
 	public int getSide()
 	{
 		makeFace();
-
-		return Dice[(int)(Math.random() * Dice.length) + 1];
+		int num = Dice[(int)(Math.random() * Dice.length-1) + 1];
+		return num;
 	}
 
 	public String toString()

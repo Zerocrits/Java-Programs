@@ -3,10 +3,12 @@ import java.util.Arrays;
 public class GameBoard
 {
 	private int[][] board;
+	private Dice dice;
 
 	public GameBoard()
 	{
 		board = new int[10][10];
+		dice = new Dice();
 		numberBoard();
 	}
 
@@ -48,6 +50,13 @@ public class GameBoard
 
 			}
 		}
+		int die = dice.getSide();
+		board[board[0].length /2][board.length/2] = die;
+		board[board[0].length /2 -1][board.length/2] = die;
+
+		die = dice.getSide();
+		board[board[0].length /2][board.length/2 -1] = die;
+		board[board[0].length /2 -1][board.length/2 -1] = die;
 	}
 
 	public String toString()
