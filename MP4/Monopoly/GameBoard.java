@@ -7,7 +7,7 @@ public class GameBoard
 
 	public GameBoard()
 	{
-		board = new int[10][10];
+		board = new int[13][13];
 		dice = new Dice();
 		numberBoard();
 	}

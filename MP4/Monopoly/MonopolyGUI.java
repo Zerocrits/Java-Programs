@@ -1,3 +1,6 @@
+//http://stackoverflow.com/questions/8451793/best-gui-approach-with-java-for-a-monopoly-board-game
+
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -5,9 +8,9 @@ import javax.swing.*;
 
 public class MonopolyGUI extends JFrame
 {
-	private int APPLET_WIDTH = 300, APPLET_HEIGHT = 470;
+	private int APPLET_WIDTH = 1000, APPLET_HEIGHT = 800;
 	private JLabel lblCoins;
-	private JLabel lblInfo1;
+	private JLabel lblInfo;
 	private ImageIcon icoDice;
 	private JButton btnPull;
 	private MonopolyClient client;
@@ -18,19 +21,59 @@ public class MonopolyGUI extends JFrame
 		Container cp = getContentPane();
 		cp.setBackground(Color.cyan);
 		cp.setLayout(new FlowLayout());
+		JPanel north = new JPanel();
+		lblInfo = new JLabel("This is north");
 
 
-		btnPull = new JButton ("     Pull Me!     ");
+   		JPanel contentPane = new JPanel(new BorderLayout());
+		contentPane.add(lblInfo, BorderLayout.CENTER);
+
+
+
+
+		setLayout(new BorderLayout());
+		add(new Button("North"), BorderLayout.NORTH);
+		add(new Button("South"), BorderLayout.SOUTH);
+		add(new Button("East"), BorderLayout.EAST);
+		add(new Button("West"), BorderLayout.WEST);
+   		//add(new Button("Center"), BorderLayout.CENTER);
+
+
+
+
+		/*int boardWidth;
+		int boardHeight;
+		int boardSquareHeight;
+		int boardSqusreWidth;
+		JPanel north = new JPanel();
+		JPanel south = new JPanel();
+		Dimension northSouthD = new Dimension(boardWidth, boardSquareHeight);
+		north.setPreferedSize(northSouthD);
+		south.setPreferedSize(northSouthD);
+		JPanel east = new JPanel();
+		JPanel west = new JPanel();
+		Dimension eastWestD = new Dimension(boardSquareHeight, boardHeight - 2 * boardSquaareWidth);
+		east.setPreferedSize(easWestD);
+		west.setPreferedSize(easWestD);
+		// add all of the buttons to the appropriate JPanel
+		parentPanel.setLayoutManager(new BorderLayout());
+		parentPanel.add(north, BorderLayour.NORTH);*/
+
+
+
+
+
+		/*btnPull = new JButton ("     Pull Me!     ");
 		btnPull.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		btnPull.addActionListener( new ButtonListener());
 
 		icoDice = new ImageIcon("lblDice.PNG");
 		Container pane = getContentPane();
-        pane.setLayout(new GridLayout(5,2));
+        pane.setLayout(new GridLayout(5,2));*/
 
-		pane.setLayout(GridLayout);
-		pane.add(new JButton("Button 1"));
-        pane.add(new JButton("Button 2"));
+		//pane.setLayout(GridLayout);
+		//pane.add(new JButton("Button 1"));
+        //pane.add(new JButton("Button 2"));
 
 		/*slot = new SlotMachine();
 		lblDice = new JLabel();
@@ -82,6 +125,9 @@ public class MonopolyGUI extends JFrame
 		lblInfo2.setText("Cherry = $500");
 		lblInfo3.setText("Dice = $1,000");
 		lblInfo4.setText("Seven = $10,000");*/
+
+
+
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
 		setVisible(true);
