@@ -1,12 +1,12 @@
 //http://stackoverflow.com/questions/8451793/best-gui-approach-with-java-for-a-monopoly-board-game
-
+//https://docs.oracle.com/javase/tutorial/uiswing/layout/border.html
 
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class MonopolyGUI extends JFrame
+public class MonopolyGUI
 {
 	private int APPLET_WIDTH = 1000, APPLET_HEIGHT = 800;
 	private JLabel lblCoins;
@@ -16,12 +16,65 @@ public class MonopolyGUI extends JFrame
 	private MonopolyClient client;
 	private ButtonListener listener;
 
+	private JPanel panel;
+    private JPanel panel2;
+
 	public MonopolyGUI()
 	{
-		Container cp = getContentPane();
-		cp.setBackground(Color.cyan);
-		cp.setLayout(new FlowLayout());
-		JPanel north = new JPanel();
+		JFrame frame = new JFrame();
+		panel = new JPanel(new GridLayout(4, 4, 5, 5));
+		panel.add(new JButton("thisisatest"), BorderLayout.NORTH);
+		frame = new JFrame("Testing");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		panel2 = new JPanel(new BorderLayout());
+		panel2.add(new JButton("test2"), BorderLayout.SOUTH);
+
+		frame.add(panel2);
+		frame.add(panel);
+
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+
+		/*JPanel northP = new JPanel(new GridLayout(20, 20, 20, 20));
+		JPanel eastP = new JPanel();
+		JPanel southP = new JPanel();
+		JPanel westP = new JPanel();
+		JPanel centerP = new JPanel();
+
+		Dimension d = new Dimension(1000, 200);
+
+		northP.setPreferredSize(d);
+		southP.setPreferredSize(d);
+
+		d.setSize(200, 800);
+
+		eastP.setPreferredSize(d);
+		westP.setPreferredSize(d);
+
+		//Add some buttons and fields to each panel
+		JButton button1 = new JButton("Test");
+		JTextField field1 = new JTextField(20);
+		northP.add(button1);
+		eastP.add(button1);
+		southP.add(button1);
+		westP.add(button1);
+		centerP.add(field1);
+
+		Container c = frame.getContentPane();
+		c.add(northP,"North");
+		c.add(eastP, "East");
+		c.add(southP,"South");
+        frame.show();
+
+
+*/
+
+
+
+		/*JPanel north = new JPanel();
 		lblInfo = new JLabel("This is north");
 
 
@@ -40,7 +93,7 @@ public class MonopolyGUI extends JFrame
 
 
 
-
+*/
 		/*int boardWidth;
 		int boardHeight;
 		int boardSquareHeight;
@@ -129,8 +182,8 @@ public class MonopolyGUI extends JFrame
 
 
 
-		setSize(APPLET_WIDTH, APPLET_HEIGHT);
-		setVisible(true);
+		//setSize(APPLET_WIDTH, APPLET_HEIGHT);
+		//setVisible(true);
 	}
 
 	public static void main(String[] args)
