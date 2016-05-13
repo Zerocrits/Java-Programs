@@ -5,6 +5,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 public class MonopolyGUI
 {
@@ -16,27 +24,92 @@ public class MonopolyGUI
 	private MonopolyClient client;
 	private ButtonListener listener;
 
+	private JPanel p;
+	private JPanel p2;
 	private JPanel panel;
     private JPanel panel2;
+    private JPanel panel3;
+
+    private BufferedImage image;
 
 	public MonopolyGUI()
 	{
-		JFrame frame = new JFrame();
-		panel = new JPanel(new GridLayout(4, 4, 5, 5));
-		panel.add(new JButton("thisisatest"), BorderLayout.NORTH);
-		frame = new JFrame("Testing");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame frame = new JFrame("Testing");
+
+		panel = new JPanel(new BorderLayout());
+		p = new JPanel(new BorderLayout());
+		JLabel imgLabel = new JLabel(new ImageIcon("test.png"));
+		p.add(imgLabel, BorderLayout.WEST);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		p.add(imgLabel, BorderLayout.CENTER);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		p.add(imgLabel, BorderLayout.EAST);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+
+		p2 = new JPanel(new BorderLayout());
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		p2.add(imgLabel, BorderLayout.WEST);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		p2.add(imgLabel, BorderLayout.CENTER);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		p2.add(imgLabel, BorderLayout.EAST);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+
+		panel.add(p, BorderLayout.WEST);
+		panel.add(p2, BorderLayout.CENTER);
+		panel.add(new JButton("tessst"), BorderLayout.EAST);
+
 
 		panel2 = new JPanel(new BorderLayout());
-		panel2.add(new JButton("test2"), BorderLayout.SOUTH);
+		panel2.add(new JButton("test2"));
+		panel3 = new JPanel(new BorderLayout());
+		panel3.add(new JButton("test3"));
 
-		frame.add(panel2);
-		frame.add(panel);
+		frame.add(panel, BorderLayout.NORTH);
+		frame.add(panel2, BorderLayout.SOUTH);
+		frame.add(panel3, BorderLayout.CENTER);
 
 		frame.pack();
 		frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+
+
+
+
+
+
+
+		/*panel = new JPanel(new GridLayout(4, 13));
+		JLabel imgLabel = new JLabel(new ImageIcon("test.png"));
+		panel.add(imgLabel);
+		panel.add(new JButton("imgLabel"));
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		panel.add(imgLabel);
+		panel.add(new JButton("imgLabel"));
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		panel.add(imgLabel);
+		panel.add(new JButton("imgLabel"));
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		panel.add(imgLabel);
+		imgLabel = new JLabel(new ImageIcon("test.png"));
+		panel.add(imgLabel);
+
+		panel2 = new JPanel(new GridLayout(1, 13, 50, 50));
+		panel2.add(new JButton("test2"));
+
+		panel3 = new JPanel();
+		panel3.add(new JTextArea(20,20));
+
+
+		frame.add(panel2, BorderLayout.SOUTH);
+		frame.add(panel, BorderLayout.NORTH);
+		frame.add(panel3, BorderLayout.CENTER);
+
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+*/
 
 		/*JPanel northP = new JPanel(new GridLayout(20, 20, 20, 20));
 		JPanel eastP = new JPanel();
