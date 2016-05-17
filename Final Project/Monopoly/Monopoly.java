@@ -78,14 +78,14 @@ public class Monopoly extends JApplet
 		setLayout(new BorderLayout());
 
 		//load images
-		Image build = getImage(getDocumentBase(), "Map.jpg");
+		Image build = getImage(getDocumentBase(), "Map.PNG");
 
 		try
 		{
-			URL url1 = new URL(getDocumentBase(), "laptop.gif");
-			URL url2 = new URL(getDocumentBase(), "mouse.gif");
-			URL url3 = new URL(getDocumentBase(), "question.jpg");
-			URL url4 = new URL(getDocumentBase(), "Treasure.jpg");
+			URL url1 = new URL(getDocumentBase(), "laptop.PNG");
+			URL url2 = new URL(getDocumentBase(), "mouse.PNG");
+			URL url3 = new URL(getDocumentBase(), "question.PNG");
+			URL url4 = new URL(getDocumentBase(), "Treasure.PNG");
 			img1 = ImageIO.read(url1);
 			img2 = ImageIO.read(url2);
 			img3 = ImageIO.read(url3);
