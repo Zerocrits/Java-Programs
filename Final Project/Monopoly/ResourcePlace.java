@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.geom.*;
 import java.util.*;
 
+//These are the buildings, they are like streets but it adds more pah-zas
+
 public class ResourcePlace extends Place
 {
 	protected String name;
@@ -26,14 +28,14 @@ public class ResourcePlace extends Place
 		return cost;
 	}
 
-	public int getResurs() //check
+	public int getResource()
 	{
-		double dcost = cost * 0.1; //double cost
-		int cost2 = (int) dcost;
-		return cost2;
+		double doubleCost = cost * 0.1;
+		int roundCost = (int) doubleCost;
+		return roundCost;
 	}
 
-	public Color getCol()
+	public Color getColor()
 	{
 		return Color.white;
 	}
@@ -41,42 +43,44 @@ public class ResourcePlace extends Place
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(borderColor);
+		Graphics2D graphics = (Graphics2D)g;
+		graphics.setPaint(borderColor);
+
 		if(align.equals("up") || align.equals("down"))
 			rect = new Rectangle2D.Double(0, 0, x2, y2);
 		else if(align.equals("left") || align.equals("right"))
 			rect = new Rectangle2D.Double(0, 0, x2, y2);
-		g2d.draw(rect);
-		g2d.setPaint(Color.black);
+
+		graphics.draw(rect);
+		graphics.setPaint(Color.black);
 		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 8));
 		if(align.equals("right"))
 		{
-			g2d.drawString(name, 10, 25);
-			g2d.drawString(String.valueOf(cost), 10, 35);
+			graphics.drawString(name, 10, 25);
+			graphics.drawString(String.valueOf(cost), 10, 35);
 		}
 		else if(align.equals("down"))
 		{
-			g2d.drawString(name, 10, 30);
-			g2d.drawString(String.valueOf(cost), 10, 40);
+			graphics.drawString(name, 10, 30);
+			graphics.drawString(String.valueOf(cost), 10, 40);
 		}
 		else
 		{
-			g2d.drawString(name, 4, 25);
-			g2d.drawString(String.valueOf(cost), 4, 35);
+			graphics.drawString(name, 4, 25);
+			graphics.drawString(String.valueOf(cost), 4, 35);
 		}
 		if(!players.isEmpty())
 		{
-			int px = 10;
-			int py = 5;
+			int z = 10;
+			int v = 5;
 			for(Player p : players)
 			{
 				add(p);
-				p.setPosition(px, py);
+				p.setPosition(z, v);
 				if(align.equals("up") || align.equals("down"))
-					py += 20;
+					v += 20;
 				else if(align.equals("left") || align.equals("right"))
-					px += 20;
+					z += 20;
 			}
 		}
 

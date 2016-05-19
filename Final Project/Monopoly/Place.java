@@ -3,11 +3,13 @@ import javax.swing.*;
 import java.awt.geom.*;
 import java.util.*;
 
+//All of the different street types come to this as a main file
+
 public class Place extends JPanel
 {
-	protected int nr; //check
+	protected int n; //check
 	protected Rectangle2D.Double rect;
-	protected int xP, yP;
+	protected int x, y;
 	protected String align;
 	protected int x2;
 	protected int y2;
@@ -15,33 +17,36 @@ public class Place extends JPanel
 	protected boolean owned = false;
 	protected Color borderColor = Color.black;
 
-	public Place(int n, int x, int y, String a)
+	public Place(int n, int x, int y, String align)
 	{
-		nr=n;
-		xP=x;
-		yP=y;
-		align = a;
+		this.n = n;
+		this.x = x;
+		this.y = y;
+		this.align = align;
+
 		if(align.equals("up") || align.equals("down"))
 		{
 			x2 = 40;
 			y2 = 60;
 		}
+
 		else if(align.equals("left") || align.equals("right"))
 		{
 			x2 = 60;
 			y2 = 40;
 		}
+
 		setBounds(x, y, x2, y2);
 		setOpaque(true);
 		setBackground(new Color(159, 214, 141));
 	}
 
-	public int getNr()//check
+	public int getN()//check
 	{
-		return nr;
+		return n;
 	}
 
-	public void setBordColor(Color color)
+	public void setBorderColor(Color color)
 	{
 		borderColor = color;
 	}
@@ -50,8 +55,10 @@ public class Place extends JPanel
 	{
 		if(players.contains(p))
 			return false;
+
 		players.add(p);
 		add(p);
+
 		return true;
 	}
 	public String getName()
@@ -63,6 +70,7 @@ public class Place extends JPanel
 	{
 		remove(p);
 		players.remove(p);
+
 		return true;
 	}
 
@@ -79,7 +87,7 @@ public class Place extends JPanel
 		return 0;
 	}
 
-	public Color getCol()
+	public Color getColor()
 	{
 		return new Color(0,0,0);
 	}
@@ -87,9 +95,9 @@ public class Place extends JPanel
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(Color.black);
-		g2d.setStroke(new BasicStroke(3));
+		Graphics2D graphics = (Graphics2D)g;
+		graphics.setPaint(Color.black);
+		graphics.setStroke(new BasicStroke(3));
 
 		repaint();
 	}

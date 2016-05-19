@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.image.*;
 
+//Question/Treasure spots (Community and chance cards)
+
+
 public class CardPlace extends Place
 {
 	protected String typeCard;

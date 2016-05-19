@@ -86,7 +86,7 @@ public class Player extends JComponent
 			if(p instanceof ResourcePlace) //check
 			{
 				ResourcePlace rp = (ResourcePlace) p;
-				cash += rp.getResurs();
+				cash += rp.getResource();
 			}
 		}
 		return cash;

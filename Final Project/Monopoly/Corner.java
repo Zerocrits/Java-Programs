@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
 
+//These are the corner pieces on the board
+
 public class Corner extends Place
 {
 	protected String type;

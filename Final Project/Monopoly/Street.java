@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
 
+//This is the purchaseable STREETS
+
 public class Street extends Place
 {
 	protected String name;

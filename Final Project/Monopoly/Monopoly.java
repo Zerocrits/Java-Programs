@@ -10,128 +10,98 @@ import java.applet.*;
 import javax.swing.border.*;
 
 
-public class Monopoly extends JFrame
+public class Monopoly extends JApplet
 {
-	private JButton btnBuy, btnEnd, btnSell, btnShow, btnRoll, okSell, pay, btnFJC;
-	private JPanel north, east, south, playerMessage, command;
-	private JTextArea log;
-	private JScrollPane jspLog;
-	private JLabel message, money, turn, lblMap, lblLaptop, lblMouse, lblQuestion, lblTreasure;
-	private JList proplist;
-	private JScrollPane sp;
-	private ImageIcon icoMap, icoLaptop, icoMouse, icoQuestion, icoTreasure;
+	//Setting the menu, players, dice, and cards
+	Menu menu = new Menu();
+	BuildPanel bp;
+	ArrayList<Place> place = new ArrayList<Place>();
+	Dice dice = new Dice();
+	Player p1;
+	Player p2;
+	ArrayList<String> chest = new ArrayList<String>();
+	ArrayList<String> chance = new ArrayList<String>();
 
-	private ArrayList<String> chest, chance;
-	private ArrayList<Place> place;
+	//ending a turn
 
-	private Dice dice;
-	private MiniMap map;
-	private DefaultListModel model;
+	JButton btnEnd = new JButton("       End Your Turn       ");
 
+	Player player1;
+	Player player2;
+	boolean hasRolled = false;
 
+	//scroll log is messages to the active player
+
+	//east panel
+	JPanel east = new JPanel();
+	JTextArea log = new JTextArea(60, 20);
+	JScrollPane jspLog = new JScrollPane(log);
+
+	//south panel
+	JPanel south = new JPanel();
+	JPanel playerMessage = new JPanel();
+	JLabel message = new JLabel("Welcome to Monopoly!", JLabel.CENTER);
+	JPanel command = new JPanel();
+	MiniMap map = new MiniMap();
+
+	//commandmands
+	private JButton btnBuy = new JButton("Buy");
+	private JButton btnSell = new JButton("Sell");
+	private JButton btnShow = new JButton("Show");
+	private JButton btnRoll = new JButton("Roll");
+
+	//sellList
+	DefaultListModel model = new DefaultListModel();
+	JList proplist = new JList(model);
+	JScrollPane sp = new JScrollPane(proplist);
+	private JButton okSell = new JButton("Sell Now?");
+
+	//top
+	JPanel north = new JPanel();
+	JLabel money = new JLabel("Cash: 0", JLabel.CENTER);
+	JLabel turn = new JLabel("Round: 1", JLabel.CENTER);
+	int numRound = 1;
 	private int maxRound = 10;
 
+	//images
+	BufferedImage img1 = null;
+	BufferedImage img2 = null;
+	BufferedImage img3 = null;
+	BufferedImage img4 = null;
 
+	//*The jail pops up in the north panel whe a player is in jail
 
-	public Monopoly()
-	{
-		//Setting the menu, players, dice, and cards
-		Menu menu = new Menu();
-		BuildPanel bp;
-		place = new ArrayList<Place>();
-		Dice dice = new Dice();
-		Player p1;
-		Player p2;
-		chest = new ArrayList<String>();
-		chance = new ArrayList<String>();
+	//Jail
+	private JButton pay = new JButton("Pay Fine");
+	private JButton btnFJC = new JButton("Use Jail Card");
 
-		//ending a turn
-
-		btnEnd = new JButton("       End Your Turn       ");
-
-		Player player1;
-		Player player2;
-		boolean hasRolled = false;
-
-		//scroll log is messages to the active player
-
-		//east panel
-		east = new JPanel();
-		log = new JTextArea(60, 20);
-		jspLog = new JScrollPane(log);
-
-		//south panel
-		south = new JPanel();
-		playerMessage = new JPanel();
-		message = new JLabel("Welcome to Monopoly!", JLabel.CENTER);
-		command = new JPanel();
-		map = new MiniMap();
-
-		//commandmands
-		btnBuy = new JButton("Buy");
-		btnSell = new JButton("Sell");
-		btnShow = new JButton("Show");
-		btnRoll = new JButton("Roll");
-
-		//sellList
-		model = new DefaultListModel();
-		proplist = new JList(model);
-		sp = new JScrollPane(proplist);
-		okSell = new JButton("Sell Now?");
-
-		//top
-		north = new JPanel();
-		money = new JLabel("Cash: 0", JLabel.CENTER);
-		turn = new JLabel("Round: 1", JLabel.CENTER);
-		int numRound = 1;
-		maxRound = 10;
-
-		//images
-		BufferedImage img1 = null;
-		BufferedImage img2 = null;
-		BufferedImage img3 = null;
-		BufferedImage img4 = null;
-
-		//*The jail pops up in the north panel whe a player is in jail
-
-		//Jail
-		pay = new JButton("Pay Fine");
-		btnFJC = new JButton("Use Jail Card");
-	}
 
 	public void init()
 	{
 		setLayout(new BorderLayout());
 
 		//load images
-		//Image build = getImage(getDocumentBase(), "Map.PNG");
+		Image build = getImage(getDocumentBase(), "Map.PNG");
 
-		icoMap = new ImageIcon("Map.PNG");
-		lblMap = new JLabel();
-		lblMap.setIcon(icoMap);
+		try
+		{
+			URL url1 = new URL(getDocumentBase(), "laptop.PNG");
+			URL url2 = new URL(getDocumentBase(), "mouse.PNG");
+			URL url3 = new URL(getDocumentBase(), "question.PNG");
+			URL url4 = new URL(getDocumentBase(), "Treasure.PNG");
+			img1 = ImageIO.read(url1);
+			img2 = ImageIO.read(url2);
+			img3 = ImageIO.read(url3);
+			img4 = ImageIO.read(url4);
+		} catch (IOException e) {}
 
-		icoLaptop = new ImageIcon("laptop.PNG");
-		icoMouse = new ImageIcon("mouse.PNG");
-		icoQuestion = new ImageIcon("question.PNG");
-		icoTreasure = new ImageIcon("treasure.PNG");
-
-		lblLaptop = new JLabel();
-		lblMouse = new JLabel();
-		lblQuestion = new JLabel();
-		lblTreasure = new JLabel();
-
-		lblLaptop.setIcon(icoMap);
-		lblMouse.setIcon(icoMouse);
-		lblQuestion.setIcon(icoQuestion);
-		lblTreasure.setIcon(icoTreasure);
-
-		bp = new BuildPanel(lblLaptop);
+		bp = new BuildPanel(build);
 
 
 		//initiate bricks, cards etc...
 		addChestCards();
 		addChanceCards();
-		placeera(); //check
+		setTiles(); //check
 
 		for(Place p : place)
 			bp.add(p);
@@ -254,21 +224,17 @@ public class Monopoly extends JFrame
 		chance.add(new String("Repair"));
 	}
 
-	/**
-	*This is a game about buying rooms at DSV. It can be a teacher, some students, or
-	*two head scinners rivaling each other for power in the School
-	*/
-	//add all the bricks on the playlog
-	public void placeera()
+
+	public void setTiles()
 	{
-		//down
+		//bottom
 		place.add(new Corner(1, 300, 300, "down", "GO!"));
 		place.add(new Street(2, 260, 300, "down", "506", 80, new Color(94, 60, 49)));
-		place.add(new CardPlace(3, 220, 300, "down", "treasure", img4));
+		place.add(new CardPlace(3, 220, 300, "down", "Treasure", img4));
 		place.add(new Street(4, 180, 300, "down", "507", 100, new Color(94, 60, 49)));
 		place.add(new Street(5, 140, 300, "down", "Sal C", 200, Color.white));
-		place.add(new ResourcePlace(6, 100, 300, "down", "Kårbibliotek", 200));
-		place.add(new CardPlace(7, 60, 300, "down", "question", img3));
+		place.add(new ResourcePlace(6, 100, 300, "down", "Library", 200));
+		place.add(new CardPlace(7, 60, 300, "down", "Question", img3));
 		place.add(new Corner(8, 0, 300, "down", "JAIL"));
 		//left
 		place.add(new Street(9, 0, 260, "left", "510", 120, new Color(233, 63, 174)));
@@ -276,29 +242,26 @@ public class Monopoly extends JFrame
 		place.add(new Street(11, 0, 180, "left", "Sal B", 200, Color.white));
 		place.add(new Street(12, 0, 140, "left", "502", 140, new Color(233, 63, 174)));
 		place.add(new Street(13, 0, 100, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new CardPlace(14, 0, 60, "left", "treasure", img4));
+		place.add(new CardPlace(14, 0, 60, "left", "Treasure", img4));
 		//top
 		place.add(new Corner(15, 0, 0, "up", "PARKING"));
 		place.add(new Street(16, 60, 0, "up", "503", 220, Color.red));
-		place.add(new CardPlace(17, 100, 0, "up", "question", img3));
+		place.add(new CardPlace(17, 100, 0, "up", "Question", img3));
 		place.add(new Street(18, 140, 0, "up", "Sal A", 200, Color.white));
 		place.add(new Street(19, 180, 0, "up", "504", 240, Color.red));
-		place.add(new ResourcePlace(20, 220, 0, "up", "Disks café", 300));
+		place.add(new ResourcePlace(20, 220, 0, "up", "Rainforest Cafe", 300));
 		place.add(new Street(21, 260, 0, "up", "505", 320, Color.red));
 		place.add(new Corner(22, 300, 0, "up", "GOTOJAIL"));
 		//right
-		place.add(new ResourcePlace(23, 300, 60, "right", "Retaurang", 300));
-		place.add(new CardPlace(24, 300, 100, "right", "treasure", img4));
+		place.add(new ResourcePlace(23, 300, 60, "right", "Restaurant", 300));
+		place.add(new CardPlace(24, 300, 100, "right", "Treasure", img4));
 		place.add(new Street(25, 300, 140, "right", "Sal D", 200, Color.white));
-		place.add(new CardPlace(26, 300, 180, "right", "question", img3));
-		place.add(new Street(27, 300, 220, "right", "Nätverksrum", 450, new Color(21, 39, 168)));
-		place.add(new Street(28, 300, 260, "right", "Foo bar", 500, new Color(21, 39, 168)));
+		place.add(new CardPlace(26, 300, 180, "right", "Question", img3));
+		place.add(new Street(27, 300, 220, "right", "Memory Lane", 450, new Color(21, 39, 168)));
+		place.add(new Street(28, 300, 260, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
 	}
 
-	//Roll the dice
-
-
-	//listener to the dice
+	//listener for the dice
 	Action diceList = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -308,8 +271,8 @@ public class Monopoly extends JFrame
 				log.append("You have already thrown the dice\n");
 				return;
 			}
-			Random rand = new Random();
-			int slump = rand.nextInt(6)+1;
+			Random random = new Random();
+			int slump = random.nextInt(6)+1;
 			if(player1.isinJail)
 			{
 				if(slump==6)
@@ -337,7 +300,7 @@ public class Monopoly extends JFrame
 			player1.setPlan(slump);
 			for(Place p : place)
 			{
-				if(p.getNr() == player1.getPlan())
+				if(p.getN() == player1.getPlan())
 					p.insert(player1);
 			}
 			dice.setAmount(slump);
@@ -358,7 +321,7 @@ public class Monopoly extends JFrame
 		if(pl instanceof Street || pl instanceof ResourcePlace)
 		{
 			message.setText("Room: "+pl.getName());
-			message.setForeground(pl.getCol());
+			message.setForeground(pl.getColor());
 		}
 
 		else if(pl.getName().equals("JAIL"))
@@ -463,15 +426,15 @@ public class Monopoly extends JFrame
 		}
 	};
 
-	//Randomly draw a Community Chest Card
+	//RandomouseListenery draw a Community Chest Card
 	Action drawChest = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
 		{
 			message.setForeground(Color.red);
 			log.append("...drawn!\n");
-			Random rand = new Random();
-			int i = rand.nextInt(3);
+			Random random = new Random();
+			int i = random.nextInt(3);
 			String kort = chest.get(i);
 
 			if(kort.equals("PENALTY"))
@@ -496,15 +459,15 @@ public class Monopoly extends JFrame
 		}
 	};
 
-	//Randomly draw a Chance card
+	//RandomouseListenery draw a Chance card
 	Action drawChance = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
 		{
 			message.setForeground(Color.red);
 			log.append("...drawn!\n");
-			Random rand = new Random();
-			int i = rand.nextInt(3);
+			Random random = new Random();
+			int i = random.nextInt(3);
 			String kort = chance.get(i);
 
 			if(kort.equals("BIRTHDAY"))
@@ -583,8 +546,8 @@ public class Monopoly extends JFrame
 			model.removeElement(p);
 			player1.setMoney((p.getCost() /2));
 			money.setText("Cash: " + player1.getMoney());
-			p.setBordColor(Color.black);
-			map.setColorOnBrick(p.getNr(), Color.white);
+			p.setBorderColor(Color.black);
+			map.setColorOnBrick(p.getN(), Color.white);
 		}
 	};
 
@@ -632,8 +595,8 @@ public class Monopoly extends JFrame
 			}
 			hasRolled = false;
 			log.setText(player1.getName() + "'s turn\n");
-			int cash = player1.getMoney()+player1.getIncommande();
-			player1.setMoney(player1.getIncommande());
+			int cash = player1.getMoney()+player1.getIncome();
+			player1.setMoney(player1.getIncome());
 			money.setText("Cash: " + String.valueOf(cash));
 
 			if(player1.isinJail)
@@ -683,18 +646,18 @@ public class Monopoly extends JFrame
 				log.append("Insufficient amount of money!\n");
 				return;
 			}
-			message.setForeground(p.getCol());
+			message.setForeground(p.getColor());
 			message.setText(p.getName());
 			player1.buyProp(p);
 			if(player1 == p1)
 			{
-				p.setBordColor(Color.blue);
-				map.setColorOnBrick(p.getNr(), Color.blue);
+				p.setBorderColor(Color.blue);
+				map.setColorOnBrick(p.getN(), Color.blue);
 			}
 			else if(player1 == p2)
 			{
-				p.setBordColor(Color.red);
-				map.setColorOnBrick(p.getNr(), Color.red);
+				p.setBorderColor(Color.red);
+				map.setColorOnBrick(p.getN(), Color.red);
 			}
 
 			player1.setMoney(-(p.getCost()));
@@ -747,7 +710,7 @@ public class Monopoly extends JFrame
 		private JTextField name1 = new JTextField(15);
 		private JTextField name2 = new JTextField(15);
 		private String[] limits = {"100","75","50", "25"};
-		private JComboBox box = new JComboBox(limits);
+		private JComboBox box = new JComboBox(limits); //dropdown menu
 		private JLabel start = new JLabel("Start Game", JLabel.CENTER);
 		private JLabel back = new JLabel("Back", JLabel.CENTER);
 
@@ -786,12 +749,12 @@ public class Monopoly extends JFrame
 			game.add(box);
 			game.add(start);
 			game.add(back);
-			startText.addMouseListener(ml);
-			back.addMouseListener(ml);
-			start.addMouseListener(ml);
+			startText.addMouseListener(mouseListener);
+			back.addMouseListener(mouseListener);
+			start.addMouseListener(mouseListener);
 		}
 
-		MouseListener ml = new MouseAdapter()
+		MouseListener mouseListener = new MouseAdapter()
 		{
 			public void mouseEntered(MouseEvent e)
 			{
