@@ -9,123 +9,92 @@ import java.awt.event.*;
 import java.applet.*;
 import javax.swing.border.*;
 
-
-public class Monopoly extends JFrame
+public class Monopoly extends JApplet
 {
-	private JButton btnBuy, btnEnd, btnSell, btnShow, btnRoll, okSell, pay, btnFJC;
-	private JPanel north, east, south, playerMessage, command;
-	private JTextArea log;
-	private JScrollPane jspLog;
-	private JLabel message, money, turn, lblMap, lblLaptop, lblMouse, lblQuestion, lblTreasure;
-	private JList proplist;
-	private JScrollPane sp;
-	private ImageIcon icoMap, icoLaptop, icoMouse, icoQuestion, icoTreasure;
+	//Setting the menu, players, dice, and cards
+	Menu menu = new Menu();
+	BuildPanel bp;
+	ArrayList<Place> place = new ArrayList<Place>();
+	Dice dice = new Dice();
+	Player p1;
+	Player p2;
+	ArrayList<String> chest = new ArrayList<String>();
+	ArrayList<String> chance = new ArrayList<String>();
 
-	private ArrayList<String> chest, chance;
-	private ArrayList<Place> place;
+	//ending a turn
 
-	private Dice dice;
-	private MiniMap map;
-	private DefaultListModel model;
+	JButton btnEnd = new JButton("       End Your Turn       ");
 
+	Player player1;
+	Player player2;
+	boolean hasRolled = false;
 
+	//scroll log is messages to the active player
+
+	//east panel
+	JPanel east = new JPanel();
+	JTextArea log = new JTextArea(60, 20);
+	JScrollPane jspLog = new JScrollPane(log);
+
+	//south panel
+	JPanel south = new JPanel();
+	JPanel playerMessage = new JPanel();
+	JLabel message = new JLabel("Welcommande to Monopoly!", JLabel.CENTER);
+	JPanel command = new JPanel();
+	MiniMap map = new MiniMap();
+
+	//commandmands
+	private JButton btnBuy = new JButton("Buy");
+	private JButton btnSell = new JButton("Sell");
+	private JButton btnShow = new JButton("Show");
+	private JButton btnRoll = new JButton("Roll");
+
+	//sellList
+	DefaultListModel model = new DefaultListModel();
+	JList proplist = new JList(model);
+	JScrollPane sp = new JScrollPane(proplist);
+	private JButton okSell = new JButton("Sell Now?");
+
+	//top
+	JPanel north = new JPanel();
+	JLabel money = new JLabel("Cash: 0", JLabel.CENTER);
+	JLabel turn = new JLabel("Round: 1", JLabel.CENTER);
+	int numRound = 1;
 	private int maxRound = 10;
 
+	//images
+	BufferedImage img1 = null;
+	BufferedImage img2 = null;
+	BufferedImage img3 = null;
+	BufferedImage img4 = null;
 
+	//*The jail pops up in the north panel whe a player is in jail
 
-	public Monopoly()
-	{
-		//Setting the menu, players, dice, and cards
-		Menu menu = new Menu();
-		BuildPanel bp;
-		place = new ArrayList<Place>();
-		Dice dice = new Dice();
-		Player p1;
-		Player p2;
-		chest = new ArrayList<String>();
-		chance = new ArrayList<String>();
+	//Jail
+	private JButton pay = new JButton("Pay Fine");
+	private JButton btnFJC = new JButton("Use Jail Card");
 
-		//ending a turn
-
-		btnEnd = new JButton("       End Your Turn       ");
-
-		Player player1;
-		Player player2;
-		boolean hasRolled = false;
-
-		//scroll log is messages to the active player
-
-		//east panel
-		east = new JPanel();
-		log = new JTextArea(60, 20);
-		jspLog = new JScrollPane(log);
-
-		//south panel
-		south = new JPanel();
-		playerMessage = new JPanel();
-		message = new JLabel("Welcome to Monopoly!", JLabel.CENTER);
-		command = new JPanel();
-		map = new MiniMap();
-
-		//commandmands
-		btnBuy = new JButton("Buy");
-		btnSell = new JButton("Sell");
-		btnShow = new JButton("Show");
-		btnRoll = new JButton("Roll");
-
-		//sellList
-		model = new DefaultListModel();
-		proplist = new JList(model);
-		sp = new JScrollPane(proplist);
-		okSell = new JButton("Sell Now?");
-
-		//top
-		north = new JPanel();
-		money = new JLabel("Cash: 0", JLabel.CENTER);
-		turn = new JLabel("Round: 1", JLabel.CENTER);
-		int numRound = 1;
-		maxRound = 10;
-
-		//images
-		BufferedImage img1 = null;
-		BufferedImage img2 = null;
-		BufferedImage img3 = null;
-		BufferedImage img4 = null;
-
-		//*The jail pops up in the north panel whe a player is in jail
-
-		//Jail
-		pay = new JButton("Pay Fine");
-		btnFJC = new JButton("Use Jail Card");
-	}
 
 	public void init()
 	{
 		setLayout(new BorderLayout());
 
 		//load images
-		//Image build = getImage(getDocumentBase(), "Map.PNG");
+		Image build = getImage(getDocumentBase(), "Map.PNG");
 
-		icoMap = new ImageIcon("Map.PNG");
-		lblMap = new JLabel();
-		lblMap.setIcon(icoMap);
+		try
+		{
+			URL url1 = new URL(getDocumentBase(), "laptop.PNG");
+			URL url2 = new URL(getDocumentBase(), "mouse.PNG");
+			URL url3 = new URL(getDocumentBase(), "question.PNG");
+			URL url4 = new URL(getDocumentBase(), "Treasure.PNG");
+			img1 = ImageIO.read(url1);
+			img2 = ImageIO.read(url2);
+			img3 = ImageIO.read(url3);
+			img4 = ImageIO.read(url4);
+		} catch (IOException e) {}
 
-		icoLaptop = new ImageIcon("laptop.PNG");
-		icoMouse = new ImageIcon("mouse.PNG");
-		icoQuestion = new ImageIcon("question.PNG");
-		icoTreasure = new ImageIcon("treasure.PNG");
-
-		lblLaptop = new JLabel();
-		lblMouse = new JLabel();
-		lblQuestion = new JLabel();
-		lblTreasure = new JLabel();
-
-		lblLaptop.setIcon(icoMap);
-		lblMouse.setIcon(icoMouse);
-		lblQuestion.setIcon(icoQuestion);
-		lblTreasure.setIcon(icoTreasure);
-
-		bp = new BuildPanel(lblLaptop);
+		bp = new BuildPanel(build);
 
 
 		//initiate bricks, cards etc...
