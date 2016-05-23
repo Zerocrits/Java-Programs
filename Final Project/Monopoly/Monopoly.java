@@ -714,8 +714,7 @@ public class Monopoly extends JApplet
 		private ImageIcon imgMonopoly = new ImageIcon("monopoly.PNG");
 		private JLabel title = new JLabel(imgMonopoly);
 		private JPanel menu = new JPanel();
-		private ImageIcon imgStart = new ImageIcon("start.PNG");
-		private JButton btnStart = new JButton(imgStart);
+		private JButton btnStart = new JButton();
 		private JLabel startText = new JLabel("Start new game", JLabel.CENTER);
 
 		private JPanel game = new JPanel();
@@ -732,13 +731,15 @@ public class Monopoly extends JApplet
 			setOpaque(true);
 			setBackground(new Color(178,247,178));
 			title.setFont(new Font("Arial Black", Font.BOLD, 60));
+			btnStart = new JButton("Start");
+			btnStart.setFont(new Font("Britannic Bold", Font.BOLD, 132));
 			title.setForeground(Color.white);
 			title.setOpaque(true);
 			title.setBackground(Color.red);
 			title.setBorder(new MatteBorder(5,5,5,5,Color.white));
 			add(title);
 
-			menu.setLayout(new GridLayout(2,0));
+			menu.setLayout(new GridLayout(1,0));
 			menu.setOpaque(true);
 			menu.setBackground(new Color(178,247,178));
 			menu.add(btnStart);
