@@ -30,11 +30,19 @@ public class Monopoly extends JApplet
 	Player player2;
 	boolean hasRolled = false;
 
-	//scroll log is messages to the active player
+	//scroll log is individual messages sent to the current player
+
+
+	//north panel
+	JPanel north = new JPanel();
+	JLabel money = new JLabel("Cash: 0", JLabel.CENTER);
+	JLabel turn = new JLabel("Round: 1", JLabel.CENTER);
+	int numRound = 1;
+	private int maxRound = 10;
 
 	//east panel
 	JPanel east = new JPanel();
-	JTextArea log = new JTextArea(60, 20);
+	JTextArea log = new JTextArea(60, 21);
 	JScrollPane jspLog = new JScrollPane(log);
 
 	//south panel
@@ -44,7 +52,7 @@ public class Monopoly extends JApplet
 	JPanel command = new JPanel();
 	MiniMap map = new MiniMap();
 
-	//commandmands
+	//commands
 	private JButton btnBuy = new JButton("Buy");
 	private JButton btnSell = new JButton("Sell");
 	private JButton btnShow = new JButton("Show");
@@ -56,18 +64,12 @@ public class Monopoly extends JApplet
 	JScrollPane sp = new JScrollPane(proplist);
 	private JButton okSell = new JButton("Sell Now?");
 
-	//top
-	JPanel north = new JPanel();
-	JLabel money = new JLabel("Cash: 0", JLabel.CENTER);
-	JLabel turn = new JLabel("Round: 1", JLabel.CENTER);
-	int numRound = 1;
-	private int maxRound = 10;
-
 	//images
 	BufferedImage img1 = null;
 	BufferedImage img2 = null;
 	BufferedImage img3 = null;
 	BufferedImage img4 = null;
+	BufferedImage img5 = null;
 
 	//*The jail pops up in the north panel whe a player is in jail
 
@@ -89,10 +91,12 @@ public class Monopoly extends JApplet
 			URL url2 = new URL(getDocumentBase(), "mouse.PNG");
 			URL url3 = new URL(getDocumentBase(), "question.PNG");
 			URL url4 = new URL(getDocumentBase(), "Treasure.PNG");
+			URL url5 = new URL(getDocumentBase(), "gotoJail.PNG");
 			img1 = ImageIO.read(url1);
 			img2 = ImageIO.read(url2);
 			img3 = ImageIO.read(url3);
 			img4 = ImageIO.read(url4);
+			img5 = ImageIO.read(url5);
 		} catch (IOException e) {}
 
 		bp = new BuildPanel(build);
@@ -101,13 +105,13 @@ public class Monopoly extends JApplet
 		//initiate bricks, cards etc...
 		addChestCards();
 		addChanceCards();
-		setTiles(); //check
+		setTiles();
 
 		for(Place p : place)
 			bp.add(p);
 
 		dice.addMouseListener(dt); //display thread
-		setSize(720,500);
+		setSize(1000,848);
 		bp.add(dice);
 
 		//East panel
@@ -228,37 +232,45 @@ public class Monopoly extends JApplet
 	public void setTiles()
 	{
 		//bottom
-		place.add(new Corner(1, 300, 300, "down", "GO!"));
-		place.add(new Street(2, 260, 300, "down", "506", 80, new Color(94, 60, 49)));
-		place.add(new CardPlace(3, 220, 300, "down", "Treasure", img4));
-		place.add(new Street(4, 180, 300, "down", "507", 100, new Color(94, 60, 49)));
-		place.add(new Street(5, 140, 300, "down", "Sal C", 200, Color.white));
-		place.add(new ResourcePlace(6, 100, 300, "down", "Library", 200));
-		place.add(new CardPlace(7, 60, 300, "down", "Question", img3));
-		place.add(new Corner(8, 0, 300, "down", "JAIL"));
+		place.add(new Corner(1, 600, 600, "down", "GO!"));
+		place.add(new Street(2, 540, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new CardPlace(3, 480, 600, "down", "Treasure", img4));
+		place.add(new Street(4, 420, 600, "down", "507", 100, new Color(94, 60, 49)));
+		place.add(new Street(5, 360, 600, "down", "Sal C", 200, Color.white));
+		place.add(new ResourcePlace(6, 300, 600, "down", "Library", 200));
+		place.add(new CardPlace(7, 240, 600, "down", "Question", img3));
+		place.add(new Street(2, 180, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new Street(2, 120, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new Corner(8, 0, 600, "down", "JAIL"));
 		//left
-		place.add(new Street(9, 0, 260, "left", "510", 120, new Color(233, 63, 174)));
-		place.add(new Street(10, 0, 220, "left", "501", 140, new Color(233, 63, 174)));
-		place.add(new Street(11, 0, 180, "left", "Sal B", 200, Color.white));
-		place.add(new Street(12, 0, 140, "left", "502", 140, new Color(233, 63, 174)));
-		place.add(new Street(13, 0, 100, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new CardPlace(14, 0, 60, "left", "Treasure", img4));
+		place.add(new Street(9, 0, 540, "left", "510", 120, new Color(233, 63, 174)));
+		place.add(new Street(10, 0, 480, "left", "501", 140, new Color(233, 63, 174)));
+		place.add(new Street(11, 0, 420, "left", "Sal B", 200, Color.white));
+		place.add(new Street(12, 0, 360, "left", "502", 140, new Color(233, 63, 174)));
+		place.add(new Street(13, 0, 300, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new Street(13, 0, 240, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new Street(13, 0, 180, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new CardPlace(14, 0, 120, "left", "Treasure", img4));
 		//top
 		place.add(new Corner(15, 0, 0, "up", "PARKING"));
-		place.add(new Street(16, 60, 0, "up", "503", 220, Color.red));
-		place.add(new CardPlace(17, 100, 0, "up", "Question", img3));
-		place.add(new Street(18, 140, 0, "up", "Sal A", 200, Color.white));
-		place.add(new Street(19, 180, 0, "up", "504", 240, Color.red));
-		place.add(new ResourcePlace(20, 220, 0, "up", "Rainforest Cafe", 300));
-		place.add(new Street(21, 260, 0, "up", "505", 320, Color.red));
-		place.add(new Corner(22, 300, 0, "up", "GOTOJAIL"));
+		place.add(new Street(16, 120, 0, "up", "503", 220, Color.red));
+		place.add(new CardPlace(17, 180, 0, "up", "Question", img3));
+		place.add(new Street(18, 240, 0, "up", "Sal A", 200, Color.white));
+		place.add(new Street(19, 300, 0, "up", "504", 240, Color.red));
+		place.add(new ResourcePlace(20, 360, 0, "up", "Rainforest Cafe", 300));
+		place.add(new Street(21, 420, 0, "up", "505", 320, Color.red));
+		place.add(new Street(16, 480, 0, "up", "503", 220, Color.red));
+		place.add(new Street(16, 540, 0, "up", "503", 220, Color.red));
+		place.add(new Corner(22, 600, 0, "up", "GOTOJAIL"));
 		//right
-		place.add(new ResourcePlace(23, 300, 60, "right", "Restaurant", 300));
-		place.add(new CardPlace(24, 300, 100, "right", "Treasure", img4));
-		place.add(new Street(25, 300, 140, "right", "Sal D", 200, Color.white));
-		place.add(new CardPlace(26, 300, 180, "right", "Question", img3));
-		place.add(new Street(27, 300, 220, "right", "Memory Lane", 450, new Color(21, 39, 168)));
-		place.add(new Street(28, 300, 260, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
+		place.add(new ResourcePlace(23, 600, 120, "right", "Restaurant", 300));
+		place.add(new CardPlace(24, 600, 180, "right", "Treasure", img4));
+		place.add(new Street(25, 600, 240, "right", "Sal D", 200, Color.white));
+		place.add(new CardPlace(26, 600, 300, "right", "Question", img3));
+		place.add(new Street(27, 600, 360, "right", "Memory Lane", 450, new Color(21, 39, 168)));
+		place.add(new Street(28, 600, 420, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
+		place.add(new Street(25, 600, 480, "right", "Sal D", 200, Color.white));
+		place.add(new Street(25, 600, 540, "right", "Sal D", 200, Color.white));
 	}
 
 	//listener for the dice
@@ -294,10 +306,10 @@ public class Monopoly extends JApplet
 			}
 			for(Place p : place)
 			{
-				if(p.finns(player1))
-					p.taBort(player1);
+				if(p.checkPOS(player1))
+					p.putinJail(player1);
 			}
-			player1.setPlan(slump);
+			player1.setPlan(slump); //checks roll
 			for(Place p : place)
 			{
 				if(p.getN() == player1.getPlan())
@@ -305,7 +317,7 @@ public class Monopoly extends JApplet
 			}
 			dice.setAmount(slump);
 			hasRolled=true;
-			log.append(player1.getName()+"'s rolled a "+dice.getAmount()+"\n");
+			log.append(player1.getName() + "'s rolled a " + dice.getAmount() + "\n");
 			runPlaceEvents();
 			btnBuy.setEnabled(true);
 			btnRoll.setEnabled(false);
@@ -318,7 +330,7 @@ public class Monopoly extends JApplet
 	{
 		Place pl = place.get(player1.getPlan()-1);
 		javax.swing.Timer tim;
-		if(pl instanceof Street || pl instanceof ResourcePlace)
+		if(pl instanceof Street || pl instanceof ResourcePlace) //Instanceof is used to check an object to a specific class
 		{
 			message.setText("Room: "+pl.getName());
 			message.setForeground(pl.getColor());
@@ -329,7 +341,7 @@ public class Monopoly extends JApplet
 
 		else if(pl.getName().equals("GOTOJAIL"))
 		{
-			log.append("You were sent to Jail!!!");
+			log.append("You are now Jail!");
 			btnEnd.setEnabled(false);
 			tim = new javax.swing.Timer(2000, goinJail);
 			tim.setRepeats(false);
@@ -339,10 +351,10 @@ public class Monopoly extends JApplet
 		if(player2.propExists(pl))
 		{
 			int pen = pl.getCost()/2; //penalty
-			log.append("You are standing in one of\n "+player2.getName() +" rooms! You must pay " + pen + "!\n");
+			log.append("" + player2.getName() +" Own's this spot. rooms! You must pay " + pen + "!\n");
 			player1.setMoney(-(pen));
 			player2.setMoney(pen);
-			money.setText("Cash: "+player1.getMoney());
+			money.setText("Cash: " + player1.getMoney());
 		}
 
 		else if(pl.getName().equals("PARKING"))
@@ -355,7 +367,7 @@ public class Monopoly extends JApplet
 			{
 				tim = new javax.swing.Timer(2000, drawChest);
 				tim.setRepeats(false);
-				log.append("Drawing Chest card...\n");
+				log.append("Drawing Community Chest card...\n");
 				tim.start();
 			}
 			else if(pl.getName().equals("question"))
@@ -370,7 +382,7 @@ public class Monopoly extends JApplet
 		{
 			player1.setMoney(200);
 			money.setText("Cash: "+player1.getMoney());
-			log.append(player1.getName()+" has passed GO\n and collects $200!\n");
+			log.append(player1.getName()+" has passed GO and collects $200!\n");
 		}
 	}
 
@@ -381,8 +393,8 @@ public class Monopoly extends JApplet
 		{
 			for(Place p : place)
 			{
-				if(p.finns(player1))
-					p.taBort(player1);
+				if(p.checkPOS(player1))
+					p.putinJail(player1);
 			}
 			place.get(7).insert(player1);
 			player1.isinJail = true;
@@ -393,9 +405,9 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//*In Monopoly, there are three ways of getting out. Roll a six on the dice, pay the bank 200 or use a "Free Jail" card
+	//there are three ways to leave jail, roll a six on the dice, pay 200 or use a "Free Jail Card(FJC)"
 
-	//Player pays to get out of jail
+	//player pays to get out of jail
 	Action paytoJail = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -411,7 +423,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//player use a "Free out of Jail" card
+	//player uses a "Free out of Jail" card
 	Action freeOutOfJail = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -426,7 +438,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//RandomouseListenery draw a Community Chest Card
+	//RandomouseListener draw a Community Chest Card
 	Action drawChest = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -435,23 +447,23 @@ public class Monopoly extends JApplet
 			log.append("...drawn!\n");
 			Random random = new Random();
 			int i = random.nextInt(3);
-			String kort = chest.get(i);
+			String phrase = chest.get(i);
 
-			if(kort.equals("PENALTY"))
+			if(phrase.equals("PENALTY"))
 			{
-				message.setText("Penalty! You must pay $80!");
+				message.setText("Tax Time! You owe $80!");
 				player1.setMoney(-80);
 				money.setText("Cash: " + String.valueOf(player1.getMoney()));
 			}
-			else if(kort.equals("FINED"))
+			else if(phrase.equals("FINED"))
 			{
-				message.setText("Tax cheat! You must pay 100!");
+				message.setText("You're Being Audited! You must pay $100!");
 				player1.setMoney(-100);
 				money.setText("Cash: " + String.valueOf(player1.getMoney()));
 			}
-			else if(kort.equals("PAY"))
+			else if(phrase.equals("PAY"))
 			{
-				message.setText("Incommande tax refund. 200 collected!");
+				message.setText("Income tax refunded. $200 collected!");
 				player1.setMoney(200);
 				money.setText("Cash: " + String.valueOf(player1.getMoney()));
 			}
@@ -459,7 +471,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//RandomouseListenery draw a Chance card
+	//RandomouseListener draw a Chance card
 	Action drawChance = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -468,21 +480,21 @@ public class Monopoly extends JApplet
 			log.append("...drawn!\n");
 			Random random = new Random();
 			int i = random.nextInt(3);
-			String kort = chance.get(i);
+			String phrase = chance.get(i);
 
-			if(kort.equals("BIRTHDAY"))
+			if(phrase.equals("BIRTHDAY"))
 			{
-				message.setText("It's your birthday today!\n");
+				message.setText("Your birthday is today!\n");
 				player1.setMoney(20);
 				player2.setMoney(-20);
-				money.setText("Cash: "+String.valueOf(player1.getMoney()));
+				money.setText("Cash: " + String.valueOf(player1.getMoney()));
 			}
-			else if(kort.equals("JAIL"))
+			else if(phrase.equals("JAIL"))
 			{
 				message.setText("You have a Free Jail card!\n");
 				player1.haveJC = true;
 			}
-			else if(kort.equals("REPAIR"))
+			else if(phrase.equals("REPAIR"))
 			{
 				message.setText("Make repairs on all of your rooms!\n");
 				ArrayList<Place> nyL = player1.getProps();
@@ -496,7 +508,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//list all the rooms a player own
+	//lists all cards player selected owns
 	Action showList = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -515,7 +527,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	//Listener to the sell button commandmand
+	//Listener to the sell button
 	Action sellList = new AbstractAction()
 	{
 		public void actionPerformed(ActionEvent e)
@@ -551,9 +563,7 @@ public class Monopoly extends JApplet
 		}
 	};
 
-	/**
-	*When a player has ended a turn, players swap between "player1" and "player2"
-	*/
+	//After emd turn button, swaps between "player1" and "player2"
 
 	//listener to the "End turn" button
 	Action endList = new AbstractAction()
@@ -698,14 +708,16 @@ public class Monopoly extends JApplet
 		dice.removeMouseListener(dt);
 	}
 
-	//the menu class
+	//main menu
 	class Menu extends JPanel
 	{
-		private JLabel title = new JLabel("Monopoly", JLabel.CENTER);
+		private ImageIcon imgMonopoly = new ImageIcon("monopoly.PNG");
+		private JLabel title = new JLabel(imgMonopoly);
 		private JPanel menu = new JPanel();
+		private ImageIcon imgStart = new ImageIcon("start.PNG");
+		private JButton btnStart = new JButton(imgStart);
 		private JLabel startText = new JLabel("Start new game", JLabel.CENTER);
 
-		//Start a game
 		private JPanel game = new JPanel();
 		private JTextField name1 = new JTextField(15);
 		private JTextField name2 = new JTextField(15);
@@ -720,17 +732,16 @@ public class Monopoly extends JApplet
 			setOpaque(true);
 			setBackground(new Color(178,247,178));
 			title.setFont(new Font("Arial Black", Font.BOLD, 60));
-			startText.setFont(new Font("Arial Black", Font.BOLD, 18));
 			title.setForeground(Color.white);
 			title.setOpaque(true);
 			title.setBackground(Color.red);
 			title.setBorder(new MatteBorder(5,5,5,5,Color.white));
 			add(title);
 
-			menu.setLayout(new GridLayout(2,1,60,10));
+			menu.setLayout(new GridLayout(2,0));
 			menu.setOpaque(true);
 			menu.setBackground(new Color(178,247,178));
-			menu.add(startText);
+			menu.add(btnStart);
 			add(menu);
 
 			game.setLayout(new BoxLayout(game, BoxLayout.Y_AXIS));
@@ -749,9 +760,26 @@ public class Monopoly extends JApplet
 			game.add(box);
 			game.add(start);
 			game.add(back);
-			startText.addMouseListener(mouseListener);
 			back.addMouseListener(mouseListener);
 			start.addMouseListener(mouseListener);
+			btnStart.addActionListener(new ButtonListener());
+		}
+
+		private class ButtonListener implements ActionListener
+		{
+			public void actionPerformed(ActionEvent event)
+			{
+				Object source = new Object();
+				source = event.getSource();
+				if(source == btnStart)
+				{
+					remove(menu);
+					add(game);
+					validate();
+					repaint();
+					btnStart.setForeground(Color.black);
+				}
+			}
 		}
 
 		MouseListener mouseListener = new MouseAdapter()
@@ -770,15 +798,7 @@ public class Monopoly extends JApplet
 			}
 			public void mouseClicked(MouseEvent e)
 			{
-				if(e.getSource() == startText)
-				{
-					remove(menu);
-					add(game);
-					validate();
-					repaint();
-					startText.setForeground(Color.black);
-				}
-				else if(e.getSource() == back)
+				if(e.getSource() == back)
 				{
 					remove(game);
 					add(menu);

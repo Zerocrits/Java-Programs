@@ -11,6 +11,92 @@ import javax.swing.border.*;
 
 public class Monopoly extends JApplet
 {
+	/*
+	private JButton btnBuy, btnEnd, btnSell, btnShow, btnRoll, okSell, pay, btnFJC;
+		private JPanel north, east, south, playerMessage, command;
+		private JTextArea log;
+		private JScrollPane jspLog;
+		private JLabel message, money, turn, lblMap, lblLaptop, lblMouse, lblQuestion, lblTreasure;
+		private JList proplist;
+		private JScrollPane sp;
+		private ImageIcon icoMap, icoLaptop, icoMouse, icoQuestion, icoTreasure;
+
+		private ArrayList<String> chest, chance;
+		private ArrayList<Place> place;
+
+		private Dice dice;
+		private MiniMap map;
+		private DefaultListModel model;
+
+		private int maxRound = 10;
+
+		//Setting the menu, players, dice, and cards
+		Menu menu = new Menu();
+		BuildPanel bp;
+		place = new ArrayList<Place>();
+		Dice dice = new Dice();
+		Player p1;
+		Player p2;
+		chest = new ArrayList<String>();
+		chance = new ArrayList<String>();
+
+		//ending a turn
+
+		btnEnd = new JButton("       End Your Turn       ");
+
+		Player player1;
+		Player player2;
+		boolean hasRolled = false;
+
+		//scroll log is messages to the active player
+
+		//east panel
+		east = new JPanel();
+		log = new JTextArea(60, 20);
+		jspLog = new JScrollPane(log);
+
+		//south panel
+		south = new JPanel();
+		playerMessage = new JPanel();
+		message = new JLabel("Welcome to Monopoly!", JLabel.CENTER);
+		command = new JPanel();
+		map = new MiniMap();
+
+		//commandmands
+		btnBuy = new JButton("Buy");
+		btnSell = new JButton("Sell");
+		btnShow = new JButton("Show");
+		btnRoll = new JButton("Roll");
+
+		//sellList
+		model = new DefaultListModel();
+		proplist = new JList(model);
+		sp = new JScrollPane(proplist);
+		okSell = new JButton("Sell Now?");
+
+		//top
+		north = new JPanel();
+		money = new JLabel("Cash: 0", JLabel.CENTER);
+		turn = new JLabel("Round: 1", JLabel.CENTER);
+		int numRound = 1;
+		maxRound = 10;
+
+		//images
+		BufferedImage img1 = null;
+		BufferedImage img2 = null;
+		BufferedImage img3 = null;
+		BufferedImage img4 = null;
+
+		//*The jail pops up in the north panel whe a player is in jail
+
+		//Jail
+		pay = new JButton("Pay Fine");
+	btnFJC = new JButton("Use Jail Card");
+	*/
+
+
+
+
 	//Setting the menu, players, dice, and cards
 	Menu menu = new Menu();
 	BuildPanel bp;

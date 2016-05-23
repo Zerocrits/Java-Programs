@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Place extends JPanel
 {
-	protected int n; //check
+	protected int n;
 	protected Rectangle2D.Double rect;
 	protected int x, y;
 	protected String align;
@@ -26,14 +26,14 @@ public class Place extends JPanel
 
 		if(align.equals("up") || align.equals("down"))
 		{
-			x2 = 40;
-			y2 = 60;
+			x2 = 60;
+			y2 = 120;
 		}
 
 		else if(align.equals("left") || align.equals("right"))
 		{
-			x2 = 60;
-			y2 = 40;
+			x2 = 120;
+			y2 = 60;
 		}
 
 		setBounds(x, y, x2, y2);
@@ -41,7 +41,7 @@ public class Place extends JPanel
 		setBackground(new Color(159, 214, 141));
 	}
 
-	public int getN()//check
+	public int getN() //get num
 	{
 		return n;
 	}
@@ -66,7 +66,7 @@ public class Place extends JPanel
 		return "Place";
 	}
 
-	public boolean taBort(Player p) //check
+	public boolean putinJail(Player p) //check
 	{
 		remove(p);
 		players.remove(p);
@@ -74,7 +74,7 @@ public class Place extends JPanel
 		return true;
 	}
 
-	public boolean finns(Player p) //check
+	public boolean checkPOS(Player p)
 	{
 		if(players.contains(p))
 			return true;

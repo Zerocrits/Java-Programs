@@ -8,7 +8,7 @@ public class Dice extends JComponent
 	RoundRectangle2D shape;
 
 	private Ellipse2D.Double circle;
-	private int amount = 1; //check
+	private int amount = 1;
 
 	public Dice()
 	{

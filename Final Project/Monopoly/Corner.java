@@ -8,10 +8,10 @@ public class Corner extends Place
 {
 	protected String type;
 
-	public Corner(int n, int x, int y, String a, String type) //check a
+	public Corner(int n, int x, int y, String a, String type)
 	{
 		super(n, x, y, a);
-		setBounds(x, y, 60, 60);
+		setBounds(x, y, 120, 120);
 		this.type = type;
 	}
 
@@ -25,11 +25,11 @@ public class Corner extends Place
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setPaint(Color.black);
-		rect = new Rectangle2D.Double(0, 0, 60, 60);
+		rect = new Rectangle2D.Double(0, 0, 120, 120);
 		g2d.draw(rect);
 		g2d.setPaint(Color.black);
-		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 8));
-		g2d.drawString(type, 4, 25);
+		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 24));
+		g2d.drawString(type, 15, 50);
 		if(!players.isEmpty())
 		{
 			int px = 10;

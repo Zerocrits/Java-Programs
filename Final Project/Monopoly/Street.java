@@ -16,7 +16,7 @@ public class Street extends Place
 		this.name = name;
 		this.cost = cost;
 		color = c;
-		setToolTipText(name);
+		setToolTipText(name + "($" + cost + ")");
 	}
 
 	public String getName()
@@ -37,7 +37,7 @@ public class Street extends Place
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g; //check
+		Graphics2D g2d = (Graphics2D)g;
 		g2d.setPaint(borderColor);
 		if(align.equals("up") || align.equals("down"))
 			rect = new Rectangle2D.Double(0, 0, x2, y2);
@@ -48,43 +48,48 @@ public class Street extends Place
 		Rectangle2D.Double rect2 = new Rectangle2D.Double(1, 1, 1, 1);
 		if(align.equals("down"))
 		{
-			rect = new Rectangle2D.Double(2, 2, 37, 19);
-			rect2 = new Rectangle2D.Double(0, 0, 40, 20);
+			rect = new Rectangle2D.Double(2, 2, 58, 19);
+			rect2 = new Rectangle2D.Double(0, 0, 59, 20);
 		}
 		else if(align.equals("up"))
 		{
-			rect = new Rectangle2D.Double(2, 40, 37, 18);
-			rect2 = new Rectangle2D.Double(0, 40, 40, 20);
+			rect = new Rectangle2D.Double(2, 2, 58, 19);
+			rect2 = new Rectangle2D.Double(0, 0, 59, 20);
 		}
 		else if(align.equals("left"))
 		{
-			rect = new Rectangle2D.Double(42, 2, 17, 37);
-			rect2 = new Rectangle2D.Double(42, 0, 20, 40);
+			rect = new Rectangle2D.Double(98, 2, 19, 58);
+			rect2 = new Rectangle2D.Double(98, 0, 20, 59);
 		}
 		else if(align.equals("right"))
 		{
-			rect = new Rectangle2D.Double(2, 2, 17, 37);
-			rect2 = new Rectangle2D.Double(0, 0, 20, 40);
+			rect = new Rectangle2D.Double(2, 2, 19, 58);
+			rect2 = new Rectangle2D.Double(0, 0, 20, 59);
 		}
 		g2d.setPaint(color);
 		g2d.fill(rect);
 		g2d.setPaint(Color.black);
 		g2d.draw(rect2);
-		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 8)); //change font
+		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 17)); //change font
 		if(align.equals("right"))
 		{
-			g2d.drawString(name, 22, 25);
-			g2d.drawString(String.valueOf(cost), 22, 35);
+			g2d.drawString(name, 25, 20);
+			g2d.drawString("$" + String.valueOf(cost), 25, 40);
 		}
 		else if(align.equals("down"))
 		{
-			g2d.drawString(name, 10, 30);
-			g2d.drawString(String.valueOf(cost), 10, 40);
+			g2d.drawString(name, 3, 40);
+			g2d.drawString("$" + String.valueOf(cost), 10, 110);
 		}
-		else
+		else if(align.equals("up"))
 		{
-			g2d.drawString(name, 4, 25);
-			g2d.drawString(String.valueOf(cost), 4, 35);
+			g2d.drawString(name, 3, 40);
+			g2d.drawString("$" + String.valueOf(cost), 10, 110);
+		}
+		else if(align.equals("left"))
+		{
+			g2d.drawString(name, 5, 20);
+			g2d.drawString("$" + String.valueOf(cost), 5, 40);
 		}
 		if(!players.isEmpty())
 		{
