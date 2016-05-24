@@ -250,12 +250,12 @@ public class Monopoly extends JApplet
 		place.add(new Corner(1, 600, 600, "down", "GO!", img7));
 		place.add(new Street(2, 540, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
 		place.add(new CardPlace(3, 480, 600, "down", "Treasure", img9));
-		place.add(new Street(4, 420, 600, "down", "507", 100, new Color(94, 60, 49)));
-		place.add(new Street(5, 360, 600, "down", "Sal C", 200, Color.white));
-		place.add(new Street(6, 300, 600, "down", "Sal B", 201, Color.white));
+		place.add(new Street(4, 420, 600, "down", "Subway", 100, new Color(21, 39, 168)));
+		place.add(new Street(5, 360, 600, "down", "Left Tower", 200, Color.white));
+		place.add(new Street(6, 300, 600, "down", "Right Tower", 201, Color.white));
 		place.add(new CardPlace(7, 240, 600, "down", "Question", img3));
-		place.add(new Street(8, 180, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
-		place.add(new Street(9, 120, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new Street(8, 180, 600, "down", "VA Ave", 80, new Color(94, 60, 49)));
+		place.add(new Street(9, 120, 600, "down", "NJ Ave", 80, new Color(94, 60, 49)));
 		place.add(new Corner(10, 0, 600, "down", "JAIL", img6));
 		//left
 		place.add(new Street(11, 0, 540, "left", "510", 120, new Color(233, 63, 174)));

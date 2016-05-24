@@ -7,6 +7,7 @@ import java.awt.geom.*;
 public class Street extends Place
 {
 	protected String name;
+	protected String[] splited;
 	protected int cost;
 	protected Color color;
 
@@ -16,6 +17,8 @@ public class Street extends Place
 		this.name = name;
 		this.cost = cost;
 		color = c;
+		splited = name.split("\\s+");
+
 		setToolTipText(name + "($" + cost + ")");
 	}
 
@@ -71,25 +74,33 @@ public class Street extends Place
 		g2d.setPaint(Color.black);
 		g2d.draw(rect2);
 		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 17)); //change font
-		if(align.equals("right"))
+		for(int i = 0; i < splited.length; i++)
 		{
-			g2d.drawString(name, 25, 20);
-			g2d.drawString("$" + String.valueOf(cost), 25, 40);
-		}
-		else if(align.equals("down"))
-		{
-			g2d.drawString(name, 3, 40);
-			g2d.drawString("$" + String.valueOf(cost), 10, 110);
-		}
-		else if(align.equals("up"))
-		{
-			g2d.drawString(name, 3, 40);
-			g2d.drawString("$" + String.valueOf(cost), 10, 110);
-		}
-		else if(align.equals("left"))
-		{
-			g2d.drawString(name, 5, 20);
-			g2d.drawString("$" + String.valueOf(cost), 5, 40);
+			int j = i*14;
+			if(align.equals("right"))
+			{
+				g2d.drawString(splited[i], 25, j+20);
+				if(i == splited.length-1)
+					g2d.drawString("$" + String.valueOf(cost), 25, (j+14)+40);
+			}
+			else if(align.equals("down"))
+			{
+				g2d.drawString(splited[i], 3, j+40);
+				if(i == splited.length-1)
+					g2d.drawString("$" + String.valueOf(cost), 10, (j+14)+110);
+			}
+			else if(align.equals("up"))
+			{
+				g2d.drawString(splited[i], 3, j+40);
+				if(i == splited.length-1)
+					g2d.drawString("$" + String.valueOf(cost), 10, (j+14)+110);
+			}
+			else if(align.equals("left"))
+			{
+				g2d.drawString(splited[i], 5, j+20);
+				if(i == splited.length-1)
+					g2d.drawString("$" + String.valueOf(cost), 5, (j+14)+40);
+			}
 		}
 		if(!players.isEmpty())
 		{
