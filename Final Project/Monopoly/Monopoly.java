@@ -70,6 +70,11 @@ public class Monopoly extends JApplet
 	BufferedImage img3 = null;
 	BufferedImage img4 = null;
 	BufferedImage img5 = null;
+	BufferedImage img6 = null;
+	BufferedImage img7 = null;
+	BufferedImage img8 = null;
+	BufferedImage img9 = null;
+	BufferedImage img10 = null;
 
 	//*The jail pops up in the north panel whe a player is in jail
 
@@ -89,14 +94,24 @@ public class Monopoly extends JApplet
 		{
 			URL url1 = new URL(getDocumentBase(), "laptop.PNG");
 			URL url2 = new URL(getDocumentBase(), "mouse.PNG");
-			URL url3 = new URL(getDocumentBase(), "question.PNG");
-			URL url4 = new URL(getDocumentBase(), "Treasure.PNG");
+			URL url3 = new URL(getDocumentBase(), "c1.PNG");
+			URL url4 = new URL(getDocumentBase(), "c2.PNG");
 			URL url5 = new URL(getDocumentBase(), "gotoJail.PNG");
+			URL url6 = new URL(getDocumentBase(), "cornerinJail.PNG");
+			URL url7 = new URL(getDocumentBase(), "Go.PNG");
+			URL url8 = new URL(getDocumentBase(), "parking.PNG");
+			URL url9 = new URL(getDocumentBase(), "cc1.PNG");
+			URL url10 = new URL(getDocumentBase(), "cc2.PNG");
 			img1 = ImageIO.read(url1);
 			img2 = ImageIO.read(url2);
 			img3 = ImageIO.read(url3);
 			img4 = ImageIO.read(url4);
 			img5 = ImageIO.read(url5);
+			img6 = ImageIO.read(url6);
+			img7 = ImageIO.read(url7);
+			img8 = ImageIO.read(url8);
+			img9 = ImageIO.read(url9);
+			img10 = ImageIO.read(url10);
 		} catch (IOException e) {}
 
 		bp = new BuildPanel(build);
@@ -196,7 +211,7 @@ public class Monopoly extends JApplet
 		p2 = new Player(na2, 1000, img2);
 		player1 = p1;
 		player2 = p2;
-		addSpelare();
+		addPlayer();
 		log.append(player1.getName() +"'s turn\n");
 		validate();
 		repaint();
@@ -205,7 +220,7 @@ public class Monopoly extends JApplet
 
 
 	//add the players
-	public void addSpelare()
+	public void addPlayer()
 	{
 		//spelare.add(p));
 		place.get(0).insert(p1);
@@ -232,45 +247,45 @@ public class Monopoly extends JApplet
 	public void setTiles()
 	{
 		//bottom
-		place.add(new Corner(1, 600, 600, "down", "GO!"));
+		place.add(new Corner(1, 600, 600, "down", "GO!", img7));
 		place.add(new Street(2, 540, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
-		place.add(new CardPlace(3, 480, 600, "down", "Treasure", img4));
+		place.add(new CardPlace(3, 480, 600, "down", "Treasure", img9));
 		place.add(new Street(4, 420, 600, "down", "507", 100, new Color(94, 60, 49)));
 		place.add(new Street(5, 360, 600, "down", "Sal C", 200, Color.white));
-		place.add(new ResourcePlace(6, 300, 600, "down", "Library", 200));
+		place.add(new Street(6, 300, 600, "down", "Sal B", 201, Color.white));
 		place.add(new CardPlace(7, 240, 600, "down", "Question", img3));
-		place.add(new Street(2, 180, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
-		place.add(new Street(2, 120, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
-		place.add(new Corner(8, 0, 600, "down", "JAIL"));
+		place.add(new Street(8, 180, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new Street(9, 120, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
+		place.add(new Corner(10, 0, 600, "down", "JAIL", img6));
 		//left
-		place.add(new Street(9, 0, 540, "left", "510", 120, new Color(233, 63, 174)));
-		place.add(new Street(10, 0, 480, "left", "501", 140, new Color(233, 63, 174)));
-		place.add(new Street(11, 0, 420, "left", "Sal B", 200, Color.white));
-		place.add(new Street(12, 0, 360, "left", "502", 140, new Color(233, 63, 174)));
-		place.add(new Street(13, 0, 300, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new Street(13, 0, 240, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new Street(13, 0, 180, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new CardPlace(14, 0, 120, "left", "Treasure", img4));
+		place.add(new Street(11, 0, 540, "left", "510", 120, new Color(233, 63, 174)));
+		place.add(new Street(12, 0, 480, "left", "501", 140, new Color(233, 63, 174)));
+		place.add(new Street(13, 0, 420, "left", "Sal B", 200, Color.white));
+		place.add(new Street(14, 0, 360, "left", "502", 140, new Color(233, 63, 174)));
+		place.add(new Street(15, 0, 300, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new Street(16, 0, 240, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new Street(17, 0, 180, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new CardPlace(18, 0, 120, "left", "Treasure", img10));
 		//top
-		place.add(new Corner(15, 0, 0, "up", "PARKING"));
-		place.add(new Street(16, 120, 0, "up", "503", 220, Color.red));
-		place.add(new CardPlace(17, 180, 0, "up", "Question", img3));
-		place.add(new Street(18, 240, 0, "up", "Sal A", 200, Color.white));
-		place.add(new Street(19, 300, 0, "up", "504", 240, Color.red));
-		place.add(new ResourcePlace(20, 360, 0, "up", "Rainforest Cafe", 300));
-		place.add(new Street(21, 420, 0, "up", "505", 320, Color.red));
-		place.add(new Street(16, 480, 0, "up", "503", 220, Color.red));
-		place.add(new Street(16, 540, 0, "up", "503", 220, Color.red));
-		place.add(new Corner(22, 600, 0, "up", "GOTOJAIL"));
+		place.add(new Corner(19, 0, 0, "up", "PARKING", img8));
+		place.add(new Street(20, 120, 0, "up", "503", 220, Color.red));
+		place.add(new CardPlace(21, 180, 0, "up", "Question", img3));
+		place.add(new Street(22, 240, 0, "up", "Sal A", 200, Color.white));
+		place.add(new Street(23, 300, 0, "up", "504", 240, Color.red));
+		place.add(new Street(24, 360, 0, "up", "502", 240, Color.red));
+		place.add(new Street(25, 420, 0, "up", "505", 320, Color.red));
+		place.add(new Street(26, 480, 0, "up", "503", 220, Color.red));
+		place.add(new Street(27, 540, 0, "up", "503", 220, Color.red));
+		place.add(new Corner(28, 600, 0, "up", "GOTOJAIL", img5));
 		//right
-		place.add(new ResourcePlace(23, 600, 120, "right", "Restaurant", 300));
-		place.add(new CardPlace(24, 600, 180, "right", "Treasure", img4));
-		place.add(new Street(25, 600, 240, "right", "Sal D", 200, Color.white));
-		place.add(new CardPlace(26, 600, 300, "right", "Question", img3));
-		place.add(new Street(27, 600, 360, "right", "Memory Lane", 450, new Color(21, 39, 168)));
-		place.add(new Street(28, 600, 420, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
-		place.add(new Street(25, 600, 480, "right", "Sal D", 200, Color.white));
-		place.add(new Street(25, 600, 540, "right", "Sal D", 200, Color.white));
+		place.add(new Street(29, 600, 120, "right", "Sal D", 200, Color.white));
+		place.add(new CardPlace(30, 600, 180, "right", "Treasure", img10));
+		place.add(new Street(31, 600, 240, "right", "Sal D", 200, Color.white));
+		place.add(new CardPlace(32, 600, 300, "right", "Question", img4));
+		place.add(new Street(33, 600, 360, "right", "Memory Lane", 450, new Color(21, 39, 168)));
+		place.add(new Street(34, 600, 420, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
+		place.add(new Street(35, 600, 480, "right", "Sal D", 200, Color.white));
+		place.add(new Street(36, 600, 540, "right", "Sal D", 200, Color.white));
 	}
 
 	//listener for the dice
@@ -329,10 +344,10 @@ public class Monopoly extends JApplet
 	public void runPlaceEvents()
 	{
 		Place pl = place.get(player1.getPlan()-1);
-		javax.swing.Timer tim;
+		javax.swing.Timer time;
 		if(pl instanceof Street || pl instanceof ResourcePlace) //Instanceof is used to check an object to a specific class
 		{
-			message.setText("Room: "+pl.getName());
+			message.setText("Room: " + pl.getName());
 			message.setForeground(pl.getColor());
 		}
 
@@ -343,9 +358,9 @@ public class Monopoly extends JApplet
 		{
 			log.append("You are now Jail!");
 			btnEnd.setEnabled(false);
-			tim = new javax.swing.Timer(2000, goinJail);
-			tim.setRepeats(false);
-			tim.start();
+			time = new javax.swing.Timer(2000, goinJail);
+			time.setRepeats(false);
+			time.start();
 		}
 
 		if(player2.propExists(pl))
@@ -365,23 +380,23 @@ public class Monopoly extends JApplet
 			btnEnd.setEnabled(false);
 			if(pl.getName().equals("treasure"))
 			{
-				tim = new javax.swing.Timer(2000, drawChest);
-				tim.setRepeats(false);
+				time = new javax.swing.Timer(2000, drawChest);
+				time.setRepeats(false);
 				log.append("Drawing Community Chest card...\n");
-				tim.start();
+				time.start();
 			}
 			else if(pl.getName().equals("question"))
 			{
-				tim = new javax.swing.Timer(2000, drawChance);
-				tim.setRepeats(false);
+				time = new javax.swing.Timer(2000, drawChance);
+				time.setRepeats(false);
 				log.append("Drawing Chance card...\n");
-				tim.start();
+				time.start();
 			}
 		}
 		if(pl.getName().equals("GO!") || player1.hasRounded())
 		{
 			player1.setMoney(200);
-			money.setText("Cash: "+player1.getMoney());
+			money.setText("Cash: " + player1.getMoney());
 			log.append(player1.getName()+" has passed GO and collects $200!\n");
 		}
 	}
@@ -396,9 +411,9 @@ public class Monopoly extends JApplet
 				if(p.checkPOS(player1))
 					p.putinJail(player1);
 			}
-			place.get(7).insert(player1);
+			place.get(9).insert(player1);
 			player1.isinJail = true;
-			player1.setDirectPosition(8);
+			player1.setDirectPosition(10);
 			btnEnd.setEnabled(true);
 			btnBuy.setEnabled(false);
 			btnRoll.setEnabled(false);
@@ -588,7 +603,7 @@ public class Monopoly extends JApplet
 			{
 				player1 = p1;
 				player2 = p2;
-				turn.setText("Round:: " + String.valueOf(++numRound));
+				turn.setText("Round: " + String.valueOf(++numRound));
 
 			}
 			if(numRound == maxRound)

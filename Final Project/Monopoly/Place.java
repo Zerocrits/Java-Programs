@@ -66,7 +66,7 @@ public class Place extends JPanel
 		return "Place";
 	}
 
-	public boolean putinJail(Player p) //check
+	public boolean putinJail(Player p)
 	{
 		remove(p);
 		players.remove(p);

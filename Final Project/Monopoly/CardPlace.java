@@ -9,18 +9,17 @@ import java.awt.image.*;
 public class CardPlace extends Place
 {
 	protected String typeCard;
-	private TexturePaint build;
-	private Rectangle rect2;
+	private BufferedImage bi;
 
 	public CardPlace(int n, int x, int y, String a, String name, BufferedImage bi)
 	{
 		super(n, x, y, a);
 		typeCard = name;
 		if(align.equals("right") || align.equals("left"))
-			rect2 = new Rectangle(20, 5, 30, 30);
+			setBounds(x, y, 120, 60);
 		else if(align.equals("down") || align.equals("up"))
-			rect2 = new Rectangle(5, 20, 30, 30);
-		build = new TexturePaint(bi, rect2);
+			setBounds(x, y, 60, 120);
+		this.bi = bi;
 	}
 
 	public String getName()
@@ -34,12 +33,11 @@ public class CardPlace extends Place
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setPaint(Color.black);
 		if(align.equals("up") || align.equals("down"))
-			rect = new Rectangle2D.Double(0, 0, x2, y2);
+			rect = new Rectangle2D.Double(0, 0, 60, 120);
 		else if(align.equals("left") || align.equals("right"))
-			rect = new Rectangle2D.Double(0, 0, x2, y2);
-		g2d.draw(rect);
-		g2d.setPaint(build);
-		g2d.fill(rect2);
+			rect = new Rectangle2D.Double(0, 0, 120, 60);
+		g2d.drawImage(bi, 0, 0, this);
+		g2d.setPaint(Color.black);
 		if(!players.isEmpty())
 		{
 			int px = 10;

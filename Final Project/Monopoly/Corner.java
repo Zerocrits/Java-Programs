@@ -1,18 +1,21 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
+import java.awt.image.*;
 
 //These are the corner pieces on the board
 
 public class Corner extends Place
 {
 	protected String type;
+	private BufferedImage bi;
 
-	public Corner(int n, int x, int y, String a, String type)
+	public Corner(int n, int x, int y, String a, String type, BufferedImage bi)
 	{
 		super(n, x, y, a);
 		setBounds(x, y, 120, 120);
 		this.type = type;
+		this.bi = bi;
 	}
 
 	public String getName()
@@ -26,10 +29,9 @@ public class Corner extends Place
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setPaint(Color.black);
 		rect = new Rectangle2D.Double(0, 0, 120, 120);
-		g2d.draw(rect);
+		g2d.drawImage(bi, 0, 0, this);
 		g2d.setPaint(Color.black);
 		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 24));
-		g2d.drawString(type, 15, 50);
 		if(!players.isEmpty())
 		{
 			int px = 10;

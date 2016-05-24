@@ -12,7 +12,7 @@ public class Dice extends JComponent
 
 	public Dice()
 	{
-		shape = new RoundRectangle2D.Double(0.0, 0.0, 12.0, 12.0, 5.0, 5.0);
+		shape = new RoundRectangle2D.Double(0.0, 0.0, 5.0, 12.0, 400.0, 400.0);
 		setBounds(100, 100, 14, 14);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
@@ -21,7 +21,7 @@ public class Dice extends JComponent
 	{
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(new Color(239, 239, 246));
+		g2d.setPaint(new Color(255, 255, 255));
 		g2d.fill(shape);
 		g2d.setPaint(Color.black);
 		g2d.draw(shape);

@@ -33,9 +33,9 @@ public class Player extends JComponent
 		int temp = 0;
 		plan += i;
 
-		if(plan > 28)
+		if(plan > 36)
 		{
-			temp = plan - 28;
+			temp = plan - 36;
 			plan = temp;
 			okRounded = true;
 		}
@@ -83,7 +83,7 @@ public class Player extends JComponent
 		int cash = 0;
 		for(Place p : owns)
 		{
-			if(p instanceof ResourcePlace) //check
+			if(p instanceof ResourcePlace)
 			{
 				ResourcePlace rp = (ResourcePlace) p;
 				cash += rp.getResource();
