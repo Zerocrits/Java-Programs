@@ -19,7 +19,7 @@ public class Monopoly extends JApplet
 	Dice dice = new Dice();
 	Player p1;
 	Player p2;
-	ArrayList<String> chest = new ArrayList<String>();
+	ArrayList<String> communityChest = new ArrayList<String>();
 	ArrayList<String> chance = new ArrayList<String>();
 
 	//ending a turn
@@ -60,8 +60,8 @@ public class Monopoly extends JApplet
 
 	//sellList
 	DefaultListModel model = new DefaultListModel();
-	JList proplist = new JList(model);
-	JScrollPane sp = new JScrollPane(proplist);
+	JList propertylist = new JList(model);
+	JScrollPane sp = new JScrollPane(propertylist);
 	private JButton okSell = new JButton("Sell Now?");
 
 	//images
@@ -76,9 +76,7 @@ public class Monopoly extends JApplet
 	BufferedImage img9 = null;
 	BufferedImage img10 = null;
 
-	//*The jail pops up in the north panel whe a player is in jail
-
-	//Jail
+	//Jail, set to show up by round
 	private JButton pay = new JButton("Pay Fine");
 	private JButton btnFJC = new JButton("Use Jail Card");
 
@@ -116,8 +114,6 @@ public class Monopoly extends JApplet
 
 		bp = new BuildPanel(build);
 
-
-		//initiate bricks, cards etc...
 		addChestCards();
 		addChanceCards();
 		setTiles();
@@ -138,14 +134,12 @@ public class Monopoly extends JApplet
 		east.add(jspLog); //scroll panel
 		east.add(btnEnd);
 
-		//*The message label shows messages from Chance or Community Chest cards, or when game is over
-
 		//messages
 		message.setFont(new Font("Britannic Bold", Font.BOLD, 12));
 		message.setPreferredSize(new Dimension(250,100));
 		message.setForeground(Color.black);
 
-		//p.Mess
+		//each players messages wich goes into scroll panel
 		playerMessage.setOpaque(true);
 		playerMessage.setBackground(new Color(178,247,178));
 		playerMessage.setLayout(new BoxLayout(playerMessage, BoxLayout.X_AXIS));
@@ -198,6 +192,31 @@ public class Monopoly extends JApplet
 		log.setEditable(false);
 
 	}
+
+	//add the players
+	public void addPlayer()
+	{
+		//spelare.add(p));
+		place.get(0).insert(p1);
+		place.get(0).insert(p2);
+	}
+
+	//add Chest cards
+	public void addChestCards()
+	{
+		communityChest.add(new String("Penalty"));
+		communityChest.add(new String("Fined"));
+		communityChest.add(new String("Pay"));
+	}
+
+	//add Chance cards
+	public void addChanceCards()
+	{
+		chance.add(new String("Birthday"));
+		chance.add(new String("Jail"));
+		chance.add(new String("Repair"));
+	}
+
 	//method for setting up the game after the start button has been pressed
 	public void startTheGame(int limit, String na1, String na2)
 	{
@@ -217,32 +236,6 @@ public class Monopoly extends JApplet
 		repaint();
 		money.setText("Cash: 1000");
 	}
-
-
-	//add the players
-	public void addPlayer()
-	{
-		//spelare.add(p));
-		place.get(0).insert(p1);
-		place.get(0).insert(p2);
-	}
-
-	//add Chest cards
-	public void addChestCards()
-	{
-		chest.add(new String("Penalty"));
-		chest.add(new String("Fined"));
-		chest.add(new String("Pay"));
-	}
-
-	//add Chance cards
-	public void addChanceCards()
-	{
-		chance.add(new String("Birthday"));
-		chance.add(new String("Jail"));
-		chance.add(new String("Repair"));
-	}
-
 
 	public void setTiles()
 	{
@@ -363,7 +356,7 @@ public class Monopoly extends JApplet
 			time.start();
 		}
 
-		if(player2.propExists(pl))
+		if(player2.propertyExists(pl))
 		{
 			int pen = pl.getCost()/2; //penalty
 			log.append("" + player2.getName() +" Own's this spot. rooms! You must pay " + pen + "!\n");
@@ -459,10 +452,10 @@ public class Monopoly extends JApplet
 		public void actionPerformed(ActionEvent e)
 		{
 			message.setForeground(Color.red);
-			log.append("...drawn!\n");
+			log.append("Card Picked up!\n");
 			Random random = new Random();
 			int i = random.nextInt(3);
-			String phrase = chest.get(i);
+			String phrase = communityChest.get(i);
 
 			if(phrase.equals("PENALTY"))
 			{
@@ -512,9 +505,9 @@ public class Monopoly extends JApplet
 			else if(phrase.equals("REPAIR"))
 			{
 				message.setText("Make repairs on all of your rooms!\n");
-				ArrayList<Place> nyL = player1.getProps();
+				ArrayList<Place> propertyerties = player1.getProperty();
 				int cash = 0;
-				for(Place p : nyL)
+				for(Place p : propertyerties)
 					cash+=10;
 				player1.setMoney(-(cash));
 				money.setText("Cash: "+String.valueOf(player1.getMoney()));
@@ -532,12 +525,12 @@ public class Monopoly extends JApplet
 			playerMessage.add(message);
 			message.setText("Tracking Cards...");
 			message.setForeground(Color.black);
-			ArrayList<Place> nyL = player1.getProps();
+			ArrayList<Place> propertyerties = player1.getProperty();
 			log.append("---------------Cards Owned---------------\n\n");
-			for(Place p : nyL)
+			for(Place p : propertyerties)
 			{
 				log.append("-----------------------------------------\n");
-				log.append("  Room : "+p.getName()+"\n  Cost: " + p.getCost()+"\n  Sell cost: "+(p.getCost()/2)+"\n");
+				log.append("  Room : " + p.getName() + "\n  Cost: " + p.getCost() + "\n  Sell cost: " + (p.getCost()/2)+"\n");
 			}
 		}
 	};
@@ -552,8 +545,8 @@ public class Monopoly extends JApplet
 			playerMessage.add(okSell);
 			sp.setPreferredSize(new Dimension(100,100));
 			model.clear();
-			ArrayList<Place> nyL = player1.getProps();
-			for(Place p : nyL)
+			ArrayList<Place> propertyerties = player1.getProperty();
+			for(Place p : propertyerties)
 			{
 				model.addElement(p);
 			}
@@ -565,11 +558,11 @@ public class Monopoly extends JApplet
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			Place p =(Place) proplist.getSelectedValue();
+			Place p =(Place) propertylist.getSelectedValue();
 			if(p == null)
 				return;
 			log.append("Room " + p.getName() + " sold to the Bank\n");
-			player1.sellProp(p);
+			player1.sellProperty(p);
 			model.removeElement(p);
 			player1.setMoney((p.getCost() /2));
 			money.setText("Cash: " + player1.getMoney());
@@ -651,7 +644,7 @@ public class Monopoly extends JApplet
 			Place p = place.get(player1.getPlan()-1);
 			playerMessage.removeAll();
 			playerMessage.add(message);
-			if(player1.propExists(p))
+			if(player1.propertyExists(p))
 			{
 				log.append("You already own " + p.getName()+"!\n");
 				return;
@@ -661,7 +654,7 @@ public class Monopoly extends JApplet
 				log.append("You cannot buy that!\n");
 				return;
 			}
-			else if(player2.propExists(p))
+			else if(player2.propertyExists(p))
 			{
 				log.append(p.getName()+" is already ownd by "+player2.getName()+"!\n");
 				return;
@@ -673,7 +666,7 @@ public class Monopoly extends JApplet
 			}
 			message.setForeground(p.getColor());
 			message.setText(p.getName());
-			player1.buyProp(p);
+			player1.buyProperty(p);
 			if(player1 == p1)
 			{
 				p.setBorderColor(Color.blue);
@@ -733,9 +726,9 @@ public class Monopoly extends JApplet
 		private JLabel startText = new JLabel("Start new game", JLabel.CENTER);
 
 		private JPanel game = new JPanel();
-		private JTextField name1 = new JTextField(15);
-		private JTextField name2 = new JTextField(15);
-		private String[] limits = {"100","75","50", "25"};
+		private JTextField name1 = new JTextField(9);
+		private JTextField name2 = new JTextField(9);
+		private String[] limits = {"100000", "100","80","60", "40", "20"};
 		private JComboBox box = new JComboBox(limits); //dropdown menu
 		private JLabel start = new JLabel("Start Game", JLabel.CENTER);
 		private JLabel back = new JLabel("Back", JLabel.CENTER);
@@ -772,7 +765,7 @@ public class Monopoly extends JApplet
 			game.add(name1);
 			game.add(new JLabel("Player 2", JLabel.CENTER));
 			game.add(name2);
-			game.add(new JLabel("Choose turn limit"));
+			game.add(new JLabel("Choose Round limit"));
 			game.add(box);
 			game.add(start);
 			game.add(back);
@@ -802,19 +795,21 @@ public class Monopoly extends JApplet
 		{
 			public void mouseEntered(MouseEvent e)
 			{
-				JLabel l = (JLabel)e.getSource();
-				l.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				l.setForeground(Color.red);
+				JLabel source = (JLabel)e.getSource();
+				source.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				source.setForeground(Color.red);
 			}
 
 			public void mouseExited(MouseEvent e)
 			{
-				JLabel l = (JLabel)e.getSource();
-				l.setForeground(Color.black);
+				JLabel source = (JLabel)e.getSource();
+				source.setForeground(Color.black);
 			}
 			public void mouseClicked(MouseEvent e)
 			{
-				if(e.getSource() == back)
+				Object source = new Object();
+				source = e.getSource();
+				if(source == back)
 				{
 					remove(game);
 					add(menu);
@@ -822,13 +817,13 @@ public class Monopoly extends JApplet
 					repaint();
 					back.setForeground(Color.black);
 				}
-				else if(e.getSource() == start)
+				else if(source == start)
 				{
-					String pNamn1 = name1.getText();
-					String pNamn2 = name2.getText();
-					String si = (String)box.getSelectedItem();
-					int i = Integer.parseInt(si);
-					startTheGame(i, pNamn1, pNamn2);
+					String player1 = name1.getText();
+					String player2 = name2.getText();
+					String roundLength = (String)box.getSelectedItem();
+					int numberRounds = Integer.parseInt(roundLength);
+					startTheGame(numberRounds, player1, player2);
 				}
 			}
 		};

@@ -92,7 +92,7 @@ public class Player extends JComponent
 		return cash;
 	}
 
-	public boolean buyProp(Place p)
+	public boolean buyProperty(Place p)
 	{
 		if(owns.contains(p))
 			return false;
@@ -100,7 +100,7 @@ public class Player extends JComponent
 		return true;
 	}
 
-	public boolean sellProp(Place p)
+	public boolean sellProperty(Place p)
 	{
 		if(!owns.contains(p))
 			return false;
@@ -108,7 +108,7 @@ public class Player extends JComponent
 		return true;
 	}
 
-	public boolean propExists(Place p)
+	public boolean propertyExists(Place p)
 	{
 		if(owns.contains(p))
 			return true;
@@ -124,7 +124,7 @@ public class Player extends JComponent
 		g2d.fill(rect);
 	}
 
-	public ArrayList getProps()
+	public ArrayList getProperty()
 	{
 		return new ArrayList(owns);
 	}
