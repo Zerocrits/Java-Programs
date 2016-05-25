@@ -250,42 +250,42 @@ public class Monopoly extends JApplet
 		place.add(new Corner(1, 600, 600, "down", "GO!", img7));
 		place.add(new Street(2, 540, 600, "down", "NY Ave", 80, new Color(94, 60, 49)));
 		place.add(new CardPlace(3, 480, 600, "down", "Treasure", img9));
-		place.add(new Street(4, 420, 600, "down", "Subway", 100, new Color(21, 39, 168)));
-		place.add(new Street(5, 360, 600, "down", "Left Tower", 200, Color.white));
-		place.add(new Street(6, 300, 600, "down", "Right Tower", 201, Color.white));
+		place.add(new Street(4, 420, 600, "down", "Subway", 250, new Color(21, 39, 168)));
+		place.add(new Street(5, 360, 600, "down", "Right Bldg", 505, Color.white));
+		place.add(new Street(6, 300, 600, "down", "Left Bldg", 406, Color.white));
 		place.add(new CardPlace(7, 240, 600, "down", "Question", img3));
 		place.add(new Street(8, 180, 600, "down", "VA Ave", 80, new Color(94, 60, 49)));
 		place.add(new Street(9, 120, 600, "down", "NJ Ave", 80, new Color(94, 60, 49)));
 		place.add(new Corner(10, 0, 600, "down", "JAIL", img6));
 		//left
-		place.add(new Street(11, 0, 540, "left", "510", 120, new Color(233, 63, 174)));
-		place.add(new Street(12, 0, 480, "left", "501", 140, new Color(233, 63, 174)));
-		place.add(new Street(13, 0, 420, "left", "Sal B", 200, Color.white));
+		place.add(new Street(11, 0, 540, "left", "101", 120, new Color(233, 63, 174)));
+		place.add(new Street(12, 0, 480, "left", "711", 140, Color.white));
+		place.add(new Street(13, 0, 420, "left", "Train Station", 200, Color.white));
 		place.add(new Street(14, 0, 360, "left", "502", 140, new Color(233, 63, 174)));
-		place.add(new Street(15, 0, 300, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new Street(16, 0, 240, "left", "401", 180, new Color(233, 63, 174)));
-		place.add(new Street(17, 0, 180, "left", "401", 180, new Color(233, 63, 174)));
+		place.add(new Street(15, 0, 300, "left", "411", 180, Color.gray));
+		place.add(new Street(16, 0, 240, "left", "459", 180, new Color(233, 63, 174)));
+		place.add(new Street(17, 0, 180, "left", "201", 180, Color.green));
 		place.add(new CardPlace(18, 0, 120, "left", "Treasure", img10));
 		//top
 		place.add(new Corner(19, 0, 0, "up", "PARKING", img8));
 		place.add(new Street(20, 120, 0, "up", "503", 220, Color.red));
 		place.add(new CardPlace(21, 180, 0, "up", "Question", img3));
-		place.add(new Street(22, 240, 0, "up", "Sal A", 200, Color.white));
-		place.add(new Street(23, 300, 0, "up", "504", 240, Color.red));
-		place.add(new Street(24, 360, 0, "up", "502", 240, Color.red));
-		place.add(new Street(25, 420, 0, "up", "505", 320, Color.red));
-		place.add(new Street(26, 480, 0, "up", "503", 220, Color.red));
-		place.add(new Street(27, 540, 0, "up", "503", 220, Color.red));
+		place.add(new Street(22, 240, 0, "up", "Log Town", 200, Color.white));
+		place.add(new Street(23, 300, 0, "up", "864", 240, Color.yellow));
+		place.add(new Street(24, 360, 0, "up", "947", 240, Color.red));
+		place.add(new Street(25, 420, 0, "up", "505", 320, Color.pink));
+		place.add(new Street(26, 480, 0, "up", "747", 220, Color.blue));
+		place.add(new Street(27, 540, 0, "up", "666", 220, Color.red));
 		place.add(new Corner(28, 600, 0, "up", "GOTOJAIL", img5));
 		//right
-		place.add(new Street(29, 600, 120, "right", "Sal D", 200, Color.white));
+		place.add(new Street(29, 600, 120, "right", "Wishing Well", 200, Color.green));
 		place.add(new CardPlace(30, 600, 180, "right", "Treasure", img10));
-		place.add(new Street(31, 600, 240, "right", "Sal D", 200, Color.white));
+		place.add(new Street(31, 600, 240, "right", "Goo Lagoon", 200, Color.gray));
 		place.add(new CardPlace(32, 600, 300, "right", "Question", img4));
 		place.add(new Street(33, 600, 360, "right", "Memory Lane", 450, new Color(21, 39, 168)));
 		place.add(new Street(34, 600, 420, "right", "Berdan Ave", 500, new Color(21, 39, 168)));
-		place.add(new Street(35, 600, 480, "right", "Sal D", 200, Color.white));
-		place.add(new Street(36, 600, 540, "right", "Sal D", 200, Color.white));
+		place.add(new Street(35, 600, 480, "right", "South Park", 200, Color.white));
+		place.add(new Street(36, 600, 540, "right", "Patty's Pub", 200, Color.yellow));
 	}
 
 	//listener for the dice
@@ -530,7 +530,7 @@ public class Monopoly extends JApplet
 		{
 			playerMessage.removeAll();
 			playerMessage.add(message);
-			message.setText("REPORT");
+			message.setText("Tracking Cards...");
 			message.setForeground(Color.black);
 			ArrayList<Place> nyL = player1.getProps();
 			log.append("---------------Cards Owned---------------\n\n");
@@ -835,7 +835,6 @@ public class Monopoly extends JApplet
 	}
 }
 
-//When to use a semicolan after a curley brace: http://stackoverflow.command/questions/2717949/when-should-i-use-a-semicolon-after-curly-braces
 
 
 

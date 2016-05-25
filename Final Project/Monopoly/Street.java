@@ -73,7 +73,7 @@ public class Street extends Place
 		g2d.fill(rect);
 		g2d.setPaint(Color.black);
 		g2d.draw(rect2);
-		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 17)); //change font
+		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 17)); //look for a bolder version of font so it stands out better
 		for(int i = 0; i < splited.length; i++)
 		{
 			int j = i*14;
@@ -81,25 +81,25 @@ public class Street extends Place
 			{
 				g2d.drawString(splited[i], 25, j+20);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 25, (j+14)+40);
+					g2d.drawString("$" + String.valueOf(cost), 25, (j+14)+30);
 			}
 			else if(align.equals("down"))
 			{
 				g2d.drawString(splited[i], 3, j+40);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 10, (j+14)+110);
+					g2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
 			}
 			else if(align.equals("up"))
 			{
 				g2d.drawString(splited[i], 3, j+40);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 10, (j+14)+110);
+					g2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
 			}
 			else if(align.equals("left"))
 			{
 				g2d.drawString(splited[i], 5, j+20);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 5, (j+14)+40);
+					g2d.drawString("$" + String.valueOf(cost), 5, (j+14)+30);
 			}
 		}
 		if(!players.isEmpty())

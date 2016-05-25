@@ -21,14 +21,14 @@ public class MiniMap extends JPanel
 		shapeColors.put(9, Color.white);
 		shapeColors.put(10, Color.green);
 
-		shapeColors.put(11, Color.orange);
+		shapeColors.put(11, Color.white);
 		shapeColors.put(12, Color.white);
 		shapeColors.put(13, Color.white);
 		shapeColors.put(14, Color.white);
 		shapeColors.put(15, Color.white);
 		shapeColors.put(16, Color.white);
 		shapeColors.put(17, Color.white);
-		shapeColors.put(18, Color.white);
+		shapeColors.put(18, Color.orange);
 
 		shapeColors.put(19, Color.green);
 		shapeColors.put(20, Color.white);
@@ -82,18 +82,18 @@ public class MiniMap extends JPanel
 		shapes.put(15, new Rectangle2D.Double(1,39,20,10));
 		shapes.put(16, new Rectangle2D.Double(1,29,20,10));
 		shapes.put(17, new Rectangle2D.Double(1,19,20,10));
-		shapes.put(18, new Rectangle2D.Double(1,1,20,10));
+		shapes.put(18, new Rectangle2D.Double(1,9,20,10));
 
-		shapes.put(19, new Rectangle2D.Double(9,1,20,10));
-		shapes.put(20, new Rectangle2D.Double(19,1,10,10));
-		shapes.put(21, new Rectangle2D.Double(29,1,10,10));
-		shapes.put(22, new Rectangle2D.Double(39,1,10,10));
-		shapes.put(23, new Rectangle2D.Double(49,1,10,10));
-		shapes.put(24, new Rectangle2D.Double(59,1,10,10));
-		shapes.put(25, new Rectangle2D.Double(69,1,10,10));
-		shapes.put(26, new Rectangle2D.Double(79,1,10,10));
-		shapes.put(27, new Rectangle2D.Double(89,1,10,10));
-		shapes.put(28, new Rectangle2D.Double(99,1,20,10));
+		shapes.put(19, new Rectangle2D.Double(1,0,20,10));
+		shapes.put(20, new Rectangle2D.Double(19,0,10,10));
+		shapes.put(21, new Rectangle2D.Double(29,0,10,10));
+		shapes.put(22, new Rectangle2D.Double(39,0,10,10));
+		shapes.put(23, new Rectangle2D.Double(49,0,10,10));
+		shapes.put(24, new Rectangle2D.Double(59,0,10,10));
+		shapes.put(25, new Rectangle2D.Double(69,0,10,10));
+		shapes.put(26, new Rectangle2D.Double(79,0,10,10));
+		shapes.put(27, new Rectangle2D.Double(89,0,10,10));
+		shapes.put(28, new Rectangle2D.Double(99,0,20,10));
 
 		shapes.put(29, new Rectangle2D.Double(99,9,20,10));
 		shapes.put(30, new Rectangle2D.Double(99,19,20,10));
