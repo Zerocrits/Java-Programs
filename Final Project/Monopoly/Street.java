@@ -40,14 +40,14 @@ public class Street extends Place
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(borderColor);
+		Graphics2D graphics2d = (Graphics2D)g;
+		graphics2d.setPaint(borderColor);
 		if(align.equals("up") || align.equals("down"))
 			rect = new Rectangle2D.Double(0, 0, x2, y2);
 		else if(align.equals("left") || align.equals("right"))
 			rect = new Rectangle2D.Double(0, 0, x2, y2);
-		g2d.draw(rect);
-		g2d.setPaint(color);
+		graphics2d.draw(rect);
+		graphics2d.setPaint(color);
 		Rectangle2D.Double rect2 = new Rectangle2D.Double(1, 1, 1, 1);
 		if(align.equals("down"))
 		{
@@ -69,37 +69,37 @@ public class Street extends Place
 			rect = new Rectangle2D.Double(2, 2, 19, 58);
 			rect2 = new Rectangle2D.Double(0, 0, 20, 59);
 		}
-		g2d.setPaint(color);
-		g2d.fill(rect);
-		g2d.setPaint(Color.black);
-		g2d.draw(rect2);
+		graphics2d.setPaint(color);
+		graphics2d.fill(rect);
+		graphics2d.setPaint(Color.black);
+		graphics2d.draw(rect2);
 		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 17)); //look for a bolder version of font so it stands out better
 		for(int i = 0; i < splited.length; i++)
 		{
 			int j = i*14;
 			if(align.equals("right"))
 			{
-				g2d.drawString(splited[i], 25, j+20);
+				graphics2d.drawString(splited[i], 25, j+20);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 25, (j+14)+30);
+					graphics2d.drawString("$" + String.valueOf(cost), 25, (j+14)+30);
 			}
 			else if(align.equals("down"))
 			{
-				g2d.drawString(splited[i], 3, j+40);
+				graphics2d.drawString(splited[i], 3, j+40);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
+					graphics2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
 			}
 			else if(align.equals("up"))
 			{
-				g2d.drawString(splited[i], 3, j+40);
+				graphics2d.drawString(splited[i], 3, j+40);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
+					graphics2d.drawString("$" + String.valueOf(cost), 3, (j+14)+50);
 			}
 			else if(align.equals("left"))
 			{
-				g2d.drawString(splited[i], 5, j+20);
+				graphics2d.drawString(splited[i], 5, j+20);
 				if(i == splited.length-1)
-					g2d.drawString("$" + String.valueOf(cost), 5, (j+14)+30);
+					graphics2d.drawString("$" + String.valueOf(cost), 5, (j+14)+30);
 			}
 		}
 		if(!players.isEmpty())

@@ -41,7 +41,7 @@ public class Place extends JPanel
 		setBackground(new Color(159, 214, 141));
 	}
 
-	public int getN() //get number
+	public int getNum() //get number
 	{
 		return n;
 	}

@@ -15,7 +15,7 @@ public class Player extends JComponent
 	private ArrayList<Place> owns = new ArrayList<Place>();
 	private TexturePaint build;
 	private Rectangle rect;
-	private boolean okRounded = false;
+	private boolean rounded = false;
 	boolean haveJC = false; //jail card
 	boolean isinJail = false; //check if in jail
 
@@ -37,10 +37,10 @@ public class Player extends JComponent
 		{
 			temp = plan - 36;
 			plan = temp;
-			okRounded = true;
+			rounded = true;
 		}
 		else
-			okRounded = false;
+			rounded = false;
 	}
 
 	public void setPosition(int x, int y)
@@ -55,7 +55,7 @@ public class Player extends JComponent
 
 	public boolean hasRounded()
 	{
-		return okRounded;
+		return rounded;
 	}
 
 	public TexturePaint getBuild()

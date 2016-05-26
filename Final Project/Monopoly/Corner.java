@@ -26,11 +26,11 @@ public class Corner extends Place
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(Color.black);
+		Graphics2D graphics2d = (Graphics2D)g;
+		graphics2d.setPaint(Color.black);
 		rect = new Rectangle2D.Double(0, 0, 120, 120);
-		g2d.drawImage(bi, 0, 0, this);
-		g2d.setPaint(Color.black);
+		graphics2d.drawImage(bi, 0, 0, this);
+		graphics2d.setPaint(Color.black);
 		setFont(new Font("Goudy Handtooled BT", Font.PLAIN, 24));
 		if(!players.isEmpty())
 		{

@@ -52,7 +52,7 @@ public class MiniMap extends JPanel
 		addRects();
 	}
 
-	public Color getColorNr(int i)
+	public Color getColor(int i)
 	{
 		Color c = Color.black;
 		Set<Map.Entry<Integer, Color>> s = shapeColors.entrySet();
@@ -120,7 +120,7 @@ public class MiniMap extends JPanel
 		Set<Map.Entry<Integer, Rectangle2D.Double>> s = shapes.entrySet();
 		for(Map.Entry<Integer, Rectangle2D.Double> m : s)
 		{
-			g2d.setPaint(getColorNr(m.getKey()));
+			g2d.setPaint(getColor(m.getKey()));
 			g2d.fill(m.getValue());
 			g2d.setPaint(Color.black);
 			g2d.draw(m.getValue());

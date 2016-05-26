@@ -20,70 +20,70 @@ public class Dice extends JComponent
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setPaint(new Color(255, 255, 255));
-		g2d.fill(shape);
-		g2d.setPaint(Color.black);
-		g2d.draw(shape);
+		Graphics2D graphics2d = (Graphics2D)g;
+		graphics2d.setPaint(new Color(255, 255, 255));
+		graphics2d.fill(shape);
+		graphics2d.setPaint(Color.black);
+		graphics2d.draw(shape);
 		if(amount == 1)
 		{
 			circle = new Ellipse2D.Double(4,4,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		else if(amount == 2)
 		{
 			circle = new Ellipse2D.Double(1,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		else if(amount == 3)
 		{
 			circle = new Ellipse2D.Double(1,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(4,4,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		else if(amount == 4)
 		{
 			circle = new Ellipse2D.Double(1,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(1,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		else if(amount == 5)
 		{
 			circle = new Ellipse2D.Double(1,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(1,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(4,4,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		else if(amount == 6)
 		{
 			circle = new Ellipse2D.Double(1,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(4,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,1,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(1,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(4,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 			circle = new Ellipse2D.Double(7,7,3,3);
-			g2d.fill(circle);
+			graphics2d.fill(circle);
 		}
 		repaint();
 
