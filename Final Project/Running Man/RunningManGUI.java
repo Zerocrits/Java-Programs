@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class RunningManGUI extends JFrame
 {
-	private int APPLET_WIDTH = 300, APPLET_HEIGHT = 470;
+	private int APPLET_WIDTH = 1000, APPLET_HEIGHT = 600;
 
 	private JLabel lblTitle, lblDice;
 	private ImageIcon icoDice;
@@ -20,37 +20,6 @@ public class RunningManGUI extends JFrame
 
 
 
-		btnPull = new JButton ("     Pull Me!     ");
-		btnPull.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-		btnPull.addActionListener( new ButtonListener());
-
-
-
-		icoDice = new ImageIcon("lblDice.PNG");
-
-
-
-		lblDice = new JLabel();
-
-
-
-		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-
-
-
-		listener = new ButtonListener();
-
-
-
-		lblDice.setIcon(icoDice);
-
-
-
-		cp.add(lblTitle);
-
-
-		lblBlank.setText("                     ");
-
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
 		setVisible(true);
@@ -58,7 +27,7 @@ public class RunningManGUI extends JFrame
 
 	public static void main(String[] args)
 	{
-		RunningManGUI gui = new SlotGUI();
+		RunningManGUI gui = new RunningManGUI();
 	}
 
 	// private inner class for handling button events
@@ -71,7 +40,7 @@ public class RunningManGUI extends JFrame
 			Object source = new Object();
 			source = event.getSource();
 
-			if(source == btnPull)
+			if(source == null)
 			{
 
 			}

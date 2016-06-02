@@ -6,7 +6,8 @@ public class MainMenu extends JFrame
 {
 	private JLabel lblName;
 	private JButton btnStart, btnHowto;
-	private int APPLET_WIDTH = 500, APPLET_HEIGHT = 200;
+	final int APPLET_WIDTH = 500, APPLET_HEIGHT = 200;
+	private ButtonListener listener;
 
 	public MainMenu()
 	{
@@ -26,6 +27,10 @@ public class MainMenu extends JFrame
 		cp.add(btnHowto);
 		cp.add(btnStart);
 
+		listener = new ButtonListener();
+		btnHowto.addActionListener(listener);
+		btnStart.addActionListener(listener);
+
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
 		setVisible(true);
@@ -43,9 +48,13 @@ public class MainMenu extends JFrame
 			Object source = new Object();
 			source = event.getSource();
 
-			if(source == null)
+			if(source == btnStart)
 			{
-
+				RunningManGUI gui = new RunningManGUI();
+			}
+			else if(source == btnHowto)
+			{
+				JOptionPane.showMessageDialog(null, "test");
 			}
 		}
 	}
