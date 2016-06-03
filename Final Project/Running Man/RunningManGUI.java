@@ -8,14 +8,15 @@ public class RunningManGUI extends JFrame
 	private int APPLET_WIDTH = 1000, APPLET_HEIGHT = 600;
 
 	private JLabel lblTitle, lblDice;
-	private ImageIcon icoDice;
+	private BufferedImage icoBackground;
 	private JButton anything;
 	private ButtonListener listener;
 
 	public RunningManGUI()
 	{
+		BufferedImage icoBackground = new ImageIcon("Background.PNG");
 		Container cp = getContentPane();
-		cp.setBackground(Color.cyan);
+		cp.setBackground(icoBackground);
 		cp.setLayout(new FlowLayout());
 
 
@@ -30,13 +31,10 @@ public class RunningManGUI extends JFrame
 		RunningManGUI gui = new RunningManGUI();
 	}
 
-	// private inner class for handling button events
-    // action listener requires actionPerformed method
 	private class ButtonListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
-			// find out what object was pressed:
 			Object source = new Object();
 			source = event.getSource();
 
