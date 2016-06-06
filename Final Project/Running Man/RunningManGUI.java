@@ -8,19 +8,21 @@ public class RunningManGUI extends JFrame
 	private int APPLET_WIDTH = 1000, APPLET_HEIGHT = 600;
 
 	private JLabel lblTitle, lblDice;
-	private BufferedImage icoBackground;
 	private JButton anything;
 	private ButtonListener listener;
+	private Player player;
 
 	public RunningManGUI()
 	{
-		BufferedImage icoBackground = new ImageIcon("Background.PNG");
 		Container cp = getContentPane();
-		cp.setBackground(icoBackground);
+		setContentPane(new JLabel(new ImageIcon("Background.PNG")));
 		cp.setLayout(new FlowLayout());
+		Player player = new Player();
+		player.getImage();
 
 
 
+		cp.add(player);
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
 		setVisible(true);
