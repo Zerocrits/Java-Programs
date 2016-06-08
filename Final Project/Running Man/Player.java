@@ -1,19 +1,24 @@
-import java.awt.Image;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.geom.*;
+import java.awt.image.*;
+import java.io.*;
+import java.net.*;
+import javax.imageio.*;
+import java.util.*;
 
-public class Player
+public class Player extends JComponent
 {
+	private TexturePaint build;
+	private Rectangle rect;
     private int ya;
     private int y;
 
-    public Player()
-    {
-        Player();
-    }
+	public Player(BufferedImage bi)
+	{
+		rect = new Rectangle(0, 0, 30, 30);
+		build = new TexturePaint(bi, rect);
+	}
 
     public void Player()
     {
@@ -23,6 +28,18 @@ public class Player
         y = 60;
     }
 
+	public TexturePaint getBuild()
+	{
+		return build;
+	}
+
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setPaint(build);
+		g2d.fill(rect);
+	}
 
     public void move()
     {
@@ -34,7 +51,7 @@ public class Player
         return y;
     }
 
-    public void keyPressed(KeyEvent e)
+/*    public void keyPressed(KeyEvent e)
     {
         int key = e.getKeyCode();
 
@@ -63,5 +80,5 @@ public class Player
         {
             ya = 0;
         }
-    }
+    }*/
 }

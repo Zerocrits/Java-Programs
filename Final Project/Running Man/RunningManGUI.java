@@ -7,6 +7,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.lang.Object;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 public class RunningManGUI extends JFrame
 {
@@ -14,49 +17,33 @@ public class RunningManGUI extends JFrame
 
 	private JFrame frmPlayer;
 	private Player player;
+	private BufferedImage myImage;
 
 	public RunningManGUI()
 	{
-		//add(new Board());
+		JFrame f = new JFrame("Running Man");
+		f.setLayout(new FlowLayout());
 
-		setResizable(false);
-		pack();
+		try {
+    		f.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Background.PNG")))));
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
 
-		setTitle("Running Man");
-		setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Player characer;
+		myImage = new BufferedImage("Character.PNG");
+		character = new Player(myImage);
+		f.add(super.player());
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-
-
-
-		//JFrame f = new JFrame("Running Man");
-		//f.setLayout(new FlowLayout());
-		//try {
-		//	f.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Background.PNG")))));
-		//} catch (IOException e) {
-		//	e.printStackTrace();
-		//}
-		//f.add(new JLabel(new ImageIcon("Character.PNG")));
-
-
-
-		//f.setSize(APPLET_WIDTH, APPLET_HEIGHT);
-		//f.pack();
-    	//f.setVisible(true);
+		f.setSize(APPLET_WIDTH, APPLET_HEIGHT);
+		f.pack();
+    	f.setVisible(true);
 	}
 
 	public static void main(String[] args)
 	{
 		RunningManGUI gui = new RunningManGUI();
-
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				JFrame game = new RunningManGUI();
-				game.setVisible(true);
-			}
-		});
     }
 }

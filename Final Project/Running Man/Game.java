@@ -18,7 +18,6 @@ public class Game extends JPanel
 {
     public Game()
     {
-
         addKeyListener(new TAdapter());
         setBackground(Color.black);
         setFocusable(true);
