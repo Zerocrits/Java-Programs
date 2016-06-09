@@ -24,17 +24,18 @@ public class RunningManGUI extends JFrame
 		JFrame f = new JFrame("Running Man");
 		f.setLayout(new FlowLayout());
 
-		try {
+		try
+		{
     		f.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Background.PNG")))));
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+
+    	} catch (IOException e) {}
+
+
 
 		Player characer;
-		myImage = new BufferedImage("Character.PNG");
-		character = new Player(myImage);
-		f.add(super.player());
-		f.setLocationRelativeTo(null);
+		//myImage = new BufferedImage("Character.PNG");
+		//character = new Player(myImage);
+		//f.add(super.player());
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		f.setSize(APPLET_WIDTH, APPLET_HEIGHT);

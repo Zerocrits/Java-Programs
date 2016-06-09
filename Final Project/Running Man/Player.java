@@ -23,7 +23,7 @@ public class Player extends JComponent
     public void Player()
     {
         JLabel lblChar = new JLabel();
-        lblChar.setIcon(new ImageIcon("Character.PNG"));
+        //lblChar.setIcon(new BufferedImage("Character.PNG"));
         lblChar.setLocation(100,100);
         y = 60;
     }
