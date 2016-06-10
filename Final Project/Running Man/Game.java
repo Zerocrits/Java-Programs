@@ -1,69 +1,41 @@
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.awt.Dimension;
 
-import java.awt.*;
-import javax.swing.*;
-import java.util.*;
-import java.net.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
-import java.awt.event.*;
-import java.applet.*;
-import javax.swing.border.*;
-
-public class Game extends JPanel
+public class Game extends JPanel implements ActionListener
 {
-    public Game()
-    {
-        addKeyListener(new TAdapter());
-        setBackground(Color.black);
-        setFocusable(true);
+	private Timer timer;
+	private Player player;
+	private Background background;
+	private final int DELAY = 10;
 
-        setPreferredSize(new Dimension(1000, 1000));
-        loadImages();
-        initGame();
-        BufferedImage img1 = null;
-    }
+	public Game()
+	{
+		initGame();
+	}
 
-    private void loadImages()
-    {
-		Image build = getImage(getDocumentBase(), "Map.PNG");
-		try
-		{
-			URL url1 = new URL(getDocumentBase(), "Character.PNG");
-			img1 = ImageIO.read(url1);
-		} catch (IOException e) {}
-		bp = new Background(build);
-    }
 
     private void initGame()
     {
+        addKeyListener(new TAdapter());
+        setFocusable(true);
+        setPreferredSize(new Dimension(1000, 600));
 
-        /*for (int z = 0; z < dots; z++)
-        {
-            x[z] = 50 - z * 10;
-            y[z] = 50;
-        }
-
-        locateApple();
+        player = new Player();
+        background = new Background();
 
         timer = new Timer(DELAY, this);
-        timer.start();*/
+        timer.start();
     }
+
 
     @Override
     public void paintComponent(Graphics g)
@@ -75,150 +47,30 @@ public class Game extends JPanel
 
     private void doDrawing(Graphics g)
     {
-
-        /*if (inGame)
-        {
-
-
-            g.drawImage(apple, apple_x, apple_y, this);
-
-            for (int z = 0; z < dots; z++)
-            {
-                if (z == 0)
-                {
-                    g.drawImage(head, x[z], y[z], this);
-                }
-                else
-                {
-                    g.drawImage(ball, x[z], y[z], this);
-                }
-            }
-
-            Toolkit.getDefaultToolkit().sync();
-
-        }
-        else
-        {
-
-            gameOver(g);
-        }*/
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(background.getImage(), 0, 0, this);
+        g2d.drawImage(player.getImage(), player.getY(), player.getX(), this);
     }
 
-    private void gameOver(Graphics g)
-    {
-
-        /*String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics metr = getFontMetrics(small);
-
-        g.setColor(Color.white);
-        g.setFont(small);
-        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);*/
-    }
-
-    private void checkApple()
-    {
-
-      /*if ((x[0] == apple_x) && (y[0] == apple_y))
-        {
-
-            dots++;
-            locateApple();
-        }*/
-    }
-
-    private void move()
-    {
-
-       /* for (int z = dots; z > 0; z--)
-        {
-            x[z] = x[(z - 1)];
-            y[z] = y[(z - 1)];
-        }
-
-        if (leftDirection)
-        {
-            x[0] -= DOT_SIZE;
-        }
-
-        if (rightDirection)
-        {
-            x[0] += DOT_SIZE;
-        }
-
-        if (upDirection)
-        {
-            y[0] -= DOT_SIZE;
-        }
-
-        if (downDirection)
-        {
-            y[0] += DOT_SIZE;
-        }*/
-    }
-
-    private void checkCollision()
-    {
-
-       /* for (int z = dots; z > 0; z--)
-        {
-
-            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]))
-            {
-                inGame = false;
-            }
-        }
-
-        if (y[0] >= B_HEIGHT)
-        {
-            inGame = false;
-        }
-
-        if (y[0] < 0)
-        {
-            inGame = false;
-        }
-
-        if (x[0] >= B_WIDTH)
-        {
-            inGame = false;
-        }
-
-        if (x[0] < 0)
-        {
-            inGame = false;
-        }
-
-        if(!inGame)
-        {
-            timer.stop();
-        }*/
-    }
-
+	@Override
     public void actionPerformed(ActionEvent e)
     {
-
-        /*if (inGame)
-        {
-            checkCollision();
-            move();
-        }
-
-        repaint();*/
+        player.move();
+        repaint();
     }
 
-    private class TAdapter extends KeyAdapter {
+    private class TAdapter extends KeyAdapter
+    {
+        @Override
+        public void keyReleased(KeyEvent e)
+        {
+            player.keyReleased(e);
+        }
 
         @Override
         public void keyPressed(KeyEvent e)
         {
-            int key = e.getKeyCode();
-
-            if ((key == KeyEvent.VK_UP) && (!downDirection))
-                upDirection = true;
-
-            //if ((key == KeyEvent.VK_DOWN) && (!upDirection))
-            //    downDirection = true;
+            player.keyPressed(e);
         }
     }
 }

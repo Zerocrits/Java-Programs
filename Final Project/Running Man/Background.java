@@ -1,19 +1,26 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
-public class Background extends JComponent
+public class Background
 {
-    Image image;
+    private Image image;
 
-    public Background(Image image)
+    public Background()
     {
-		setLayout(null);
-        this.image = image;
+		initBackground();
     }
-    protected void paintComponent(Graphics g)
+
+    public void initBackground()
     {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, this);
-        repaint();
-    }
+		ImageIcon imgBackground = new ImageIcon("Background.PNG");
+        image = imgBackground.getImage();
+	}
+
+    public Image getImage()
+    {
+    	return image;
+	}
+
 }
