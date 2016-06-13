@@ -1,30 +1,35 @@
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.awt.event.KeyListener;
+import java.awt.Rectangle;
 
-public class Player
+public class Player implements KeyListener
 {
-	private int dy;
 	private int y;
 	private int x;
-    private Image image;
-    public Player()
-    {
-        initPlayer();
-    }
+	private int airTime;
+	private BufferedImage imgPlayer;
+	private boolean upPressed, jumping, falling;
 
-    private void initPlayer()
+    public Player(Game game)
     {
-        ImageIcon imgPlayer = new ImageIcon("Character.PNG");
-        image = imgPlayer.getImage();
-        x = 40;
+		try {
+			 imgPlayer = ImageIO.read(new File("Character.PNG"));
+		}catch (IOException e) {
+
+			e.printStackTrace();
+			System.exit(1);
+		}
+
+		x = 40;
         y = 506;
-    }
-
-
-    public void move()
-    {
-        y += dy;
+        upPressed=jumping=falling=false;
+        airTime = 0;
     }
 
     public int getY()
@@ -37,40 +42,67 @@ public class Player
 		return x;
 	}
 
-    public Image getImage()
-    {
-        return image;
-    }
+
+	public void tick()
+	{
+		if(upPressed && !jumping && !falling)
+		{
+			airTime=20;
+			jumping=true;
+		}
+
+		if(airTime > 0 && jumping)
+		{
+			y-=airTime;
+			airTime--;
+		}
+
+		if(airTime == 0 && jumping)
+		{
+			jumping=false;
+			falling=true;
+			airTime=20;
+		}
+
+		if(airTime > 0 && falling)
+		{
+			y+=airTime;
+			airTime--;
+		}
+
+		if(airTime == 0 && falling)
+		{
+			falling=false;
+		}
+	}
+
+	public Rectangle getFrame()
+	{
+		return new Rectangle(x,y,25,25);
+	}
+
+	public void render(Graphics g)
+	{
+		g.drawImage(imgPlayer,x,y,null);
+	}
 
     public void keyPressed(KeyEvent e)
     {
-
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_UP)
+        if (e.getKeyCode() == KeyEvent.VK_UP)
         {
-            dy = -1;
-        }
-
-        if (key == KeyEvent.VK_DOWN)
-        {
-            dy = 1;
+			upPressed=true;
         }
     }
 
     public void keyReleased(KeyEvent e)
     {
-
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_UP)
+		if (e.getKeyCode() == KeyEvent.VK_UP)
         {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN)
-        {
-            dy = 0;
+			upPressed=false;
         }
     }
+
+    public void keyTyped(KeyEvent e)
+	{
+	}
 }
