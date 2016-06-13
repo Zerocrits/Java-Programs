@@ -18,7 +18,7 @@ public class Player
         ImageIcon imgPlayer = new ImageIcon("Character.PNG");
         image = imgPlayer.getImage();
         x = 40;
-        y = 60;
+        y = 506;
     }
 
 

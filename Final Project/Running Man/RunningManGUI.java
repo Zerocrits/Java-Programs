@@ -19,7 +19,7 @@ public class RunningManGUI extends JFrame
 	{
 		JFrame f = new JFrame("Running Man");
 		f.setSize(APPLET_WIDTH, APPLET_HEIGHT);
-		//f.setResizable(false);
+		f.setResizable(false);
 		f.setBackground(Color.BLACK);
 		f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
