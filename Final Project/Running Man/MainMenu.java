@@ -4,10 +4,13 @@ import javax.swing.*;
 
 public class MainMenu extends JFrame
 {
-	private JLabel lblName;
+	private JLabel lblName,lblTitle;
 	private JButton btnStart, btnHowto;
+	private JButton btnStart1, btnStart2, btnStart3;
 	final int APPLET_WIDTH = 500, APPLET_HEIGHT = 200;
 	private ButtonListener listener;
+	private ButtonListener listen;
+	private Game game;
 
 	public MainMenu()
 	{
@@ -22,7 +25,6 @@ public class MainMenu extends JFrame
 		btnHowto = new JButton("How To Play");
 		btnHowto.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 
-
 		cp.add(lblName);
 		cp.add(btnHowto);
 		cp.add(btnStart);
@@ -30,6 +32,21 @@ public class MainMenu extends JFrame
 		listener = new ButtonListener();
 		btnHowto.addActionListener(listener);
 		btnStart.addActionListener(listener);
+
+		Container game = getContentPane();
+		game.setBackground(Color.cyan);
+		game.setLayout(new GridLayout(0,1,10,10));
+		lblTitle = new JLabel("Select a Gamemode!", JLabel.CENTER);
+		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+		btnStart1 = new JButton("Insane");
+		btnStart1.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+		btnStart2 = new JButton("Hard");
+		btnStart2.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+		btnStart3 = new JButton("Easy");
+		btnStart3.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+
+		listen = new ButtonListener();
+
 
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
@@ -40,6 +57,7 @@ public class MainMenu extends JFrame
 	{
 		MainMenu menu = new MainMenu();
 	}
+
 	private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -50,7 +68,8 @@ public class MainMenu extends JFrame
 
 			if(source == btnStart)
 			{
-				RunningManGUI gui = new RunningManGUI();
+				//remove(cp);
+				cp.add(btnStart1);
 			}
 			else if(source == btnHowto)
 			{

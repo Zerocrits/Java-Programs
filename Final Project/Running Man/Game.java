@@ -12,7 +12,7 @@ public class Game implements Runnable
 {
 	/*DISPAY VARIABLES*/
 	private Display display;
-	public int width, height;
+	public int width, height, gamesetting;
 	public String title;
 
 	/*THREADING VARIABLES*/
@@ -30,15 +30,16 @@ public class Game implements Runnable
 
 	private BufferedImage imgBackground;
 
-	public Game(String title, int width, int height)
+	public Game(String title, int width, int height, int gamesetting)
 	{
 		/*INITIALIZE VARIABLES*/
 		running = false;
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		this.gamesetting = gamesetting;
 		player = new Player(this);
-		wall = new Wall(this);
+		wall = new Wall(this, gamesetting);
 		score = 0;
 	}
 
@@ -46,7 +47,7 @@ public class Game implements Runnable
 	{
 		display.getFrame().dispose();
 		player = new Player(this);
-		wall = new Wall(this);
+		wall = new Wall(this, gamesetting);
 		score=0;
 		init();
 	}
