@@ -104,5 +104,6 @@ public class Player implements KeyListener
 
     public void keyTyped(KeyEvent e)
 	{
+
 	}
 }

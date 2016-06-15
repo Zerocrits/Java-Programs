@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 public class Display
 {
-	/*DECLARE VARIABLES*/
 	private JFrame frame;
 	private Canvas canvas;
 	private String title;
@@ -13,18 +12,16 @@ public class Display
 
 	public Display(String title, int width, int height)
 	{
-		/*INITIALIZES VARIABLES FOR SIZE AND NAME OF GAME WINDOW*/
 		this.title = title;
 		this.width = width;
 		this.height = height;
 
-		/*CREATES CANVAS AND FRAME*/
 		createDisplay();
 	}
 
 	private void createDisplay()
 	{
-		/*FRAME UNTILS*/
+		//Creates frame
 		frame = new JFrame(title);
 		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -32,19 +29,18 @@ public class Display
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
-		/*CANVAS UTILS*/
+		//Creates canvas
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height));
 		canvas.setMaximumSize(new Dimension(width, height));
 		canvas.setMinimumSize(new Dimension(width, height));
 		canvas.setFocusable(false);
 
-		/*ADD AND PACK*/
+		//adds canvas to frame
 		frame.add(canvas);
 		frame.pack();
 	}
 
-	/*GETTERS*/
 	public Canvas getCanvas()
 	{
 		return canvas;

@@ -5,11 +5,10 @@ import javax.swing.*;
 public class MainMenu extends JFrame
 {
 	private JLabel lblName,lblTitle;
-	private JButton btnStart, btnHowto;
+	private JButton btnHowto;
 	private JButton btnStart1, btnStart2, btnStart3;
-	final int APPLET_WIDTH = 500, APPLET_HEIGHT = 200;
+	final int APPLET_WIDTH = 500, APPLET_HEIGHT = 300;
 	private ButtonListener listener;
-	private ButtonListener listen;
 	private Game game;
 
 	public MainMenu()
@@ -20,34 +19,26 @@ public class MainMenu extends JFrame
 
 		lblName = new JLabel("Running Man", JLabel.CENTER);
 		lblName.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-		btnStart = new JButton("Start Game");
-		btnStart.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		btnHowto = new JButton("How To Play");
 		btnHowto.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+		btnStart3 = new JButton("Insane");
+		btnStart3.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		btnStart2 = new JButton("Hard");
+		btnStart2.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		btnStart1 = new JButton("Easy");
+		btnStart1.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 
 		cp.add(lblName);
 		cp.add(btnHowto);
-		cp.add(btnStart);
+		cp.add(btnStart1);
+		cp.add(btnStart2);
+		cp.add(btnStart3);
 
 		listener = new ButtonListener();
 		btnHowto.addActionListener(listener);
-		btnStart.addActionListener(listener);
-
-		Container game = getContentPane();
-		game.setBackground(Color.cyan);
-		game.setLayout(new GridLayout(0,1,10,10));
-		lblTitle = new JLabel("Select a Gamemode!", JLabel.CENTER);
-		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-		btnStart1 = new JButton("Insane");
-		btnStart1.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-		btnStart2 = new JButton("Hard");
-		btnStart2.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-		btnStart3 = new JButton("Easy");
-		btnStart3.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-
-		listen = new ButtonListener();
-
-
+		btnStart1.addActionListener(listener);
+		btnStart2.addActionListener(listener);
+		btnStart3.addActionListener(listener);
 
 		setSize(APPLET_WIDTH, APPLET_HEIGHT);
 		setVisible(true);
@@ -66,14 +57,24 @@ public class MainMenu extends JFrame
 			Object source = new Object();
 			source = event.getSource();
 
-			if(source == btnStart)
+			if(source == btnStart1)
 			{
-				//remove(cp);
-				cp.add(btnStart1);
+				Game game = new Game("Running Man", 1000,600,3);
+				game.start();
+			}
+			else if(source == btnStart2)
+			{
+				Game game = new Game("Running Man", 1000,600,2);
+				game.start();
+			}
+			else if(source == btnStart3)
+			{
+				Game game = new Game("Running Man", 1000,600,1);
+				game.start();
 			}
 			else if(source == btnHowto)
 			{
-				JOptionPane.showMessageDialog(null, "test");
+				JOptionPane.showMessageDialog(null, "It's an easy to play game, press the up arrow to jump");
 			}
 		}
 	}

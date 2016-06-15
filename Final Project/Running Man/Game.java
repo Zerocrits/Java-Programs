@@ -10,29 +10,20 @@ import java.awt.Font;
 
 public class Game implements Runnable
 {
-	/*DISPAY VARIABLES*/
 	private Display display;
-	public int width, height, gamesetting;
+	public int width, height, gamesetting, highscore;
 	public String title;
-
-	/*THREADING VARIABLES*/
 	private boolean running;
 	private Thread thread;
-
-	/*OBJECTS*/
 	private Player player;
 	private Wall wall;
 	private int score;
-
-	/*GRAPHIC VARIABLES*/
 	private BufferStrategy bs;
 	private Graphics g;
-
 	private BufferedImage imgBackground;
 
 	public Game(String title, int width, int height, int gamesetting)
 	{
-		/*INITIALIZE VARIABLES*/
 		running = false;
 		this.width = width;
 		this.height = height;
@@ -40,7 +31,7 @@ public class Game implements Runnable
 		this.gamesetting = gamesetting;
 		player = new Player(this);
 		wall = new Wall(this, gamesetting);
-		score = 0;
+		score = highscore = 0;
 	}
 
 	private void reset()
@@ -53,7 +44,6 @@ public class Game implements Runnable
 	}
 	private void init()
 	{
-		/*START GRAPHICS*/
 		display = new Display(title, width, height);
 
 		display.getFrame().addKeyListener(player);
@@ -66,14 +56,14 @@ public class Game implements Runnable
 
 	public void tick()
 	{
-		/*TICK CLASS TICKS*/
+		//timers for player and wall
 		player.tick();
 		wall.tick();
 	}
 
 	public void render()
 	{
-		/*CREATE BUFFER STRATEGY*/
+		//canvas
 		bs = display.getCanvas().getBufferStrategy();
 		if(bs == null)
 		{
@@ -82,10 +72,10 @@ public class Game implements Runnable
 		}
 		g = bs.getDrawGraphics();
 
-		/*CLEAR SCREEN*/
+		//reset screen
 		g.clearRect(0,0,width,height);
 
-		/*DRAW BACKGROUND AND PLAYERS*/
+		//draws background, player, wall
 		try {
 			 imgBackground = ImageIO.read(new File("Background.PNG"));
 		}catch (IOException e) {
@@ -99,21 +89,21 @@ public class Game implements Runnable
 		g.setFont(new Font("Serif", Font.BOLD, 50));
 
 		g.drawString("Score: " + getScore(), 100, 100);
+		g.drawString("High Score: " + getHighScore(), 550, 100);
 		player.render(g);
 		wall.render(g);
 
-		/*DISPLAY BUFFEREIMAGE*/
+		//displays image(buffered image)
 		bs.show();
 		g.dispose();
 		hitDetect();
 	}
 
-	/*STARTS ENGINE AND INIT()*/
 	public void run()
 	{
 		init();
 
-		/*FPS ENGINE*/
+		//timer with frames
 		final double fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
@@ -164,6 +154,13 @@ public class Game implements Runnable
 		score++;
 	}
 
+	public int getHighScore()
+	{
+		if(highscore < getScore())
+			highscore = getScore();
+		return highscore;
+	}
+
 	public int getScore()
 	{
 		if(score<2)
@@ -176,7 +173,7 @@ public class Game implements Runnable
 	{
 		if(player.getFrame().intersects(wall.getFrame()))
 		{
-			int input = JOptionPane.showOptionDialog(null, "You are terrible :(, Want to try again?", "YOU LOSE!", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+			int input = JOptionPane.showOptionDialog(null, "You have died, Want to try again?", "YOU LOSE!", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
 			if(input == JOptionPane.YES_OPTION)
 			{

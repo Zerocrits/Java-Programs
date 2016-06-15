@@ -56,7 +56,6 @@ public class Wall
 			}
 
 			game.addScore();
-			System.out.println(game.getScore());
 		}
 		x-=(int)speed;
 	}
