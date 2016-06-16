@@ -59,17 +59,17 @@ public class MainMenu extends JFrame
 
 			if(source == btnStart1)
 			{
-				Game game = new Game("Running Man", 1000,600,3);
+				Game game = new Game("Running Man", 1000,600,3); //Insane
 				game.start();
 			}
 			else if(source == btnStart2)
 			{
-				Game game = new Game("Running Man", 1000,600,2);
+				Game game = new Game("Running Man", 1000,600,2); //Hard
 				game.start();
 			}
 			else if(source == btnStart3)
 			{
-				Game game = new Game("Running Man", 1000,600,1);
+				Game game = new Game("Running Man", 1000,600,1); //Easy
 				game.start();
 			}
 			else if(source == btnHowto)

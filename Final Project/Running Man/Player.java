@@ -42,7 +42,7 @@ public class Player implements KeyListener
 		return x;
 	}
 
-
+	//checks location and uses timer
 	public void tick()
 	{
 		if(upPressed && !jumping && !falling)
@@ -76,12 +76,12 @@ public class Player implements KeyListener
 		}
 	}
 
-	public Rectangle getFrame()
+	public Rectangle getFrame() //hitbox
 	{
 		return new Rectangle(x,y,25,25);
 	}
 
-	public void render(Graphics g)
+	public void render(Graphics g) //draws player
 	{
 		g.drawImage(imgPlayer,x,y,null);
 	}

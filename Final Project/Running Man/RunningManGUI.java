@@ -1,3 +1,5 @@
+//This Class is just for testing purposes, main launcher is MainMenu
+
 public class RunningManGUI
 {
 	public static void main(String[] args)
